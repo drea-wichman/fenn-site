@@ -42,7 +42,6 @@ import Layout from '../layouts/Layout.astro';
       <p class="section-label">How it works</p>
       <h2 class="section-headline">The whole farm on one screen.</h2>
 
-      <!-- STEP 1: CONNECT -->
       <div class="step">
         <div class="step__heading">
           <span class="step__num">1.</span>
@@ -54,7 +53,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- STEP 2: TRACK -->
       <div class="step">
         <div class="step__heading">
           <span class="step__num">2.</span>
@@ -103,7 +101,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- STEP 3: REPORT -->
       <div class="step">
         <div class="step__heading">
           <span class="step__num">3.</span>
@@ -240,8 +237,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <p class="section-label">The app</p>
       <h2 class="the-app__headline">Fenn, for wherever work takes you.</h2>
-<p class="the-app__tagline">Seamless from home to harvest.</p>
- <div class="the-app__icon">
+
+      <div class="the-app__icon">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="the-app__f">
           <g transform="translate(97, 126)">
             <path d="M -16 -60 Q -16 -94 9 -94 L 25 -94 L 25 -90 L 10 -90 Q -12 -90 -12 -60 L -12 42 L -16 42 Z" fill="currentColor"/>
@@ -250,7 +247,10 @@ import Layout from '../layouts/Layout.astro';
         </svg>
       </div>
 
-<p class="the-app__caption">Available on desktop, phone, tablet, and in-cab on most modern farm machinery.</p>
+      <p class="the-app__tagline">Seamless from home to harvest.</p>
+
+      <p class="the-app__caption">Available on desktop, phone, tablet, and in-cab on most modern farm machinery.</p>
+
       <p class="the-app__platforms">iOS · ANDROID · MACOS · WINDOWS</p>
       <p class="the-app__platforms">JOHN DEERE · CASE IH · AGCO · CLAAS</p>
     </div>
@@ -317,7 +317,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="cta">
     <div class="container">
       <h2 class="cta__headline">Let's work together.</h2>
-      <p class="cta__sub">Currently serving 1,000+ farms across England and Wales. Tell us more about your operation.</p>
+      <p class="cta__sub">Currently serving 1,000+ farms across England and Wales.<br />Tell us more about your operation.</p>
       <button class="btn-outline-white cta__btn" id="open-contact-modal-cta">GET STARTED</button>
     </div>
   </section>
@@ -401,57 +401,57 @@ import Layout from '../layouts/Layout.astro';
   /* HOW IT WORKS */
   .how-it-works {
     background: var(--color-light);
-    padding: 80px 0 100px;
+    padding: 64px 0 72px;
   }
   .step {
     max-width: 1100px;
-    margin: 60px auto 0;
+    margin: 32px auto 0;
     padding: 0 var(--gutter);
   }
   .step__heading {
     color: var(--color-emerald);
-    font-size: 56px;
+    font-size: 36px;
     font-weight: 700;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
   .step__num {
-    margin-right: 16px;
+    margin-right: 12px;
   }
   .step__body {
-    padding-left: 110px;
+    padding-left: 72px;
   }
   .step__body p {
-    font-size: 17px;
+    font-size: 14px;
     color: var(--text-muted-on-light);
     line-height: 1.5;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .cluster-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 24px;
-    padding-left: 110px;
-    margin-top: 40px;
+    padding-left: 72px;
+    margin-top: 24px;
   }
   .cluster {
     text-align: center;
   }
   .cluster__title {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--text-on-light);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .cluster__line {
-    width: 30px;
+    width: 24px;
     height: 1.5px;
     background: var(--color-emerald);
-    margin: 0 auto 12px;
+    margin: 0 auto 10px;
   }
   .cluster__item {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted-on-light);
     line-height: 1.5;
   }
@@ -506,33 +506,34 @@ import Layout from '../layouts/Layout.astro';
     padding: 80px 0 100px;
     text-align: center;
   }
-.the-app__headline {
+  .the-app__headline {
     font-size: 36px;
     font-weight: 700;
     letter-spacing: -1px;
     color: var(--text-on-dark);
-    margin-bottom: 4px;
-  }
-  .the-app__tagline {
-    font-size: 17px;
-    color: var(--text-muted-on-dark);
     margin-bottom: 60px;
-    text-align: center;
   }
   .the-app__icon {
     width: 140px;
     height: 140px;
     background: linear-gradient(180deg, #508460 0%, #264a36 100%);
     border-radius: 28px;
-    margin: 0 auto 40px;
+    margin: 0 auto 32px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-.the-app__f {
+  .the-app__f {
     width: 100%;
     height: 100%;
     color: var(--text-on-dark);
+  }
+  .the-app__tagline {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-on-dark);
+    margin-bottom: 16px;
+    text-align: center;
   }
   .the-app__caption {
     color: var(--text-muted-on-dark);
@@ -575,7 +576,7 @@ import Layout from '../layouts/Layout.astro';
     width: 22px;
     height: 22px;
     color: var(--color-emerald);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .policy-card__icon svg {
     width: 100%;
@@ -587,13 +588,13 @@ import Layout from '../layouts/Layout.astro';
     color: var(--text-on-light);
     letter-spacing: -0.5px;
     line-height: 1.2;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
   .policy-card__desc {
     font-size: 13px;
     color: var(--text-muted-on-light);
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
   }
   .policy-card__link {
     font-size: 13px;
@@ -627,6 +628,7 @@ import Layout from '../layouts/Layout.astro';
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.5;
   }
   .cta__btn {
     padding: 16px 40px;
@@ -657,6 +659,6 @@ import Layout from '../layouts/Layout.astro';
     .trust-strip__inner { grid-template-columns: 1fr; gap: 12px; }
     .cta__headline { font-size: 36px; }
     .the-app__headline { font-size: 28px; }
-    .step__heading { font-size: 40px; }
+    .step__heading { font-size: 30px; }
   }
 </style>

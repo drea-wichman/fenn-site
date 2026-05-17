@@ -2,7 +2,7 @@
   <div class="footer__inner">
     <div class="footer__brand">
       <div class="footer__logo" aria-label="Fenn">
-  <svg viewBox="-240 -165 825 170" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="-240 -165 825 170" xmlns="http://www.w3.org/2000/svg">
           <path d="M 35 -100 Q 35 -158 80 -158 L 110 -158 L 110 -151 L 82 -151 Q 42 -151 42 -100 L 42 0 L 35 0 Z" fill="currentColor"/>
           <rect x="-235" y="-104" width="815" height="7" fill="currentColor"/>
           <rect x="80" y="-95" width="7" height="95" fill="currentColor"/>
@@ -66,8 +66,8 @@
   }
   
   .footer__logo {
-    width: 96px;
-    height: 56px;
+    width: 140px;
+    height: 36px;
     color: var(--text-on-dark);
   }
   
@@ -96,7 +96,7 @@
   }
   
   .footer__column li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   
   .footer__column a {
@@ -113,15 +113,13 @@
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   
   .footer__meta-line {
     font-size: 11px;
     color: var(--text-on-dark);
     margin: 0;
+    line-height: 1.6;
   }
   
   @media (max-width: 768px) {
@@ -133,12 +131,6 @@
     .footer__columns {
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
-    }
-    
-    .footer__bottom {
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-start;
     }
   }
 </style>
