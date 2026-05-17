@@ -54,8 +54,6 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <hr class="step__divider" />
-
       <!-- STEP 2: TRACK -->
       <div class="step">
         <div class="step__heading">
@@ -104,8 +102,6 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
       </div>
-
-      <hr class="step__divider" />
 
       <!-- STEP 3: REPORT -->
       <div class="step">
@@ -162,31 +158,76 @@ import Layout from '../layouts/Layout.astro';
       
       <div class="privacy-proven__grid">
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-15 -20 30 35" xmlns="http://www.w3.org/2000/svg">
+              <rect x="-12" y="-2" width="24" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M -7 -2 L -7 -10 Q -7 -16 0 -16 Q 7 -16 7 -10 L 7 -2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">Encryption every step of the way.</h3>
           <p class="commitment__body">Your records are encrypted before leaving your phone and stay locked through our servers. The keys are yours alone.</p>
         </div>
         
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-15 -10 30 20" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="-10" cy="0" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-4" y1="0" x2="14" y2="0" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="0" x2="8" y2="5" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="13" y1="0" x2="13" y2="4" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">Built for banks. Now for your farm.</h3>
           <p class="commitment__body">Bank-grade cryptographic key management, made for you by the engineer who built it for a UK challenger bank. Serious work, serious protection.</p>
         </div>
         
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-18 -12 36 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M -14 0 Q -7 -8 0 -8 Q 7 -8 14 0 Q 7 8 0 8 Q -7 8 -14 0 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">Access any audits, anytime.</h3>
           <p class="commitment__body">Every interaction with your data is recorded and available to you in real time. Because we believe trust is built on transparency.</p>
         </div>
         
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-15 -12 30 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="-10" cy="-6" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="10" cy="-6" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="0" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-8" y1="-4" x2="-2" y2="6" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="-4" x2="2" y2="6" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-7" y1="-6" x2="7" y2="-6" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">AI without the audience.</h3>
           <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time.</p>
         </div>
         
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-15 -15 30 30" xmlns="http://www.w3.org/2000/svg">
+              <rect x="-10" y="-12" width="20" height="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-5" y1="-5" x2="5" y2="-5" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-5" y1="0" x2="5" y2="0" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-5" y1="5" x2="2" y2="5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">Less paperwork. More farming.</h3>
           <p class="commitment__body">Field operations, compliance forms, and sustainability reporting all in one app, generated with one click.</p>
         </div>
         
         <div class="commitment">
+          <div class="commitment__icon">
+            <svg viewBox="-18 -12 36 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M -8 -10 L -14 -10 L -14 10 L -8 10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="-6" y1="0" x2="14" y2="0" stroke="currentColor" stroke-width="1.5"/>
+              <polyline points="8,-5 14,0 8,5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="commitment__title">Leave with everything you brought.</h3>
           <p class="commitment__body">Export or port any field record at any time. Close your account and we delete everything within 30 days.</p>
         </div>
@@ -201,7 +242,10 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="the-app__headline">Fenn, for wherever work takes you.</h2>
 
       <div class="the-app__icon">
-        <span class="the-app__f">F</span>
+        <svg viewBox="-90 -165 180 200" xmlns="http://www.w3.org/2000/svg" class="the-app__f">
+          <path d="M -31 -100 Q -31 -158 14 -158 L 44 -158 L 44 -151 L 16 -151 Q -24 -151 -24 -100 L -24 30 L -31 30 Z" fill="currentColor"/>
+          <rect x="-83" y="-104" width="166" height="7" fill="currentColor"/>
+        </svg>
       </div>
 
       <p class="the-app__caption">Seamless from home to harvest. Available on desktop, phone, tablet, and in-cab on most modern farm machinery.</p>
@@ -383,12 +427,6 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.5;
     margin-bottom: 4px;
   }
-  .step__divider {
-    max-width: 1100px;
-    margin: 60px auto 0;
-    border: 0;
-    border-top: 1px solid rgba(13, 32, 24, 0.15);
-  }
   .cluster-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -435,6 +473,19 @@ import Layout from '../layouts/Layout.astro';
   .commitment {
     text-align: center;
   }
+  .commitment__icon {
+    color: var(--color-emerald);
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .commitment__icon svg {
+    width: 100%;
+    height: 100%;
+  }
   .commitment__title {
     font-size: 18px;
     font-weight: 700;
@@ -472,11 +523,9 @@ import Layout from '../layouts/Layout.astro';
     justify-content: center;
   }
   .the-app__f {
+    width: 88px;
+    height: 100px;
     color: var(--text-on-dark);
-    font-size: 84px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -3px;
   }
   .the-app__caption {
     color: var(--text-muted-on-dark);
