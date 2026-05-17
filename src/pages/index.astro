@@ -22,29 +22,133 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
-  <section class="what-we-do">
+  <!-- TRUST STRIP -->
+  <section class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-cert">
+        <p class="trust-cert__label">CYBER ESSENTIALS PLUS</p>
+        <p class="trust-cert__status">Certified March 2025</p>
+      </div>
+      <div class="trust-cert">
+        <p class="trust-cert__label">ISO 27001:2022</p>
+        <p class="trust-cert__status">Audit in progress, targeting September 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
     <div class="container">
-      <p class="section-label">What we do</p>
-      <h2 class="section-headline">For the work behind the work.</h2>
-      
-      <div class="what-we-do__grid">
-        <div class="what-we-do__col">
-          <div class="accent-line accent-line--dark"></div>
-          <h3 class="col-title">Field operations</h3>
-          <p class="col-body">Track jobs, inputs, and yields field-by-field. Integrates with major UK farm equipment.</p>
+      <p class="section-label">How it works</p>
+      <h2 class="section-headline">The whole farm on one screen.</h2>
+
+      <!-- STEP 1: CONNECT -->
+      <div class="step">
+        <div class="step__heading">
+          <span class="step__num">1.</span>
+          <span class="step__name">Connect</span>
         </div>
-        
-        <div class="what-we-do__col">
-          <div class="accent-line accent-line--dark"></div>
-          <h3 class="col-title">Compliance records</h3>
-          <p class="col-body">Audit-ready records for Soil Association, Defra schemes, and Agriculture Act 2020.</p>
+        <div class="step__body">
+          <p>Link your existing equipment, sensors, and accounting (Xero, QuickBooks, Sage, and more) to Fenn.</p>
+          <p>Opt out of any features you don't want, for your privacy.</p>
         </div>
-        
-        <div class="what-we-do__col">
-          <div class="accent-line accent-line--dark"></div>
-          <h3 class="col-title">Sustainability reporting</h3>
-          <p class="col-body">Emissions, biodiversity, and scheme reporting for Waitrose Farming for Nature.</p>
+      </div>
+
+      <hr class="step__divider" />
+
+      <!-- STEP 2: TRACK -->
+      <div class="step">
+        <div class="step__heading">
+          <span class="step__num">2.</span>
+          <span class="step__name">Track</span>
+        </div>
+        <div class="step__body">
+          <p>Choose your sources and start capturing data.</p>
+          <p>Fenn keeps your data updated in real time, on every device.</p>
+        </div>
+
+        <div class="cluster-grid">
+          <div class="cluster">
+            <p class="cluster__title">Field Operations</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">ISOBUS Equipment</p>
+            <p class="cluster__item">Manual Entry</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Environment</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Weather APIs</p>
+            <p class="cluster__item">Soil Sensors</p>
+            <p class="cluster__item">Manual Entry</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Finances</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Accounting Sync</p>
+            <p class="cluster__item">Scan Receipts</p>
+            <p class="cluster__item">Manual Entry</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Inventory</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Auto On Apply</p>
+            <p class="cluster__item">Scan Receipts</p>
+            <p class="cluster__item">Manual Entry</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Team Accounts</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Assign Jobs</p>
+            <p class="cluster__item">Share Photos</p>
+            <p class="cluster__item">Set Permissions</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="step__divider" />
+
+      <!-- STEP 3: REPORT -->
+      <div class="step">
+        <div class="step__heading">
+          <span class="step__num">3.</span>
+          <span class="step__name">Report</span>
+        </div>
+        <div class="step__body">
+          <p>Fenn generates the records you need in minutes.</p>
+          <p>Download, export, or share your records in any format, anytime.</p>
+        </div>
+
+        <div class="cluster-grid">
+          <div class="cluster">
+            <p class="cluster__title">Defra Schemes</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">SFI</p>
+            <p class="cluster__item">Countryside Stewardship</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Assurance Audits</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Red Tractor</p>
+            <p class="cluster__item">Soil Association Organic</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Tax Records</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Making Tax Digital</p>
+            <p class="cluster__item">Receipts And Margins</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Sustainability</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Emissions</p>
+            <p class="cluster__item">Biodiversity</p>
+          </div>
+          <div class="cluster">
+            <p class="cluster__title">Yield Forecasts</p>
+            <div class="cluster__line"></div>
+            <p class="cluster__item">Live Updates</p>
+            <p class="cluster__item">Per Field</p>
+          </div>
         </div>
       </div>
     </div>
@@ -58,75 +162,109 @@ import Layout from '../layouts/Layout.astro';
       
       <div class="privacy-proven__grid">
         <div class="commitment">
-          <div class="accent-line"></div>
-          <h3 class="commitment__title">AI without the audience.</h3>
-          <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time.</p>
-        </div>
-        
-        <div class="commitment">
-          <div class="accent-line"></div>
           <h3 class="commitment__title">Encryption every step of the way.</h3>
           <p class="commitment__body">Your records are encrypted before leaving your phone and stay locked through our servers. The keys are yours alone.</p>
         </div>
         
         <div class="commitment">
-          <div class="accent-line"></div>
-          <h3 class="commitment__title">Leave with everything you brought.</h3>
-          <p class="commitment__body">Export or port any field record at any time. Close your account and we delete everything within 30 days.</p>
-        </div>
-        
-        <div class="commitment">
-          <div class="accent-line"></div>
           <h3 class="commitment__title">Built for banks. Now for your farm.</h3>
-          <p class="commitment__body">Bank-grade cryptographic key management, made for you by the engineer who built it for Monzo. Serious protection for serious work.</p>
+          <p class="commitment__body">Bank-grade cryptographic key management, made for you by the engineer who built it for a UK challenger bank. Serious work, serious protection.</p>
         </div>
         
         <div class="commitment">
-          <div class="accent-line"></div>
           <h3 class="commitment__title">Access any audits, anytime.</h3>
           <p class="commitment__body">Every interaction with your data is recorded and available to you in real time. Because we believe trust is built on transparency.</p>
         </div>
         
         <div class="commitment">
-          <div class="accent-line"></div>
+          <h3 class="commitment__title">AI without the audience.</h3>
+          <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time.</p>
+        </div>
+        
+        <div class="commitment">
           <h3 class="commitment__title">Less paperwork. More farming.</h3>
-          <p class="commitment__body">Field operations, compliance forms, and sustainability reporting documents all in one app, generated with one click. Stored simply. Stored securely.</p>
+          <p class="commitment__body">Field operations, compliance forms, and sustainability reporting all in one app, generated with one click.</p>
+        </div>
+        
+        <div class="commitment">
+          <h3 class="commitment__title">Leave with everything you brought.</h3>
+          <p class="commitment__body">Export or port any field record at any time. Close your account and we delete everything within 30 days.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- POLICIES -->
-  <section class="policies">
+  <!-- THE APP -->
+  <section class="the-app">
     <div class="container">
-      <p class="section-label">Policies</p>
-      <h2 class="section-headline">Upfront. In writing.</h2>
-      
-      <ul class="policies__list">
-        <li><a href="/policies/information-security-policy">Information Security Policy →</a></li>
-        <li><a href="/policies/access-control-policy">Access Control Policy →</a></li>
-        <li><a href="/policies/incident-response-plan">Incident Response Plan →</a></li>
-      </ul>
-      
-      <p class="policies__in-development">In development: Vendor Risk Management · Data Retention · Business Continuity Plan</p>
-      
-      <a href="/policies" class="link-arrow policies__cta">See all policies and certifications →</a>
+      <p class="section-label">The app</p>
+      <h2 class="the-app__headline">Fenn, for wherever work takes you.</h2>
+
+      <div class="the-app__icon">
+        <span class="the-app__f">F</span>
+      </div>
+
+      <p class="the-app__caption">Seamless from home to harvest. Available on desktop, phone, tablet, and in-cab on most modern farm machinery.</p>
+
+      <p class="the-app__platforms">iOS · ANDROID · MACOS · WINDOWS</p>
+      <p class="the-app__platforms">JOHN DEERE · CASE IH · AGCO · CLAAS</p>
     </div>
   </section>
 
-  <!-- WHO WE ARE -->
-  <section class="who-we-are">
+  <!-- OUR POLICIES -->
+  <section class="policies">
     <div class="container">
-      <p class="section-label">Who we are</p>
-      <h2 class="section-headline section-headline--light">Small enough to know your name.</h2>
-      
-      <div class="who-we-are__people">
-        <p>Zoe Cooper-Hartley · CEO and co-founder · ex-Soil Association</p>
-        <p>Cian Kelly · CTO and co-founder · ex-Monzo</p>
-        <p>A team of farmers and engineers in Bristol.</p>
+      <p class="section-label">Our policies</p>
+      <h2 class="section-headline">Upfront. In writing.</h2>
+
+      <div class="policies__grid">
+        <a href="/policies/information-security-policy" class="policy-card">
+          <div class="policy-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 2h12l4 4v16H4z"/>
+              <path d="M16 2v4h4"/>
+              <line x1="7" y1="10" x2="17" y2="10"/>
+              <line x1="7" y1="14" x2="17" y2="14"/>
+              <line x1="7" y1="18" x2="14" y2="18"/>
+            </svg>
+          </div>
+          <h3 class="policy-card__title">Information Security</h3>
+          <p class="policy-card__desc">How we protect customer data, end to end.</p>
+          <p class="policy-card__link">View document →</p>
+        </a>
+
+        <a href="/policies/access-control-policy" class="policy-card">
+          <div class="policy-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 2h12l4 4v16H4z"/>
+              <path d="M16 2v4h4"/>
+              <line x1="7" y1="10" x2="17" y2="10"/>
+              <line x1="7" y1="14" x2="17" y2="14"/>
+              <line x1="7" y1="18" x2="14" y2="18"/>
+            </svg>
+          </div>
+          <h3 class="policy-card__title">Access Control</h3>
+          <p class="policy-card__desc">Who can access what, why, and how we audit it.</p>
+          <p class="policy-card__link">View document →</p>
+        </a>
+
+        <a href="/policies/incident-response-plan" class="policy-card">
+          <div class="policy-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 2h12l4 4v16H4z"/>
+              <path d="M16 2v4h4"/>
+              <line x1="7" y1="10" x2="17" y2="10"/>
+              <line x1="7" y1="14" x2="17" y2="14"/>
+              <line x1="7" y1="18" x2="14" y2="18"/>
+            </svg>
+          </div>
+          <h3 class="policy-card__title">Incident Response</h3>
+          <p class="policy-card__desc">How we respond when something goes wrong.</p>
+          <p class="policy-card__link">View document →</p>
+        </a>
       </div>
-      
-      <a href="/behind-fenn" class="link-arrow who-we-are__cta">Meet our founders →</a>
+
+      <a href="/policies" class="btn-dark policies__cta">SEE ALL POLICIES AND CERTIFICATIONS</a>
     </div>
   </section>
 
@@ -134,14 +272,13 @@ import Layout from '../layouts/Layout.astro';
   <section class="cta">
     <div class="container">
       <h2 class="cta__headline">Let's work together.</h2>
-      <p class="cta__sub">Tell us more about your operation.</p>
-      <button class="btn-primary cta__btn" id="open-contact-modal-cta">Talk to us</button>
+      <p class="cta__sub">Currently serving 1,000+ farms across England and Wales. Tell us more about your operation.</p>
+      <button class="btn-outline-white cta__btn" id="open-contact-modal-cta">GET STARTED</button>
     </div>
   </section>
 </Layout>
 
 <script>
-  // CTA button opens contact modal
   document.getElementById('open-contact-modal-cta')?.addEventListener('click', () => {
     document.getElementById('contact-modal')?.classList.add('is-open');
   });
@@ -156,14 +293,12 @@ import Layout from '../layouts/Layout.astro';
     min-height: 540px;
     align-items: center;
   }
-  
   .hero__content {
     padding: 80px var(--gutter);
     max-width: 720px;
     justify-self: end;
     width: 100%;
   }
-  
   .hero__headline {
     font-size: 68px;
     font-weight: 700;
@@ -172,20 +307,17 @@ import Layout from '../layouts/Layout.astro';
     color: var(--text-on-dark);
     margin-bottom: 20px;
   }
-  
   .hero__subhead {
     font-size: 15px;
     color: var(--text-subtle);
     line-height: 1.5;
   }
-  
   .hero__photo {
     height: 100%;
     min-height: 540px;
     position: relative;
     border-left: 6px solid var(--color-emerald);
   }
-  
   .hero__photo img {
     width: 100%;
     height: 100%;
@@ -193,183 +325,282 @@ import Layout from '../layouts/Layout.astro';
     position: absolute;
     inset: 0;
   }
-  
-  /* WHAT WE DO */
-  .what-we-do {
-    background: var(--color-light);
-    padding: 96px 0;
+
+  /* TRUST STRIP */
+  .trust-strip {
+    background: #000;
+    padding: 14px 0;
   }
-  
-  .what-we-do__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
-    max-width: 1080px;
+  .trust-strip__inner {
+    max-width: var(--max-width);
     margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .what-we-do__col {
+  .trust-cert {
     text-align: center;
   }
-  
-  .col-title {
-    font-size: 20px;
+  .trust-cert__label {
+    color: var(--color-emerald);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+  }
+  .trust-cert__status {
+    color: var(--text-muted-on-dark);
+    font-size: 11px;
+  }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    background: var(--color-light);
+    padding: 80px 0 100px;
+  }
+  .step {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    padding: 0 var(--gutter);
+  }
+  .step__heading {
+    color: var(--color-emerald);
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step__num {
+    margin-right: 16px;
+  }
+  .step__body {
+    padding-left: 110px;
+  }
+  .step__body p {
+    font-size: 17px;
+    color: var(--text-muted-on-light);
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+  .step__divider {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    border: 0;
+    border-top: 1px solid rgba(13, 32, 24, 0.15);
+  }
+  .cluster-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    padding-left: 110px;
+    margin-top: 40px;
+  }
+  .cluster {
+    text-align: center;
+  }
+  .cluster__title {
+    font-size: 15px;
     font-weight: 700;
     color: var(--text-on-light);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
-  
-  .col-body {
-    font-size: 13px;
+  .cluster__line {
+    width: 30px;
+    height: 1.5px;
+    background: var(--color-emerald);
+    margin: 0 auto 12px;
+  }
+  .cluster__item {
+    font-size: 12px;
     color: var(--text-muted-on-light);
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  
+
   /* PRIVACY PROVEN */
   .privacy-proven {
     background: var(--color-dark);
-    padding: 96px 0;
+    padding: 80px 0 100px;
   }
-  
   .section-headline--light {
     color: var(--text-on-dark);
   }
-  
   .privacy-proven__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 48px 32px;
-    max-width: 1080px;
+    gap: 60px 40px;
+    max-width: 1100px;
     margin: 0 auto;
   }
-  
   .commitment {
     text-align: center;
   }
-  
   .commitment__title {
     font-size: 18px;
     font-weight: 700;
     color: var(--text-on-dark);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     line-height: 1.3;
   }
-  
   .commitment__body {
     font-size: 13px;
     color: var(--text-muted-on-dark);
     line-height: 1.6;
   }
-  
+
+  /* THE APP */
+  .the-app {
+    background: #000;
+    padding: 80px 0 100px;
+    text-align: center;
+  }
+  .the-app__headline {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-on-dark);
+    margin-bottom: 60px;
+  }
+  .the-app__icon {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(180deg, #508460 0%, #264a36 100%);
+    border-radius: 28px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .the-app__f {
+    color: var(--text-on-dark);
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+  .the-app__caption {
+    color: var(--text-muted-on-dark);
+    font-size: 15px;
+    max-width: 700px;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+  }
+  .the-app__platforms {
+    color: var(--color-emerald);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
   /* POLICIES */
   .policies {
     background: var(--color-light);
-    padding: 80px 0;
+    padding: 80px 0 100px;
     text-align: center;
   }
-  
-  .policies__list {
-    list-style: none;
-    margin: 0 0 20px 0;
-    padding: 0;
+  .policies__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto 48px;
   }
-  
-  .policies__list li {
-    margin-bottom: 8px;
+  .policy-card {
+    border: 1px solid rgba(13, 32, 24, 0.15);
+    padding: 32px 28px;
+    text-align: left;
+    transition: border-color var(--transition);
   }
-  
-  .policies__list a {
-    font-size: 14px;
-    font-weight: 600;
+  .policy-card:hover {
+    border-color: var(--color-dark);
+  }
+  .policy-card__icon {
+    width: 22px;
+    height: 22px;
+    color: var(--color-emerald);
+    margin-bottom: 28px;
+  }
+  .policy-card__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .policy-card__title {
+    font-size: 20px;
+    font-weight: 700;
     color: var(--text-on-light);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 16px;
   }
-  
-  .policies__list a:hover {
+  .policy-card__desc {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .policy-card__link {
+    font-size: 13px;
+    font-weight: 600;
     color: var(--color-emerald);
   }
-  
-  .policies__in-development {
-    font-size: 12px;
-    color: var(--text-muted-on-light);
-    margin: 24px 0 32px;
-  }
-  
   .policies__cta {
-    display: inline-block;
+    padding: 16px 40px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
   }
-  
-  /* WHO WE ARE */
-  .who-we-are {
-    background: var(--color-dark);
-    padding: 80px 0;
-    text-align: center;
-  }
-  
-  .who-we-are__people {
-    margin-bottom: 24px;
-  }
-  
-  .who-we-are__people p {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-on-dark);
-    margin-bottom: 6px;
-  }
-  
-  .who-we-are__cta {
-    display: inline-block;
-  }
-  
+
   /* CTA */
   .cta {
-    background: var(--color-light);
+    background: var(--color-dark);
     padding: 96px 0;
     text-align: center;
   }
-  
   .cta__headline {
     font-size: 56px;
     font-weight: 700;
     letter-spacing: -2px;
-    color: var(--text-on-light);
-    margin-bottom: 12px;
+    color: var(--text-on-dark);
+    margin-bottom: 16px;
     line-height: 1.1;
   }
-  
   .cta__sub {
     font-size: 15px;
-    color: var(--text-muted-on-light);
+    color: var(--text-muted-on-dark);
     margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
+  .cta__btn {
+    padding: 16px 40px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
   /* MOBILE */
-  @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
+  @media (max-width: 900px) {
+    .cluster-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding-left: 0;
     }
-    
+    .step__body {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
     .hero__photo {
       min-height: 280px;
       border-left: none;
       border-top: 6px solid var(--color-emerald);
     }
-    
-    .hero__headline {
-      font-size: 44px;
-    }
-    
-    .what-we-do__grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    
-    .privacy-proven__grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    
-    .cta__headline {
-      font-size: 36px;
-    }
+    .hero__headline { font-size: 44px; }
+    .privacy-proven__grid { grid-template-columns: 1fr; gap: 40px; }
+    .policies__grid { grid-template-columns: 1fr; }
+    .trust-strip__inner { grid-template-columns: 1fr; gap: 12px; }
+    .cta__headline { font-size: 36px; }
+    .the-app__headline { font-size: 28px; }
+    .step__heading { font-size: 40px; }
   }
 </style>
