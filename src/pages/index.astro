@@ -1,17 +1,375 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout 
+  title="Fenn Agritech — Your land. Your data. Your decision."
+  description="Crop and field management software built for UK farms. Compliance records, field operations, sustainability reporting in one app."
+  currentPage="home"
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__headline">
+        Your land.<br />
+        Your data.<br />
+        Your decision.
+      </h1>
+      <p class="hero__subhead">Built for the people who feed Britain.</p>
+    </div>
+    <div class="hero__photo">
+      <img src="/images/hero-dartmoor.jpg" alt="Rolling green farmland in Devon, England, divided by traditional hedgerows" />
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what-we-do">
+    <div class="container">
+      <p class="section-label">What we do</p>
+      <h2 class="section-headline">For the work behind the work.</h2>
+      
+      <div class="what-we-do__grid">
+        <div class="what-we-do__col">
+          <div class="accent-line accent-line--dark"></div>
+          <h3 class="col-title">Field operations</h3>
+          <p class="col-body">Track jobs, inputs, and yields field-by-field. Integrates with major UK farm equipment.</p>
+        </div>
+        
+        <div class="what-we-do__col">
+          <div class="accent-line accent-line--dark"></div>
+          <h3 class="col-title">Compliance records</h3>
+          <p class="col-body">Audit-ready records for Soil Association, Defra schemes, and Agriculture Act 2020.</p>
+        </div>
+        
+        <div class="what-we-do__col">
+          <div class="accent-line accent-line--dark"></div>
+          <h3 class="col-title">Sustainability reporting</h3>
+          <p class="col-body">Emissions, biodiversity, and scheme reporting for Waitrose Farming for Nature.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY, PROVEN -->
+  <section class="privacy-proven">
+    <div class="container">
+      <p class="section-label">Privacy, proven</p>
+      <h2 class="section-headline section-headline--light">Six commitments.</h2>
+      
+      <div class="privacy-proven__grid">
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">AI without the audience.</h3>
+          <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time.</p>
+        </div>
+        
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">Encryption every step of the way.</h3>
+          <p class="commitment__body">Your records are encrypted before leaving your phone and stay locked through our servers. The keys are yours alone.</p>
+        </div>
+        
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">Leave with everything you brought.</h3>
+          <p class="commitment__body">Export or port any field record at any time. Close your account and we delete everything within 30 days.</p>
+        </div>
+        
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">Built for banks. Now for your farm.</h3>
+          <p class="commitment__body">Bank-grade cryptographic key management, made for you by the engineer who built it for Monzo. Serious protection for serious work.</p>
+        </div>
+        
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">Access any audits, anytime.</h3>
+          <p class="commitment__body">Every interaction with your data is recorded and available to you in real time. Because we believe trust is built on transparency.</p>
+        </div>
+        
+        <div class="commitment">
+          <div class="accent-line"></div>
+          <h3 class="commitment__title">Less paperwork. More farming.</h3>
+          <p class="commitment__body">Field operations, compliance forms, and sustainability reporting documents all in one app, generated with one click. Stored simply. Stored securely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLICIES -->
+  <section class="policies">
+    <div class="container">
+      <p class="section-label">Policies</p>
+      <h2 class="section-headline">Upfront. In writing.</h2>
+      
+      <ul class="policies__list">
+        <li><a href="/policies/information-security-policy">Information Security Policy →</a></li>
+        <li><a href="/policies/access-control-policy">Access Control Policy →</a></li>
+        <li><a href="/policies/incident-response-plan">Incident Response Plan →</a></li>
+      </ul>
+      
+      <p class="policies__in-development">In development: Vendor Risk Management · Data Retention · Business Continuity Plan</p>
+      
+      <a href="/policies" class="link-arrow policies__cta">See all policies and certifications →</a>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="who-we-are">
+    <div class="container">
+      <p class="section-label">Who we are</p>
+      <h2 class="section-headline section-headline--light">Small enough to know your name.</h2>
+      
+      <div class="who-we-are__people">
+        <p>Zoe Cooper-Hartley · CEO and co-founder · ex-Soil Association</p>
+        <p>Cian Kelly · CTO and co-founder · ex-Monzo</p>
+        <p>A team of farmers and engineers in Bristol.</p>
+      </div>
+      
+      <a href="/behind-fenn" class="link-arrow who-we-are__cta">Meet our founders →</a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta__headline">Let's work together.</h2>
+      <p class="cta__sub">Tell us more about your operation.</p>
+      <button class="btn-primary cta__btn" id="open-contact-modal-cta">Talk to us</button>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // CTA button opens contact modal
+  document.getElementById('open-contact-modal-cta')?.addEventListener('click', () => {
+    document.getElementById('contact-modal')?.classList.add('is-open');
+  });
+</script>
+
+<style>
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--color-dark);
+    min-height: 540px;
+    align-items: center;
+  }
+  
+  .hero__content {
+    padding: 80px var(--gutter);
+    max-width: 720px;
+    justify-self: end;
+    width: 100%;
+  }
+  
+  .hero__headline {
+    font-size: 68px;
+    font-weight: 700;
+    letter-spacing: -2.2px;
+    line-height: 1.05;
+    color: var(--text-on-dark);
+    margin-bottom: 20px;
+  }
+  
+  .hero__subhead {
+    font-size: 15px;
+    color: var(--text-subtle);
+    line-height: 1.5;
+  }
+  
+  .hero__photo {
+    height: 100%;
+    min-height: 540px;
+    position: relative;
+    border-left: 6px solid var(--color-emerald);
+  }
+  
+  .hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
+  
+  /* WHAT WE DO */
+  .what-we-do {
+    background: var(--color-light);
+    padding: 96px 0;
+  }
+  
+  .what-we-do__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  .what-we-do__col {
+    text-align: center;
+  }
+  
+  .col-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    margin-bottom: 12px;
+  }
+  
+  .col-body {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    line-height: 1.6;
+  }
+  
+  /* PRIVACY PROVEN */
+  .privacy-proven {
+    background: var(--color-dark);
+    padding: 96px 0;
+  }
+  
+  .section-headline--light {
+    color: var(--text-on-dark);
+  }
+  
+  .privacy-proven__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  .commitment {
+    text-align: center;
+  }
+  
+  .commitment__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-on-dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  
+  .commitment__body {
+    font-size: 13px;
+    color: var(--text-muted-on-dark);
+    line-height: 1.6;
+  }
+  
+  /* POLICIES */
+  .policies {
+    background: var(--color-light);
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  .policies__list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+  
+  .policies__list li {
+    margin-bottom: 8px;
+  }
+  
+  .policies__list a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-on-light);
+  }
+  
+  .policies__list a:hover {
+    color: var(--color-emerald);
+  }
+  
+  .policies__in-development {
+    font-size: 12px;
+    color: var(--text-muted-on-light);
+    margin: 24px 0 32px;
+  }
+  
+  .policies__cta {
+    display: inline-block;
+  }
+  
+  /* WHO WE ARE */
+  .who-we-are {
+    background: var(--color-dark);
+    padding: 80px 0;
+    text-align: center;
+  }
+  
+  .who-we-are__people {
+    margin-bottom: 24px;
+  }
+  
+  .who-we-are__people p {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-on-dark);
+    margin-bottom: 6px;
+  }
+  
+  .who-we-are__cta {
+    display: inline-block;
+  }
+  
+  /* CTA */
+  .cta {
+    background: var(--color-light);
+    padding: 96px 0;
+    text-align: center;
+  }
+  
+  .cta__headline {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: var(--text-on-light);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  
+  .cta__sub {
+    font-size: 15px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 32px;
+  }
+  
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero__photo {
+      min-height: 280px;
+      border-left: none;
+      border-top: 6px solid var(--color-emerald);
+    }
+    
+    .hero__headline {
+      font-size: 44px;
+    }
+    
+    .what-we-do__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .privacy-proven__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .cta__headline {
+      font-size: 36px;
+    }
+  }
+</style>

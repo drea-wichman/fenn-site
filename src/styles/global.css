@@ -1,0 +1,191 @@
+:root {
+  --color-dark: #0d2018;
+  --color-dark-tint: #1a3025;
+  --color-light: #fafaf7;
+  --color-emerald: #3d6b4f;
+  --color-emerald-hover: #4d8060;
+  --text-on-dark: #fafaf7;
+  --text-on-light: #0d2018;
+  --text-muted-on-dark: #a8a8a8;
+  --text-muted-on-light: #5a5a5a;
+  --text-subtle: #9a9a9a;
+  --divider-dark: #2a2a2a;
+  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --max-width: 1280px;
+  --gutter: 60px;
+  --transition: 0.2s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-on-light);
+  background: var(--color-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section-label {
+  color: var(--color-emerald);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section-headline {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 60px;
+}
+
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background: var(--color-emerald);
+  margin: 0 auto 24px;
+}
+
+.accent-line--dark {
+  background: var(--color-dark);
+}
+
+/* PRIMARY BUTTON — emerald fill with hover */
+.btn-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--color-emerald);
+  color: var(--text-on-dark);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 1.5px solid var(--color-emerald);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--color-emerald-hover);
+  border-color: var(--color-emerald-hover);
+}
+
+/* DARK BUTTON — dark fill, used for "Meet our founders" and "See all policies" */
+.btn-dark {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-dark);
+  color: var(--text-on-dark);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 1.5px solid var(--color-dark);
+  transition: background var(--transition), color var(--transition);
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background: transparent;
+  color: var(--color-dark);
+}
+
+/* DARK BUTTON ON DARK BG — variant for the "Meet our founders" button which sits on dark green */
+.btn-dark--on-dark {
+  background: transparent;
+  color: var(--text-on-dark);
+  border-color: var(--text-on-dark);
+}
+
+.btn-dark--on-dark:hover {
+  background: var(--text-on-dark);
+  color: var(--color-dark);
+}
+
+/* OUTLINE BUTTON — used for nav "Contact us" — white outline, fills white on hover */
+.btn-outline-white {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1.5px solid var(--text-on-dark);
+  color: var(--text-on-dark);
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  transition: background var(--transition), color var(--transition);
+  cursor: pointer;
+}
+
+.btn-outline-white:hover {
+  background: var(--text-on-dark);
+  color: var(--color-dark);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1.5px solid var(--color-emerald);
+  color: var(--color-emerald);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--color-emerald);
+  color: var(--text-on-dark);
+}
+
+.link-arrow {
+  color: var(--color-emerald);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 24px;
+  }
+  
+  .section-headline {
+    font-size: 32px;
+  }
+}

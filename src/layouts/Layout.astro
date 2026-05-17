@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import Banner from '../components/Banner.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Modals from '../components/Modals.astro';
+
+const { title = 'Fenn Agritech', description = 'Crop and field management software for UK farms. Your land. Your data. Your decision.', currentPage = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Banner />
+    <Header currentPage={currentPage} />
+    
+    <main>
+      <slot />
+    </main>
+    
+    <Footer />
+    <Modals />
+  </body>
+</html>
