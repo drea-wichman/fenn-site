@@ -16,9 +16,8 @@ const { currentPage = '' } = Astro.props;
       </svg>
     </a>
     
-    <nav class="header__nav">
-      <a href="/app" class={currentPage === 'app' ? 'header__link header__link--active' : 'header__link'}>The App</a>
-      <a href="/policies" class={currentPage === 'policies' ? 'header__link header__link--active' : 'header__link'}>Our policies</a>
+<nav class="header__nav">
+      <a href="/policies" class={currentPage === 'policies' ? 'header__link header__link--active' : 'header__link'}>Policies</a>
       <a href="/behind-fenn" class={currentPage === 'behind-fenn' ? 'header__link header__link--active' : 'header__link'}>Behind Fenn</a>
       <button class="btn-outline-white header__cta" id="open-contact-modal">Contact us</button>
     </nav>
