@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Building Fenn — Fenn Agritech"
+  description="The story and reasoning behind Fenn."
+  currentPage="building-fenn"
+>
+  <section class="essay">
+    <div class="essay__inner">
+      <h1 class="essay__label">Building Fenn</h1>
+
+      <p class="essay__body">Fenn is my first GRC portfolio project, a fictional UK agritech SaaS built from scratch. The brief, the website, and the documents exist as if the company were real. New to tech as a whole but drawn to GRC in theory, I chose to go beyond writing isolated case studies because there's a limit on what's publicly available about how real companies do this work, and a limit on my understanding of it as a result. I "hired" myself to do the work without the pressure of real risk, deadlines, or consequences.</p>
+
+      <p class="essay__body">A few choices behind Fenn:</p>
+
+      <ul class="essay__list">
+        <li><strong>Agritech.</strong> SaaS and GRC are unfamiliar enough on their own without piling a third unknown industry on top.</li>
+        <li><strong>UK-based.</strong> Building Fenn under UK GDPR, the Data Protection Act 2018, and ICO guidance allows me to become familiar with the regulatory environment I'll be navigating for school and placement.</li>
+        <li><strong>B2B SaaS at Series B.</strong> This is the stage where GRC genuinely starts to matter. The company is big enough to have real legal obligations (data processor duties, sub-processor disclosures, DPAs) and small enough that one person can model the full scope end to end.</li>
+      </ul>
+
+      <p class="essay__body">Building Fenn as a privacy-focused company was my first instinct and priority. Next I had to choose the features that would actually create that privacy: customer-held keys, no surveillance default, Proton internally, the sub-processor list. The third step was communicating that privacy to Fenn's customers. "Your land. Your data. Your decision." captured Fenn's commitment in a straightforward but marketable phrase.</p>
+
+      <p class="essay__body">For the decision trail behind every choice, see the <a href="https://github.com/drea-wichman/fenn/blob/main/build-log.md" target="_blank" rel="noopener" class="essay__link">build log →</a></p>
+
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .essay {
+    background: var(--color-dark);
+    padding: 96px 0 140px;
+  }
+  .essay__inner {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .essay__label {
+    color: var(--color-emerald);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .essay__body {
+    font-size: 17px;
+    color: var(--text-on-dark);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .essay__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+  }
+  .essay__list li {
+    font-size: 17px;
+    color: var(--text-on-dark);
+    line-height: 1.75;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .essay__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 8px;
+    height: 1px;
+    background: var(--color-emerald);
+  }
+  .essay__list strong {
+    color: var(--text-on-dark);
+    font-weight: 700;
+  }
+  .essay__link {
+    color: var(--color-emerald);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity var(--transition);
+  }
+  .essay__link:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .essay__title { font-size: 32px; }
+    .essay { padding: 64px 0 100px; }
+    .essay__body, .essay__list li { font-size: 16px; }
+  }
+</style>

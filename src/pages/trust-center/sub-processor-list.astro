@@ -1,0 +1,274 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const docs = [
+  { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', section: 'Sub-processors' }
+];
+
+const currentDoc = 'Sub-processor List';
+const policyDocs = docs.filter(d => d.section === 'Policies');
+const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
+---
+
+<Layout
+  title="Sub-processor List — Fenn Agritech"
+  description="The third parties that process Fenn customer data."
+  currentPage="trust-center"
+>
+  <section class="doc-page">
+    <div class="doc-page__inner">
+     <aside class="doc-sidebar">
+        {policyDocs.length > 0 && (
+          <>
+            <p class="doc-sidebar__label">Policies</p>
+            <ul class="doc-sidebar__list">
+              {policyDocs.map(doc => (
+                <li>
+                  <a href={doc.href} class={doc.name === currentDoc ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}>{doc.name}</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
+        {subprocessorDocs.length > 0 && (
+          <>
+            <p class={policyDocs.length > 0 ? 'doc-sidebar__label doc-sidebar__label--second' : 'doc-sidebar__label'}>Sub-processors</p>
+            <ul class="doc-sidebar__list">
+              {subprocessorDocs.map(doc => (
+                <li>
+                  <a href={doc.href} class={doc.name === currentDoc ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}>{doc.name}</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </aside>
+
+      <article class="doc-body">
+        <h1 class="doc-body__title">Sub-processor List</h1>
+       <p class="doc-body__meta">Version 1.0 · Updated 14 May 2026</p>
+        <p class="doc-body__meta doc-body__meta--github">
+          <a href="https://github.com/drea-wichman/fenn/blob/main/sub-processor-list.md" target="_blank" rel="noopener" class="doc-body__github">View on GitHub →</a>
+        </p>
+
+        <p class="doc-body__intro">
+          Fenn engages the following sub-processors to process customer personal data. Before engaging any sub-processor, Fenn performs a vendor security assessment and enters into a written agreement that imposes data protection obligations no less protective than those in the Fenn Data Processing Agreement.
+        </p>
+
+        <p class="doc-body__intro">
+          This list is incorporated by reference into the Fenn Data Processing Agreement.
+        </p>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Sub-processor</th>
+              <th>Purpose</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Amazon Web Services EMEA SARL</td>
+              <td>Cloud infrastructure (hosting, storage, compute, backup)</td>
+              <td>United Kingdom (London)</td>
+            </tr>
+            <tr>
+              <td>Amazon Web Services EMEA SARL (SES)</td>
+              <td>Transactional email</td>
+              <td>United Kingdom (London)</td>
+            </tr>
+            <tr>
+              <td>Stripe Payments UK Ltd</td>
+              <td>Payment processing</td>
+              <td>United Kingdom</td>
+            </tr>
+            <tr>
+              <td>Functional Software, Inc. (Sentry)</td>
+              <td>Application error monitoring</td>
+              <td>European Union (Frankfurt)</td>
+            </tr>
+            <tr>
+              <td>Plain Systems Ltd</td>
+              <td>Customer support</td>
+              <td>European Union</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="doc-body__h2">Notification of changes</h2>
+        <p class="doc-body__p">
+          Fenn provides 30 days' advance notice before engaging a new sub-processor. Notifications are sent to the data protection contact designated in each customer's account.
+        </p>
+        <p class="doc-body__p">
+          Customers may object in writing to a new sub-processor within 30 days of notification. If no objection is received during this period, the new sub-processor is deemed accepted. If Fenn cannot accommodate a reasonable objection, the customer may terminate the affected service and receive a pro-rata refund of prepaid fees.
+        </p>
+
+        <h2 class="doc-body__h2">Contact</h2>
+        <p class="doc-body__p">
+          <a href="mailto:privacy@wichman.io" class="doc-body__link">privacy@wichman.io</a>
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .doc-page {
+    background: var(--color-light);
+    padding: 64px 0 120px;
+  }
+  .doc-page__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+  }
+
+  /* Sidebar */
+  .doc-sidebar {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+  }
+  .doc-sidebar__label {
+    color: var(--color-emerald);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .doc-sidebar__label--second {
+    margin-top: 32px;
+  }
+  .doc-sidebar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .doc-sidebar__list li {
+    margin-bottom: 10px;
+  }
+  .doc-sidebar__link {
+    font-size: 14px;
+    color: var(--text-on-light);
+    transition: color var(--transition);
+    display: block;
+  }
+  .doc-sidebar__link:hover {
+    color: var(--color-emerald);
+  }
+  .doc-sidebar__link--active {
+    color: var(--color-emerald);
+    font-weight: 700;
+  }
+  .doc-sidebar__link--disabled {
+    color: rgba(13, 32, 24, 0.35);
+    cursor: default;
+  }
+  .doc-sidebar__link--disabled:hover {
+    color: rgba(13, 32, 24, 0.35);
+  }
+
+  /* Document body */
+  .doc-body {
+    min-width: 0;
+  }
+  .doc-body__title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-on-light);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+.doc-body__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 4px;
+  }
+  .doc-body__meta--github {
+    margin-bottom: 32px;
+  }
+  .doc-body__github {
+    color: var(--color-emerald);
+    text-decoration: none;
+  }
+  .doc-body__github:hover {
+    text-decoration: underline;
+  }
+  .doc-body__intro {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .doc-body__h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .doc-body__p {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .doc-body__link {
+    color: var(--color-emerald);
+  }
+  .doc-body__link:hover {
+    text-decoration: underline;
+  }
+
+  /* Table */
+  .doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14px;
+  }
+  .doc-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(13, 32, 24, 0.05);
+    color: var(--text-on-light);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(13, 32, 24, 0.12);
+  }
+  .doc-table td {
+    padding: 14px 16px;
+    color: var(--text-on-light);
+    border-bottom: 1px solid rgba(13, 32, 24, 0.08);
+    line-height: 1.5;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .doc-page__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .doc-sidebar {
+      position: static;
+    }
+    .doc-body__title {
+      font-size: 28px;
+    }
+    .doc-table {
+      font-size: 13px;
+    }
+    .doc-table th,
+    .doc-table td {
+      padding: 10px 12px;
+    }
+  }
+</style>

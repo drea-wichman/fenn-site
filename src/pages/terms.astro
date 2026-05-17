@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms of Service — Fenn Agritech"
+  description="The terms that govern use of this site."
+  currentPage="terms"
+>
+  <section class="legal">
+    <div class="legal__inner">
+      <p class="legal__label">Legal</p>
+      <h1 class="legal__title">Terms of Service</h1>
+
+      <p class="legal__intro">This website (fenn.wichman.io) is an independent GRC portfolio project by Drea Wichman. Fenn Agritech is a fictional company. By using this site, you agree to these terms.</p>
+
+      <h2 class="legal__h2">What this site is</h2>
+      <p class="legal__p">This site is a portfolio piece. It is not a real product, real service, or real business. Fenn Agritech does not exist as a legal entity, does not offer software, and does not provide services to customers.</p>
+      <p class="legal__p">Third-party vendor names referenced on this site are real companies. No affiliations, partnerships, or endorsements exist or are implied.</p>
+
+      <h2 class="legal__h2">Use of content</h2>
+      <p class="legal__p">All content on this site is original work by Drea Wichman, intended for portfolio and educational reference. You may view and link to this site. You may not republish, copy, or claim authorship of the content without permission.</p>
+
+      <h2 class="legal__h2">No warranty</h2>
+      <p class="legal__p">This site is provided "as is." The content is illustrative and is not legal, financial, technical, or compliance advice. Do not rely on it as such. The site owner makes no warranties about accuracy, completeness, or fitness for any purpose.</p>
+
+      <h2 class="legal__h2">Limitation of liability</h2>
+      <p class="legal__p">To the maximum extent permitted by law, the site owner is not liable for any loss or damage arising from your use of this site or reliance on its content.</p>
+
+      <h2 class="legal__h2">Governing law</h2>
+      <p class="legal__p">These terms are governed by the laws of England and Wales.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal {
+    background: var(--color-light);
+    padding: 80px 0 120px;
+  }
+  .legal__inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .legal__label {
+    color: var(--color-emerald);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .legal__title {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-on-light);
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  .legal__intro {
+    font-size: 16px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .legal__h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .legal__p {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .legal__link {
+    color: var(--color-emerald);
+  }
+  .legal__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal__title { font-size: 32px; }
+    .legal { padding: 48px 0 80px; }
+  }
+</style>

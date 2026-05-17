@@ -147,6 +147,11 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+<!-- IMAGE BREAK -->
+  <section class="image-break image-break--rotated">
+    <img src="/images/aerial.jpg" alt="Aerial view of farm equipment harvesting in a field" />
+  </section>
+
   <!-- PRIVACY, PROVEN -->
   <section class="privacy-proven">
     <div class="container">
@@ -156,7 +161,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="privacy-proven__grid">
         <div class="commitment">
           <div class="commitment__icon">
-            <svg viewBox="-15 -20 30 35" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-15 -20 30 35" xmlns="http://www.worg/2000/svg">
               <rect x="-12" y="-2" width="24" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
               <path d="M -7 -2 L -7 -10 Q -7 -16 0 -16 Q 7 -16 7 -10 L 7 -2" fill="none" stroke="currentColor" stroke-width="1.5"/>
             </svg>
@@ -256,14 +261,18 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+<!-- IMAGE BREAK -->
+  <section class="image-break">
+    <img src="/images/cab.jpg" alt="Farmer in a tractor cab at sunset" />
+  </section>
   <!-- OUR POLICIES -->
   <section class="policies">
     <div class="container">
-      <p class="section-label">Our policies</p>
+      <p class="section-label">Policies</p>
       <h2 class="section-headline">Upfront. In writing.</h2>
 
       <div class="policies__grid">
-        <a href="/policies/information-security-policy" class="policy-card">
+        <a href="/policies/trust-center" class="policy-card">
           <div class="policy-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M4 2h12l4 4v16H4z"/>
@@ -278,7 +287,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="policy-card__link">View document →</p>
         </a>
 
-        <a href="/policies/access-control-policy" class="policy-card">
+        <a href="/policies/trust-center" class="policy-card">
           <div class="policy-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M4 2h12l4 4v16H4z"/>
@@ -293,7 +302,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="policy-card__link">View document →</p>
         </a>
 
-        <a href="/policies/incident-response-plan" class="policy-card">
+        <a href="/policies/trust-center" class="policy-card">
           <div class="policy-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M4 2h12l4 4v16H4z"/>
@@ -309,7 +318,7 @@ import Layout from '../layouts/Layout.astro';
         </a>
       </div>
 
-      <a href="/policies" class="btn-dark policies__cta">SEE ALL POLICIES AND CERTIFICATIONS</a>
+      <a href="/trust-center" class="btn-dark policies__cta">VISIT TRUST CENTER</a>
     </div>
   </section>
 
@@ -660,5 +669,58 @@ import Layout from '../layouts/Layout.astro';
     .cta__headline { font-size: 36px; }
     .the-app__headline { font-size: 28px; }
     .step__heading { font-size: 30px; }
+  }
+/* IMAGE INSIDE HOW IT WORKS */
+  .step-image {
+    max-width: 1100px;
+    margin: 48px auto 16px;
+    padding: 0 var(--gutter);
+  }
+  .step-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  /* FULL-WIDTH IMAGE BREAK */
+  .image-break {
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+  }
+  .image-break img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .image-break {
+      height: 320px;
+    }
+    .step-image {
+      margin: 32px auto 8px;
+    }
+  }
+/* ROTATED AERIAL IMAGE */
+  .image-break--rotated {
+    height: 480px;
+    overflow: hidden;
+    position: relative;
+  }
+.image-break--rotated img {
+    width: 100vh;
+    height: 100vw;
+    object-fit: cover;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    filter: brightness(0.88) saturate(0.7);
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    margin-top: -50vw;
+    margin-left: -50vh;
   }
 </style>

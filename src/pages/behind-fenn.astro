@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Behind Fenn — Fenn Agritech"
+  description="The team and founders behind Fenn."
+  currentPage="behind-fenn"
+>
+  <section class="behind-fenn">
+    <div class="container">
+
+      <div class="team">
+        <p class="team__label">The Team</p>
+        <h1 class="team__headline">Small enough to know your name.</h1>
+        <p class="team__body">Around 100 farmers, engineers, agronomists, support, and security. All in Bristol.</p>
+      </div>
+
+      <div class="founders">
+        <div class="founders__divider"></div>
+
+        <!-- Zoe: quote top, bio bottom -->
+        <div class="founder founder--zoe">
+          <div class="founder__quote">
+            <span class="founder__quote-mark">"</span>
+            <p class="founder__quote-text">Most farm software is built by people who've never seen a field. We can tell. Farmers deserve better.</p>
+          </div>
+          <div class="founder__bio">
+            <p class="founder__label">Co-founder</p>
+            <h2 class="founder__name">Zoe Cooper-Hartley</h2>
+            <p class="founder__role">CEO · ex-UK organic certification</p>
+            <p class="founder__body">Zoe grew up on a Midwest US farm before moving to the UK. She spent years working in UK organic farming policy. She started Fenn in 2019 to build software that treats farmers as decision-makers, not data points.</p>
+          </div>
+        </div>
+
+        <!-- Cian: bio top, quote bottom -->
+        <div class="founder founder--cian">
+          <div class="founder__bio">
+            <p class="founder__label">Co-founder</p>
+            <h2 class="founder__name">Cian Kelly</h2>
+            <p class="founder__role">CTO · ex-UK challenger bank</p>
+            <p class="founder__body">Cian was previously Tech Lead at a UK challenger bank, where he built the customer data infrastructure and led cryptographic key management. He brought that approach to Fenn: customer-managed keys, end-to-end encryption, no surveillance by default.</p>
+          </div>
+          <div class="founder__quote">
+            <span class="founder__quote-mark">"</span>
+            <p class="founder__quote-text">If we built this right, even we can't see your data. That's the whole point.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .behind-fenn {
+    background: var(--color-dark);
+    padding: 96px 0 120px;
+  }
+
+  /* Team section */
+  .team {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 96px;
+  }
+  .team__label {
+    color: var(--color-emerald);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .team__headline {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-on-dark);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .team__body {
+    font-size: 15px;
+    color: var(--text-muted-on-dark);
+    line-height: 1.6;
+  }
+
+  /* Founders */
+  .founders {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .founders__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--color-emerald);
+    transform: translateX(-50%);
+  }
+
+  .founder {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* Quote */
+  .founder__quote {
+    position: relative;
+  }
+  .founder__quote-mark {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 96px;
+    font-weight: 400;
+    color: var(--color-emerald);
+    line-height: 0.6;
+    margin-bottom: -8px;
+  }
+  .founder__quote-text {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--text-on-dark);
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+  }
+
+  /* Bio */
+  .founder__label {
+    color: var(--color-emerald);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .founder__name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-on-dark);
+    margin-bottom: 6px;
+  }
+  .founder__role {
+    font-size: 13px;
+    color: var(--text-muted-on-dark);
+    margin-bottom: 20px;
+  }
+  .founder__body {
+    font-size: 14px;
+    color: var(--text-muted-on-dark);
+    line-height: 1.7;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .founders {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+    .founders__divider {
+      display: none;
+    }
+    .team__headline {
+      font-size: 32px;
+    }
+    .founder__quote-text {
+      font-size: 20px;
+    }
+    .behind-fenn {
+      padding: 64px 0 80px;
+    }
+    .team {
+      margin-bottom: 64px;
+    }
+    .founder {
+      gap: 40px;
+    }
+  }
+</style>

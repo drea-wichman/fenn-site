@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
 
-const { title = 'Fenn Agritech', description = 'Crop and field management software for UK farms. Your land. Your data. Your decision.', currentPage = '' } = Astro.props;
+const { title = 'Fenn Agritech', description = 'Crop and field management software for UK farms. Your land. Your data. Your decision.', currentPage = '', hideFooter = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ const { title = 'Fenn Agritech', description = 'Crop and field management softwa
       <slot />
     </main>
     
-    <Footer />
+    {!hideFooter && <Footer />}
     <Modals />
   </body>
 </html>

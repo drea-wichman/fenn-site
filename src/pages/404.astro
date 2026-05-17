@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Page not found — Fenn Agritech"
+  description="The page you're looking for doesn't exist."
+  currentPage="404"
+  hideFooter={true}
+>
+  <section class="not-found">
+    <div class="container">
+      <p class="section-label">404</p>
+      <h1 class="not-found__headline">Page not found.</h1>
+      <a href="/" class="btn-outline-white not-found__btn">BACK TO HOME</a>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  body:has(.not-found) {
+    background: var(--color-dark);
+  }
+  body:has(.not-found) main {
+    background: var(--color-dark);
+  }
+</style>
+
+<style>
+  .not-found {
+    background: var(--color-dark);
+    text-align: center;
+    min-height: calc(100vh - 152px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .not-found__headline {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-on-dark);
+    margin-bottom: 56px;
+    line-height: 1.1;
+  }
+  .not-found__btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+  
+  @media (max-width: 768px) {
+    .not-found__headline { font-size: 32px; }
+  }
+</style>
