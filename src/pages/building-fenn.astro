@@ -64,17 +64,18 @@ import Layout from '../layouts/Layout.astro';
     color: var(--text-on-dark);
     line-height: 1.75;
     margin-bottom: 16px;
-    padding-left: 20px;
+    padding-left: 24px;
     position: relative;
   }
   .essay__list li::before {
-    content: '';
+    content: '•';
     position: absolute;
     left: 0;
-    top: 14px;
-    width: 8px;
-    height: 1px;
-    background: var(--color-emerald);
+    top: 8px;
+    color: var(--text-on-dark);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
   }
   .essay__list strong {
     color: var(--text-on-dark);
