@@ -6,34 +6,40 @@
 
 <style>
   .banner {
-    background: var(--color-emerald);
-    color: var(--text-on-dark);
+    background: #0A0A0A;
+    color: var(--color-paper);
     padding: 8px 0;
     text-align: center;
   }
-  
+
   .banner__inner {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--gutter);
   }
-  
+
   .banner p {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-on-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-paper);
   }
-  
+
   .banner__link {
-    color: var(--text-on-dark);
-    font-weight: 600;
+    color: var(--color-steel-light);
+    font-weight: 500;
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration-color: var(--color-steel-light);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
     cursor: pointer;
     padding: 0;
+    transition: color var(--transition), text-decoration-color var(--transition);
   }
-  
+
   .banner__link:hover {
-    opacity: 0.85;
+    color: var(--color-clay);
+    text-decoration-color: var(--color-clay);
   }
 </style>

@@ -1,4 +1,5 @@
 <footer class="footer">
+  <div class="footer__rule" aria-hidden="true"></div>
   <div class="footer__inner">
     <div class="footer__brand">
       <div class="footer__logo" aria-label="Fenn">
@@ -12,9 +13,9 @@
           <path d="M 253 -80 L 260 -80 L 323 -15 L 323 -80 L 330 -80 L 330 0 L 323 0 L 260 -65 L 260 0 L 253 0 Z" fill="currentColor"/>
         </svg>
       </div>
-      <p class="footer__tagline">Fenn Agritech · Bristol, England · 2019</p>
+      <p class="footer__tagline">Fenn Agritech &middot; Bristol, England &middot; 2019</p>
     </div>
-    
+
     <div class="footer__columns">
       <div class="footer__column">
         <h4 class="footer__heading">Company</h4>
@@ -23,7 +24,7 @@
           <li><a href="/behind-fenn">Behind Fenn</a></li>
         </ul>
       </div>
-      
+
       <div class="footer__column">
         <h4 class="footer__heading">Legal</h4>
         <ul>
@@ -31,12 +32,12 @@
           <li><a href="/terms">Terms of Service</a></li>
         </ul>
       </div>
-      
+
       <div class="footer__column">
         <h4 class="footer__heading">Portfolio</h4>
         <ul>
-          <li><a href="https://github.com/drea-wichman" target="_blank" rel="noopener">GitHub →</a></li>
-          <li><a href="https://wichman.io" target="_blank" rel="noopener">wichman.io →</a></li>
+          <li><a href="https://github.com/drea-wichman" target="_blank" rel="noopener">GitHub &rarr;</a></li>
+          <li><a href="https://wichman.io" target="_blank" rel="noopener">wichman.io &rarr;</a></li>
         </ul>
       </div>
     </div>
@@ -45,11 +46,18 @@
 
 <style>
   .footer {
-    background: var(--color-dark);
-    color: var(--text-on-dark);
-    padding: 80px 0 32px;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    padding: 0 0 32px;
   }
-  
+
+  .footer__rule {
+    height: 1px;
+    background: var(--divider-dark);
+    max-width: var(--max-width);
+    margin: 0 auto 56px;
+  }
+
   .footer__inner {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -60,22 +68,24 @@
     gap: 80px;
     margin-bottom: 60px;
   }
-  
-.footer__logo {
+
+  .footer__logo {
     width: 200px;
     height: 52px;
-    color: var(--text-on-dark);
+    color: var(--color-paper);
   }
-  
+
   .footer__logo svg {
     width: 100%;
     height: 100%;
   }
 
   .footer__tagline {
+    font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--text-on-dark);
-    margin: 16px 0 0;
+    color: var(--text-muted-on-dark);
+    letter-spacing: 0.04em;
+    margin: 20px 0 0;
     line-height: 1.6;
   }
 
@@ -84,32 +94,34 @@
     grid-template-columns: repeat(3, auto);
     gap: 64px;
   }
-  
+
   .footer__heading {
-    color: var(--color-emerald);
+    font-family: var(--font-mono);
+    color: var(--color-steel-light);
     font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
-  
+
   .footer__column ul {
     list-style: none;
   }
-  
+
   .footer__column li {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
-  
+
   .footer__column a {
-    font-size: 11px;
-    color: var(--text-on-dark);
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--color-paper);
     transition: color var(--transition);
   }
-  
+
   .footer__column a:hover {
-    color: var(--color-emerald);
+    color: var(--color-clay);
   }
 
   @media (max-width: 768px) {
@@ -117,7 +129,7 @@
       grid-template-columns: 1fr;
       gap: 40px;
     }
-    
+
     .footer__columns {
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;

@@ -1,18 +1,39 @@
 :root {
-  --color-dark: #0d2018;
-  --color-dark-tint: #1a3025;
-  --color-light: #fafaf7;
-  --color-emerald: #3d6b4f;
-  --color-emerald-hover: #4d8060;
-  --text-on-dark: #fafaf7;
-  --text-on-light: #0d2018;
-  --text-muted-on-dark: #a8a8a8;
-  --text-muted-on-light: #5a5a5a;
-  --text-subtle: #9a9a9a;
-  --divider-dark: #2a2a2a;
-  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+  /* === Forestry & Brass palette === */
+  --color-ink: #1A2218;
+  --color-ink-tint: #232C1E;
+  --color-paper: #F0EBD8;
+  --color-vellum: #DDD3B8;
+  --color-stone: #9B9477;
+  --color-slate: #4A5340;
+  --color-rust: #A87534;          /* Brass — primary warm accent */
+  --color-clay: #C5934D;          /* Brass-light — warm hover / on-dark labels */
+  --color-steel: #2D5A6E;         /* Blueprint blue — cool secondary on light */
+  --color-steel-light: #6A8D9E;   /* Blueprint blue — cool secondary on dark */
+
+  /* === Legacy aliases (kept so existing class refs keep working) === */
+  --color-dark: var(--color-ink);
+  --color-dark-tint: var(--color-ink-tint);
+  --color-light: var(--color-paper);
+  --color-emerald: var(--color-rust);
+  --color-emerald-hover: var(--color-clay);
+
+  /* === Text roles === */
+  --text-on-dark: var(--color-paper);
+  --text-on-light: var(--color-ink);
+  --text-muted-on-dark: #9B9477;
+  --text-muted-on-light: var(--color-slate);
+  --text-subtle: #7F7B66;
+  --divider-dark: #2C3327;
+  --divider-light: var(--color-stone);
+
+  /* === Engineering Schematic type system === */
+  --font-display: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-display);
+
+  /* === Layout === */
   --max-width: 1280px;
   --gutter: 60px;
   --transition: 0.2s ease;
@@ -31,11 +52,12 @@ html {
 body {
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-on-light);
-  background: var(--color-light);
+  background: var(--color-paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 a {
@@ -61,131 +83,190 @@ img {
   padding: 0 var(--gutter);
 }
 
+/* === Editorial labels (Space Mono uppercase, tracked) — steel-blue eyebrows === */
 .section-label {
-  color: var(--color-emerald);
+  font-family: var(--font-mono);
+  color: var(--color-steel);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 24px;
 }
 
+.section-label--on-dark {
+  color: var(--color-clay);
+}
+
+/* === Section headlines (Archivo, weight 700, generous leading) === */
 .section-headline {
+  font-family: var(--font-display);
   font-size: 44px;
   font-weight: 700;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.02em;
   text-align: center;
   line-height: 1.1;
   margin-bottom: 60px;
 }
 
+.section-headline--light {
+  color: var(--color-paper);
+}
+
 .accent-line {
   width: 40px;
-  height: 2px;
-  background: var(--color-emerald);
+  height: 1px;
+  background: var(--color-stone);
   margin: 0 auto 24px;
 }
 
 .accent-line--dark {
-  background: var(--color-dark);
+  background: var(--color-ink);
 }
 
-/* PRIMARY BUTTON — emerald fill with hover */
+/* === PRIMARY BUTTON — brass fill === */
 .btn-primary {
   display: inline-block;
   padding: 14px 28px;
-  background: var(--color-emerald);
-  color: var(--text-on-dark);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  border: 1.5px solid var(--color-emerald);
+  background: var(--color-rust);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-rust);
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background: var(--color-emerald-hover);
-  border-color: var(--color-emerald-hover);
+  background: var(--color-clay);
+  border-color: var(--color-clay);
 }
 
-/* DARK BUTTON — dark fill, used for "Meet our founders" and "See all policies" */
+/* === DARK BUTTON — ink fill, used on light backgrounds === */
 .btn-dark {
   display: inline-block;
   padding: 12px 24px;
-  background: var(--color-dark);
-  color: var(--text-on-dark);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  border: 1.5px solid var(--color-dark);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-ink);
   transition: background var(--transition), color var(--transition);
   cursor: pointer;
 }
 
 .btn-dark:hover {
   background: transparent;
-  color: var(--color-dark);
+  color: var(--color-ink);
 }
 
-/* DARK BUTTON ON DARK BG — variant for the "Meet our founders" button which sits on dark green */
+/* === Variant for buttons sitting on ink backgrounds === */
 .btn-dark--on-dark {
   background: transparent;
-  color: var(--text-on-dark);
-  border-color: var(--text-on-dark);
+  color: var(--color-paper);
+  border-color: var(--color-paper);
 }
 
 .btn-dark--on-dark:hover {
-  background: var(--text-on-dark);
-  color: var(--color-dark);
+  background: var(--color-paper);
+  color: var(--color-ink);
 }
 
-/* OUTLINE BUTTON — used for nav "Contact us" — white outline, fills white on hover */
+/* === STEEL BUTTON — blueprint blue fill, secondary CTA === */
+.btn-steel {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-steel);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-steel);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.btn-steel:hover {
+  background: transparent;
+  color: var(--color-steel);
+}
+
+/* === Outline button on dark backgrounds === */
 .btn-outline-white {
   display: inline-block;
-  padding: 6px 16px;
-  border: 1.5px solid var(--text-on-dark);
-  color: var(--text-on-dark);
-  font-size: 12px;
-  font-weight: 600;
+  padding: 8px 18px;
+  border: 1px solid var(--color-paper);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   background: transparent;
   transition: background var(--transition), color var(--transition);
   cursor: pointer;
 }
 
 .btn-outline-white:hover {
-  background: var(--text-on-dark);
-  color: var(--color-dark);
+  background: var(--color-paper);
+  color: var(--color-ink);
 }
 
 .btn-outline {
   display: inline-block;
-  padding: 6px 16px;
-  border: 1.5px solid var(--color-emerald);
-  color: var(--color-emerald);
-  font-size: 12px;
-  font-weight: 600;
+  padding: 8px 18px;
+  border: 1px solid var(--color-rust);
+  color: var(--color-rust);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   transition: background var(--transition), color var(--transition);
 }
 
 .btn-outline:hover {
-  background: var(--color-emerald);
-  color: var(--text-on-dark);
+  background: var(--color-rust);
+  color: var(--color-paper);
 }
 
 .link-arrow {
-  color: var(--color-emerald);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--color-steel);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* === Editorial hairline rule === */
+.rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-stone);
+  border: 0;
+}
+
+.rule--ink {
+  background: var(--divider-dark);
 }
 
 @media (max-width: 768px) {
   :root {
     --gutter: 24px;
   }
-  
+
   .section-headline {
-    font-size: 32px;
+    font-size: 30px;
   }
 }
