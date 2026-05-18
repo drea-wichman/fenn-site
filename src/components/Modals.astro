@@ -1,24 +1,15 @@
 <!-- Welcome modal (shows on first visit) -->
-<div class="modal-backdrop" id="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+<div class="modal-backdrop" id="welcome-modal" role="dialog" aria-modal="true" aria-label="Welcome">
   <div class="modal">
     <p class="modal__eyebrow">Welcome</p>
-    <h2 class="modal__title" id="welcome-title">Welcome to Fenn.</h2>
     <p class="modal__body">
-      We are a fictional company built as an independent GRC portfolio project. Third-party vendor names referenced throughout this site are real companies, but no affiliation or endorsement exists or is implied.
+      Fenn is a fictional company built as an independent GRC portfolio project. Vendor names throughout this site are real, but no affiliation or endorsement is implied.
     </p>
 
     <button class="modal__btn" id="dismiss-welcome">I understand</button>
 
     <div class="modal__logo" aria-hidden="true">
-      <svg viewBox="-240 -165 825 170" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 35 -100 Q 35 -158 80 -158 L 110 -158 L 110 -151 L 82 -151 Q 42 -151 42 -100 L 42 0 L 35 0 Z" fill="currentColor"/>
-        <rect x="-235" y="-104" width="815" height="7" fill="currentColor"/>
-        <rect x="80" y="-95" width="7" height="95" fill="currentColor"/>
-        <rect x="80" y="-54" width="56" height="7" fill="currentColor"/>
-        <rect x="80" y="-7" width="64" height="7" fill="currentColor"/>
-        <path d="M 158 -80 L 165 -80 L 228 -15 L 228 -80 L 235 -80 L 235 0 L 228 0 L 165 -65 L 165 0 L 158 0 Z" fill="currentColor"/>
-        <path d="M 253 -80 L 260 -80 L 323 -15 L 323 -80 L 330 -80 L 330 0 L 323 0 L 260 -65 L 260 0 L 253 0 Z" fill="currentColor"/>
-      </svg>
+      <img src="/logo-final-dark.png" alt="" width="1009" height="292" />
     </div>
   </div>
 </div>
@@ -30,7 +21,6 @@
 
     <p class="modal__eyebrow">Contact</p>
     <h2 class="modal__title" id="contact-title">Fenn is fictional,<br />but the work is real.</h2>
-    <p class="modal__body">Get in touch below.</p>
 
     <div class="modal__buttons">
       <a href="mailto:hello@wichman.io" class="modal__btn">Email</a>
@@ -39,15 +29,7 @@
     </div>
 
     <div class="modal__logo" aria-hidden="true">
-      <svg viewBox="-240 -165 825 170" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 35 -100 Q 35 -158 80 -158 L 110 -158 L 110 -151 L 82 -151 Q 42 -151 42 -100 L 42 0 L 35 0 Z" fill="currentColor"/>
-        <rect x="-235" y="-104" width="815" height="7" fill="currentColor"/>
-        <rect x="80" y="-95" width="7" height="95" fill="currentColor"/>
-        <rect x="80" y="-54" width="56" height="7" fill="currentColor"/>
-        <rect x="80" y="-7" width="64" height="7" fill="currentColor"/>
-        <path d="M 158 -80 L 165 -80 L 228 -15 L 228 -80 L 235 -80 L 235 0 L 228 0 L 165 -65 L 165 0 L 158 0 Z" fill="currentColor"/>
-        <path d="M 253 -80 L 260 -80 L 323 -15 L 323 -80 L 330 -80 L 330 0 L 323 0 L 260 -65 L 260 0 L 253 0 Z" fill="currentColor"/>
-      </svg>
+      <img src="/logo-final-dark.png" alt="" width="1009" height="292" />
     </div>
   </div>
 </div>
@@ -76,14 +58,13 @@
     background: var(--color-paper);
     width: 100%;
     max-width: 340px;
-    padding: 28px 24px 24px;
+    padding: 20px 24px 16px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-    border-top: 3px solid var(--color-rust);
   }
 
   .modal__eyebrow {
@@ -97,7 +78,7 @@
 
   .modal__title {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.18;
@@ -117,8 +98,8 @@
   .modal__buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 12px;
+    gap: 12px;
+    margin-top: 0;
     width: 100%;
     align-items: center;
   }
@@ -139,7 +120,7 @@
     text-align: center;
     text-decoration: none;
     transition: background var(--transition), color var(--transition), border-color var(--transition);
-    margin-top: 12px;
+    margin-top: 0;
   }
 
   .modal__btn:hover {
@@ -153,26 +134,24 @@
   }
 
   .modal__logo {
-    width: 110px;
-    height: 24px;
-    color: var(--color-ink);
     margin-top: 24px;
   }
 
-  .modal__logo svg {
-    width: 100%;
-    height: 100%;
+  .modal__logo img {
+    display: block;
+    height: 24px;
+    width: auto;
   }
 
   .modal__close {
     position: absolute;
-    top: 12px;
-    right: 14px;
+    top: 6px;
+    right: 8px;
     font-family: var(--font-mono);
-    font-size: 22px;
-    color: var(--color-slate);
+    font-size: 16px;
+    color: var(--color-ink);
     cursor: pointer;
-    padding: 4px 10px;
+    padding: 2px 6px;
     line-height: 1;
     background: transparent;
     border: none;
@@ -182,6 +161,15 @@
   .modal__close:hover {
     color: var(--color-rust);
   }
+
+  #contact-modal .modal {
+    max-width: 300px;
+  }
+
+  #contact-modal .modal__buttons {
+    max-width: 65%;
+  }
+
 </style>
 
 <script>

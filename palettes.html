@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fenn — palette options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Top index strip */
+  .index {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #0f0f0e;
+    color: #f4f4f1;
+    padding: 14px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    font-size: 13px;
+    border-bottom: 1px solid #2a2a28;
+  }
+  .index .label {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+    opacity: 0.55;
+    margin-right: 8px;
+  }
+  .index a {
+    color: #f4f4f1;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+  }
+  .index a:hover { opacity: 1; }
+
+  /* Hero shell — each section gets its own palette via CSS vars */
+  .hero {
+    --bg: #fff;
+    --surface: #f4f4f1;
+    --text: #111;
+    --muted: #555;
+    --accent: #000;
+    --accent-ink: #fff;
+    --border: rgba(0,0,0,0.08);
+
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 56px 64px 72px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 48px;
+  }
+
+  /* Header row inside each hero */
+  .hero-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .wordmark .dot { color: var(--accent); }
+  .palette-name {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .palette-name .num {
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+
+  /* Body — tagline + button + supporting copy */
+  .hero-body {
+    align-self: center;
+    max-width: 980px;
+  }
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 32px;
+    color: var(--text);
+  }
+  .tagline em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .subhead {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 0 40px;
+    font-weight: 400;
+  }
+  .btn-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--text);
+  }
+  .btn-secondary:hover { background: var(--text); color: var(--bg); }
+
+  /* Swatches */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .swatch-chip {
+    aspect-ratio: 4 / 1.4;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+  .swatch-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .swatch-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  /* Rationale */
+  .rationale {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--muted);
+    max-width: 720px;
+    margin-top: 24px;
+    padding-left: 18px;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Auto-capture demo card — a small product hint per palette */
+  .demo-card {
+    margin-top: 56px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+    max-width: 560px;
+    display: grid;
+    gap: 12px;
+  }
+  .demo-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .demo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .demo-pill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .demo-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--text);
+    padding: 6px 0;
+  }
+  .demo-row + .demo-row { border-top: 1px solid var(--border); }
+  .demo-row .meta { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+  @media (max-width: 720px) {
+    .hero { padding: 40px 24px 56px; gap: 32px; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .demo-card { padding: 18px; }
+  }
+
+  /* ============================================================
+     Palette 1 — Loam & Lime
+     ============================================================ */
+  #loam {
+    --bg: #F5F1E8;
+    --surface: #ECE5D2;
+    --text: #2A2418;
+    --muted: #6B5D45;
+    --accent: #B8D62E;
+    --accent-ink: #1F1B10;
+    --border: rgba(42, 36, 24, 0.12);
+  }
+
+  /* ============================================================
+     Palette 2 — Quiet Field
+     ============================================================ */
+  #quiet {
+    --bg: #FAF7F0;
+    --surface: #EFE8D5;
+    --text: #1F1F1A;
+    --muted: #5C6B3E;
+    --accent: #B65B3B;
+    --accent-ink: #FAF7F0;
+    --border: rgba(31, 31, 26, 0.1);
+  }
+
+  /* ============================================================
+     Palette 3 — North Sea
+     ============================================================ */
+  #northsea {
+    --bg: #F4F4F1;
+    --surface: #E4E4DC;
+    --text: #15212B;
+    --muted: #4A6177;
+    --accent: #3A7D5C;
+    --accent-ink: #F4F4F1;
+    --border: rgba(21, 33, 43, 0.1);
+  }
+
+  /* ============================================================
+     Palette 4 — Tractor Yard
+     ============================================================ */
+  #tractor {
+    --bg: #F8F6F2;
+    --surface: #ECE7DD;
+    --text: #0F0F0E;
+    --muted: #4F5B3A;
+    --accent: #E04E1C;
+    --accent-ink: #F8F6F2;
+    --border: rgba(15, 15, 14, 0.12);
+  }
+
+  /* ============================================================
+     Palette 5 — Soft Pasture
+     ============================================================ */
+  #pasture {
+    --bg: #F2F0E6;
+    --surface: #DDE3CE;
+    --text: #1C2418;
+    --muted: #6E7E5A;
+    --accent: #C9A227;
+    --accent-ink: #1C2418;
+    --border: rgba(28, 36, 24, 0.12);
+  }
+</style>
+</head>
+<body>
+
+<nav class="index">
+  <span class="label">Fenn palette options</span>
+  <a href="#loam">01 · Loam &amp; Lime</a>
+  <a href="#quiet">02 · Quiet Field</a>
+  <a href="#northsea">03 · North Sea</a>
+  <a href="#tractor">04 · Tractor Yard</a>
+  <a href="#pasture">05 · Soft Pasture</a>
+</nav>
+
+<!-- =========================================================== -->
+<!-- 01 — Loam & Lime                                             -->
+<!-- =========================================================== -->
+<section class="hero" id="loam">
+  <header class="hero-head">
+    <div class="wordmark">fenn<span class="dot">.</span></div>
+    <div class="palette-name"><span class="num">01</span> Loam &amp; Lime</div>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="tagline">Your land. Your data. <em>Your decision.</em></h1>
+    <p class="subhead">Records that write themselves — from your equipment, sensors, weather, and books. You keep the keys.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Book a field demo</a>
+      <a class="btn btn-secondary" href="#">How auto-capture works</a>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-head">
+        <span>Field 7 · North Paddock</span>
+        <span class="demo-pill">Auto-captured</span>
+      </div>
+      <div class="demo-row"><span>Spray application · Glyphosate 360</span><span class="meta">14:22 · CLAAS</span></div>
+      <div class="demo-row"><span>Soil moisture reading</span><span class="meta">14:30 · Sensor 04</span></div>
+      <div class="demo-row"><span>Diesel bowser refill</span><span class="meta">15:11 · Xero</span></div>
+    </div>
+
+    <p class="rationale">Soil-toned neutrals grounded in farmland reality, with an unexpected chartreuse that signals tech-forward without resorting to corporate emerald.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#F5F1E8;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Background</span><span class="swatch-hex">#F5F1E8</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#ECE5D2;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Surface</span><span class="swatch-hex">#ECE5D2</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#2A2418;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Text</span><span class="swatch-hex">#2A2418</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#6B5D45;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Muted</span><span class="swatch-hex">#6B5D45</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#B8D62E;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Accent</span><span class="swatch-hex">#B8D62E</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- 02 — Quiet Field                                             -->
+<!-- =========================================================== -->
+<section class="hero" id="quiet">
+  <header class="hero-head">
+    <div class="wordmark">fenn<span class="dot">.</span></div>
+    <div class="palette-name"><span class="num">02</span> Quiet Field</div>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="tagline">Your land. Your data. <em>Your decision.</em></h1>
+    <p class="subhead">Records that write themselves — from your equipment, sensors, weather, and books. You keep the keys.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Book a field demo</a>
+      <a class="btn btn-secondary" href="#">How auto-capture works</a>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-head">
+        <span>Field 7 · North Paddock</span>
+        <span class="demo-pill">Auto-captured</span>
+      </div>
+      <div class="demo-row"><span>Spray application · Glyphosate 360</span><span class="meta">14:22 · CLAAS</span></div>
+      <div class="demo-row"><span>Soil moisture reading</span><span class="meta">14:30 · Sensor 04</span></div>
+      <div class="demo-row"><span>Diesel bowser refill</span><span class="meta">15:11 · Xero</span></div>
+    </div>
+
+    <p class="rationale">Reads like a hand-set agricultural journal — paper, moss-green secondary type, and a single warm pottery red. Confident heritage with no nostalgia.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#FAF7F0;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Background</span><span class="swatch-hex">#FAF7F0</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#EFE8D5;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Surface</span><span class="swatch-hex">#EFE8D5</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#1F1F1A;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Text</span><span class="swatch-hex">#1F1F1A</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#5C6B3E;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Muted</span><span class="swatch-hex">#5C6B3E</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#B65B3B;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Accent</span><span class="swatch-hex">#B65B3B</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- 03 — North Sea                                               -->
+<!-- =========================================================== -->
+<section class="hero" id="northsea">
+  <header class="hero-head">
+    <div class="wordmark">fenn<span class="dot">.</span></div>
+    <div class="palette-name"><span class="num">03</span> North Sea</div>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="tagline">Your land. Your data. <em>Your decision.</em></h1>
+    <p class="subhead">Records that write themselves — from your equipment, sensors, weather, and books. You keep the keys.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Book a field demo</a>
+      <a class="btn btn-secondary" href="#">How auto-capture works</a>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-head">
+        <span>Field 7 · North Paddock</span>
+        <span class="demo-pill">Auto-captured</span>
+      </div>
+      <div class="demo-row"><span>Spray application · Glyphosate 360</span><span class="meta">14:22 · CLAAS</span></div>
+      <div class="demo-row"><span>Soil moisture reading</span><span class="meta">14:30 · Sensor 04</span></div>
+      <div class="demo-row"><span>Diesel bowser refill</span><span class="meta">15:11 · Xero</span></div>
+    </div>
+
+    <p class="rationale">Cool British coastal greys and inks with a single deep kelp-green spark. Serious, calm, weather-tested.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#F4F4F1;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Background</span><span class="swatch-hex">#F4F4F1</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#E4E4DC;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Surface</span><span class="swatch-hex">#E4E4DC</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#15212B;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Text</span><span class="swatch-hex">#15212B</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#4A6177;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Muted</span><span class="swatch-hex">#4A6177</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#3A7D5C;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Accent</span><span class="swatch-hex">#3A7D5C</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- 04 — Tractor Yard                                            -->
+<!-- =========================================================== -->
+<section class="hero" id="tractor">
+  <header class="hero-head">
+    <div class="wordmark">fenn<span class="dot">.</span></div>
+    <div class="palette-name"><span class="num">04</span> Tractor Yard</div>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="tagline">Your land. Your data. <em>Your decision.</em></h1>
+    <p class="subhead">Records that write themselves — from your equipment, sensors, weather, and books. You keep the keys.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Book a field demo</a>
+      <a class="btn btn-secondary" href="#">How auto-capture works</a>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-head">
+        <span>Field 7 · North Paddock</span>
+        <span class="demo-pill">Auto-captured</span>
+      </div>
+      <div class="demo-row"><span>Spray application · Glyphosate 360</span><span class="meta">14:22 · CLAAS</span></div>
+      <div class="demo-row"><span>Soil moisture reading</span><span class="meta">14:30 · Sensor 04</span></div>
+      <div class="demo-row"><span>Diesel bowser refill</span><span class="meta">15:11 · Xero</span></div>
+    </div>
+
+    <p class="rationale">High-contrast SaaS anchored by saturated machinery-orange and olive-field secondary type. The visual energy of a working yard, not a soft brand workshop.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#F8F6F2;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Background</span><span class="swatch-hex">#F8F6F2</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#ECE7DD;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Surface</span><span class="swatch-hex">#ECE7DD</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#0F0F0E;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Text</span><span class="swatch-hex">#0F0F0E</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#4F5B3A;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Muted</span><span class="swatch-hex">#4F5B3A</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#E04E1C;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Accent</span><span class="swatch-hex">#E04E1C</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- 05 — Soft Pasture                                            -->
+<!-- =========================================================== -->
+<section class="hero" id="pasture">
+  <header class="hero-head">
+    <div class="wordmark">fenn<span class="dot">.</span></div>
+    <div class="palette-name"><span class="num">05</span> Soft Pasture</div>
+  </header>
+
+  <div class="hero-body">
+    <h1 class="tagline">Your land. Your data. <em>Your decision.</em></h1>
+    <p class="subhead">Records that write themselves — from your equipment, sensors, weather, and books. You keep the keys.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#">Book a field demo</a>
+      <a class="btn btn-secondary" href="#">How auto-capture works</a>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-head">
+        <span>Field 7 · North Paddock</span>
+        <span class="demo-pill">Auto-captured</span>
+      </div>
+      <div class="demo-row"><span>Spray application · Glyphosate 360</span><span class="meta">14:22 · CLAAS</span></div>
+      <div class="demo-row"><span>Soil moisture reading</span><span class="meta">14:30 · Sensor 04</span></div>
+      <div class="demo-row"><span>Diesel bowser refill</span><span class="meta">15:11 · Xero</span></div>
+    </div>
+
+    <p class="rationale">Pale sage and a stalk of harvest gold — a friendlier, gentler agritech voice that signals approachability for farms easing into the platform.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#F2F0E6;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Background</span><span class="swatch-hex">#F2F0E6</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#DDE3CE;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Surface</span><span class="swatch-hex">#DDE3CE</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#1C2418;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Text</span><span class="swatch-hex">#1C2418</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#6E7E5A;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Muted</span><span class="swatch-hex">#6E7E5A</span></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-chip" style="background:#C9A227;"></div>
+      <div class="swatch-meta"><span class="swatch-role">Accent</span><span class="swatch-hex">#C9A227</span></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
