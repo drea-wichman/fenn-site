@@ -27,11 +27,11 @@ import Layout from '../layouts/Layout.astro';
     <div class="trust-strip__inner">
       <div class="trust-cert">
         <p class="trust-cert__label">CYBER ESSENTIALS PLUS</p>
-        <p class="trust-cert__status">Certified March 2025</p>
+        <p class="trust-cert__status">Aligned to the framework</p>
       </div>
       <div class="trust-cert">
         <p class="trust-cert__label">ISO 27001:2022</p>
-        <p class="trust-cert__status">Audit in progress, targeting September 2026</p>
+        <p class="trust-cert__status">Documentation aligned to the standard</p>
       </div>
     </div>
   </section>
@@ -68,28 +68,28 @@ import Layout from '../layouts/Layout.astro';
             <p class="cluster__title">Field Operations</p>
             <div class="cluster__line"></div>
             <p class="cluster__item">ISOBUS Equipment</p>
-            <p class="cluster__item">Manual Entry</p>
+            <p class="cluster__item">GPS Field Mapping</p>
+            <p class="cluster__item">Drone Surveys</p>
+            <p class="cluster__item">Spray Records</p>
           </div>
           <div class="cluster">
             <p class="cluster__title">Environment</p>
             <div class="cluster__line"></div>
             <p class="cluster__item">Weather APIs</p>
             <p class="cluster__item">Soil Sensors</p>
-            <p class="cluster__item">Manual Entry</p>
           </div>
           <div class="cluster">
             <p class="cluster__title">Finances</p>
             <div class="cluster__line"></div>
             <p class="cluster__item">Accounting Sync</p>
-            <p class="cluster__item">Scan Receipts</p>
-            <p class="cluster__item">Manual Entry</p>
+            <p class="cluster__item">Invoice Scan</p>
           </div>
           <div class="cluster">
             <p class="cluster__title">Inventory</p>
             <div class="cluster__line"></div>
             <p class="cluster__item">Auto On Apply</p>
-            <p class="cluster__item">Scan Receipts</p>
-            <p class="cluster__item">Manual Entry</p>
+            <p class="cluster__item">Invoice Scan</p>
+            <p class="cluster__item">Batch Numbers</p>
           </div>
           <div class="cluster">
             <p class="cluster__title">Team Accounts</p>
@@ -98,6 +98,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="cluster__item">Share Photos</p>
             <p class="cluster__item">Set Permissions</p>
           </div>
+          <p class="cluster-grid__note">Manual entry available for each category.</p>
         </div>
       </div>
 
@@ -256,8 +257,8 @@ import Layout from '../layouts/Layout.astro';
 
       <p class="the-app__caption">Available on desktop, phone, tablet, and in-cab on most modern farm machinery.</p>
 
-      <p class="the-app__platforms">iOS · ANDROID · MACOS · WINDOWS</p>
-      <p class="the-app__platforms">JOHN DEERE · CASE IH · AGCO · CLAAS</p>
+      <p class="the-app__platforms">iOS · Android · macOS · Windows</p>
+      <p class="the-app__platforms">John Deere · Case IH · AGCO · CLAAS</p>
     </div>
   </section>
 
@@ -462,7 +463,15 @@ import Layout from '../layouts/Layout.astro';
   .cluster__item {
     font-size: 11px;
     color: var(--text-muted-on-light);
-    line-height: 1.5;
+    line-height: 1.3;
+  }
+  .cluster-grid__note {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--text-muted-on-light);
+    margin-top: 8px;
   }
 
   /* PRIVACY PROVEN */
@@ -555,7 +564,7 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-emerald);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     margin-bottom: 6px;
   }
 
