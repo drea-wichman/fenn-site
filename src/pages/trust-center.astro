@@ -16,18 +16,20 @@ const publishedPolicies = await getCollection('policies');
 const formatDate = (date: Date) =>
   date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 
-const policies = knownPolicies.map(name => {
-  const published = publishedPolicies.find(p => p.data.title === name);
-  if (published) {
-    return {
-      name: published.data.title,
-      href: `/trust-center/${published.id}`,
-      version: `v${published.data.version} · ${formatDate(published.data.last_reviewed)}`,
-      status: 'View document →'
-    };
-  }
-  return { name, href: null, version: '', status: 'In development' };
-});
+const policies = knownPolicies
+  .map(name => {
+    const published = publishedPolicies.find(p => p.data.title === name);
+    if (published) {
+      return {
+        name: published.data.title,
+        href: `/trust-center/${published.id}`,
+        version: `v${published.data.version} · ${formatDate(published.data.last_reviewed)}`,
+        status: 'View document →'
+      };
+    }
+    return { name, href: null, version: '', status: 'In development' };
+  })
+  .sort((a, b) => Number(Boolean(b.href)) - Number(Boolean(a.href)));
 
 const subprocessors = [
   { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →' },
@@ -54,13 +56,15 @@ const subprocessors = [
               )}
             </div>
             <div class="doc-row__middle">
-              {doc.version && <p class="doc-row__version">{doc.version}</p>}
+              {doc.href ? (
+                doc.version && <p class="doc-row__version">{doc.version}</p>
+              ) : (
+                <p class="doc-row__version">{doc.status}</p>
+              )}
             </div>
             <div class="doc-row__right">
-              {doc.href ? (
+              {doc.href && (
                 <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
-              ) : (
-                <p class="doc-row__status">{doc.status}</p>
               )}
             </div>
           </div>
@@ -79,13 +83,15 @@ const subprocessors = [
               )}
             </div>
             <div class="doc-row__middle">
-              {doc.version && <p class="doc-row__version">{doc.version}</p>}
+              {doc.href ? (
+                doc.version && <p class="doc-row__version">{doc.version}</p>
+              ) : (
+                <p class="doc-row__version">{doc.status}</p>
+              )}
             </div>
             <div class="doc-row__right">
-              {doc.href ? (
+              {doc.href && (
                 <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
-              ) : (
-                <p class="doc-row__status">{doc.status}</p>
               )}
             </div>
           </div>
