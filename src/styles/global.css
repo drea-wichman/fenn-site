@@ -6,17 +6,18 @@
   --color-vellum: #DDD3B8;
   --color-stone: #9B9477;
   --color-slate: #4A5340;
-  --color-rust: #A87534;          /* Brass — primary warm accent */
-  --color-clay: #C5934D;          /* Brass-light — warm hover / on-dark labels */
-  --color-steel: #2D5A6E;         /* Blueprint blue — cool secondary on light */
-  --color-steel-light: #6A8D9E;   /* Blueprint blue — cool secondary on dark */
+  --color-steel: #2D5A6E;         /* Blueprint blue — primary structural accent on light */
+  --color-steel-light: #6A8D9E;   /* Blueprint blue — accent on dark */
+  --color-rust: rgb(197, 147, 77);           /* Brass — brand warm accent (canonical) */
+  --color-brass: var(--color-rust);          /* Legacy alias for --color-rust */
+  --color-clay: var(--color-steel-light);    /* Legacy name; resolves to blueprint blue light */
 
   /* === Legacy aliases (kept so existing class refs keep working) === */
   --color-dark: var(--color-ink);
   --color-dark-tint: var(--color-ink-tint);
   --color-light: var(--color-paper);
-  --color-emerald: var(--color-rust);
-  --color-emerald-hover: var(--color-clay);
+  --color-emerald: var(--color-steel);          /* Legacy alias — kept blue (structural) so privacy/terms/etc don't flip to brass */
+  --color-emerald-hover: var(--color-steel-light);
 
   /* === Text roles === */
   --text-on-dark: var(--color-paper);
@@ -29,7 +30,7 @@
 
   /* === Engineering Schematic type system === */
   --font-display: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: var(--font-display);
 
@@ -96,7 +97,7 @@ img {
 }
 
 .section-label--on-dark {
-  color: var(--color-clay);
+  color: var(--color-steel-light);
 }
 
 /* === Section headlines (Archivo, weight 700, generous leading) === */
@@ -137,6 +138,7 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1px solid var(--color-rust);
+  border-radius: 6px;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   cursor: pointer;
 }
@@ -158,6 +160,7 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1px solid var(--color-ink);
+  border-radius: 6px;
   transition: background var(--transition), color var(--transition);
   cursor: pointer;
 }
@@ -191,6 +194,7 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1px solid var(--color-steel);
+  border-radius: 6px;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   cursor: pointer;
 }
@@ -205,6 +209,7 @@ img {
   display: inline-block;
   padding: 8px 18px;
   border: 1px solid var(--color-paper);
+  border-radius: 6px;
   color: var(--color-paper);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -225,6 +230,7 @@ img {
   display: inline-block;
   padding: 8px 18px;
   border: 1px solid var(--color-rust);
+  border-radius: 6px;
   color: var(--color-rust);
   font-family: var(--font-mono);
   font-size: 11px;

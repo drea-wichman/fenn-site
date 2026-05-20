@@ -11,18 +11,18 @@ import Layout from '../layouts/Layout.astro';
     <div class="legal__inner">
       <p class="legal__label">Legal</p>
       <h1 class="legal__title">Terms of Service</h1>
+      <p class="legal__meta">Last updated: 17 May 2026</p>
 
-      <p class="legal__intro">This website (fenn.wichman.io) is an independent GRC portfolio project by Drea Wichman. Fenn Agritech is a fictional company. By using this site, you agree to these terms.</p>
+      <p class="legal__intro">Fenn Agritech is a fictional company. This site is operated by Drea Wichman. By using this site, you agree to these terms.</p>
 
       <h2 class="legal__h2">What this site is</h2>
-      <p class="legal__p">This site is a portfolio piece. It is not a real product, real service, or real business. Fenn Agritech does not exist as a legal entity, does not offer software, and does not provide services to customers.</p>
-      <p class="legal__p">Third-party vendor names referenced on this site are real companies. No affiliations, partnerships, or endorsements exist or are implied.</p>
+      <p class="legal__p">This is a portfolio piece. Fenn Agritech is not a real business and offers no software or services. Vendor names referenced on this site are real companies; no affiliation or endorsement is implied.</p>
 
       <h2 class="legal__h2">Use of content</h2>
-      <p class="legal__p">All content on this site is original work by Drea Wichman, intended for portfolio and educational reference. You may view and link to this site. You may not republish, copy, or claim authorship of the content without permission.</p>
+      <p class="legal__p">All content is original work by Drea Wichman. You may view and link to this site. You may not republish, copy, or claim authorship without permission.</p>
 
       <h2 class="legal__h2">No warranty</h2>
-      <p class="legal__p">This site is provided "as is." The content is illustrative and is not legal, financial, technical, or compliance advice. Do not rely on it as such. The site owner makes no warranties about accuracy, completeness, or fitness for any purpose.</p>
+      <p class="legal__p">This site is provided "as is." The content is illustrative and is not legal, financial, technical, or compliance advice. The site owner makes no warranties about accuracy, completeness, or fitness for any purpose.</p>
 
       <h2 class="legal__h2">Limitation of liability</h2>
       <p class="legal__p">To the maximum extent permitted by law, the site owner is not liable for any loss or damage arising from your use of this site or reliance on its content.</p>
@@ -44,7 +44,7 @@ import Layout from '../layouts/Layout.astro';
     padding: 0 var(--gutter);
   }
   .legal__label {
-    color: var(--color-emerald);
+    color: var(--color-steel);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -57,6 +57,11 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: -1.5px;
     color: var(--text-on-light);
     line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .legal__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
     margin-bottom: 40px;
   }
   .legal__intro {
@@ -80,7 +85,7 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 12px;
   }
   .legal__link {
-    color: var(--color-emerald);
+    color: var(--color-steel);
   }
   .legal__link:hover {
     text-decoration: underline;

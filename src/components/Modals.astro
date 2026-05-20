@@ -1,9 +1,8 @@
 <!-- Welcome modal (shows on first visit) -->
 <div class="modal-backdrop" id="welcome-modal" role="dialog" aria-modal="true" aria-label="Welcome">
   <div class="modal">
-    <p class="modal__eyebrow">Welcome</p>
     <p class="modal__body">
-      Fenn is a fictional company built as an independent GRC portfolio project. Vendor names throughout this site are real, but no affiliation or endorsement is implied.
+      Fenn is a fictional company built as an independent GRC portfolio project. Vendor names on this site are real, but no affiliation or endorsement is implied.
     </p>
 
     <button class="modal__btn" id="dismiss-welcome">I understand</button>
@@ -19,13 +18,14 @@
   <div class="modal">
     <button class="modal__close" id="close-contact" aria-label="Close">&times;</button>
 
-    <p class="modal__eyebrow">Contact</p>
-    <h2 class="modal__title" id="contact-title">Fenn is fictional,<br />but the work is real.</h2>
+    <div class="modal__top">
+      <h2 class="modal__title" id="contact-title">Fenn is fictional, but the work is real.</h2>
 
-    <div class="modal__buttons">
-      <a href="mailto:hello@wichman.io" class="modal__btn">Email</a>
-      <a href="https://linkedin.com/in/drea-wichman" target="_blank" rel="noopener" class="modal__btn">LinkedIn</a>
-      <a href="https://github.com/drea-wichman" target="_blank" rel="noopener" class="modal__btn">GitHub</a>
+      <div class="modal__buttons">
+        <a href="mailto:hello@wichman.io" class="modal__link">Email &rarr;</a>
+        <a href="https://linkedin.com/in/drea-wichman" target="_blank" rel="noopener" class="modal__link">LinkedIn &rarr;</a>
+        <a href="https://github.com/drea-wichman" target="_blank" rel="noopener" class="modal__link">GitHub &rarr;</a>
+      </div>
     </div>
 
     <div class="modal__logo" aria-hidden="true">
@@ -43,6 +43,8 @@
     right: 0;
     bottom: 0;
     background: rgba(26, 34, 24, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 9999;
     align-items: center;
     justify-content: center;
@@ -57,23 +59,15 @@
     position: relative;
     background: var(--color-paper);
     width: 100%;
-    max-width: 340px;
-    padding: 20px 24px 16px;
+    max-width: 440px;
+    padding: 96px 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  }
-
-  .modal__eyebrow {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--color-steel);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin: 0;
+    gap: 12px;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   }
 
   .modal__title {
@@ -92,7 +86,7 @@
     color: var(--color-slate);
     line-height: 1.6;
     margin: 0;
-    max-width: 320px;
+    max-width: 420px;
   }
 
   .modal__buttons {
@@ -107,14 +101,15 @@
   .modal__btn {
     display: inline-block;
     padding: 10px 24px;
-    background: #0A0A0A;
+    background: var(--color-rust);
     color: var(--color-paper);
-    border: 1px solid #0A0A0A;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    border: 1px solid var(--color-rust);
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    text-transform: none;
     cursor: pointer;
     min-width: 132px;
     text-align: center;
@@ -124,13 +119,27 @@
   }
 
   .modal__btn:hover {
-    background: transparent;
-    color: #0A0A0A;
-    border-color: #0A0A0A;
+    background: var(--color-clay);
+    border-color: var(--color-clay);
   }
 
   .modal__buttons .modal__btn {
     margin-top: 0;
+  }
+
+  .modal__link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-steel);
+    text-decoration: none;
+    transition: text-decoration-color var(--transition);
+  }
+  .modal__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .modal__logo {
@@ -162,55 +171,131 @@
     color: var(--color-rust);
   }
 
-  #contact-modal .modal {
+  #welcome-modal .modal {
     max-width: 300px;
+    max-height: 300px;
+    aspect-ratio: 1 / 1;
+    padding: 64px 14px 14px;
+  }
+
+  #welcome-modal .modal__body {
+    font-size: 13px;
+  }
+
+  #welcome-modal .modal__logo {
+    margin-top: auto;
+  }
+
+  #contact-modal .modal {
+    width: auto;
+    max-width: none;
+    max-height: none;
+    aspect-ratio: auto;
+    padding: 38px 22px 14px;
+    gap: 0;
+  }
+
+  #contact-modal .modal__close {
+    top: 8px;
+    right: 5px;
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  #contact-modal .modal__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #contact-modal .modal__title {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+
+  #contact-modal .modal__link,
+  #contact-modal .modal__sep {
+    font-size: 13px;
+  }
+
+  #contact-modal .modal__logo {
+    margin-top: 28px;
+  }
+
+  #contact-modal .modal__logo img {
+    height: 22px;
   }
 
   #contact-modal .modal__buttons {
-    max-width: 65%;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .modal__sep {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-stone);
+    user-select: none;
   }
 
 </style>
 
 <script>
-  const welcomeModal = document.getElementById('welcome-modal');
-  const dismissWelcome = document.getElementById('dismiss-welcome');
-  const openWelcomeBtn = document.getElementById('open-welcome-modal');
+  function initModals() {
+    const welcomeModal = document.getElementById('welcome-modal');
+    const dismissWelcome = document.getElementById('dismiss-welcome');
+    const openWelcomeBtn = document.getElementById('open-welcome-modal');
 
-  if (welcomeModal && !localStorage.getItem('fenn-welcome-seen-v4')) {
-    welcomeModal.classList.add('is-open');
+    // First-visit auto-open. Guarded so a missing element or thrown
+    // localStorage access (e.g. third-party-cookie-blocked Safari) doesn't
+    // kill the rest of the script.
+    try {
+      if (welcomeModal && !localStorage.getItem('fenn-welcome-seen-v4')) {
+        welcomeModal.classList.add('is-open');
+      }
+    } catch (_) {
+      if (welcomeModal) welcomeModal.classList.add('is-open');
+    }
+
+    dismissWelcome?.addEventListener('click', () => {
+      welcomeModal?.classList.remove('is-open');
+      try { localStorage.setItem('fenn-welcome-seen-v4', 'true'); } catch (_) {}
+    });
+
+    openWelcomeBtn?.addEventListener('click', () => {
+      welcomeModal?.classList.add('is-open');
+    });
+
+    const contactModal = document.getElementById('contact-modal');
+    const openContactBtn = document.getElementById('open-contact-modal');
+    const closeContactBtn = document.getElementById('close-contact');
+
+    openContactBtn?.addEventListener('click', () => {
+      contactModal?.classList.add('is-open');
+    });
+
+    closeContactBtn?.addEventListener('click', () => {
+      contactModal?.classList.remove('is-open');
+    });
+
+    contactModal?.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        contactModal.classList.remove('is-open');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        contactModal?.classList.remove('is-open');
+        welcomeModal?.classList.remove('is-open');
+      }
+    });
   }
 
-  dismissWelcome?.addEventListener('click', () => {
-    welcomeModal?.classList.remove('is-open');
-    localStorage.setItem('fenn-welcome-seen-v4', 'true');
-  });
-
-  openWelcomeBtn?.addEventListener('click', () => {
-    welcomeModal?.classList.add('is-open');
-  });
-
-  const contactModal = document.getElementById('contact-modal');
-  const openContactBtn = document.getElementById('open-contact-modal');
-  const closeContactBtn = document.getElementById('close-contact');
-
-  openContactBtn?.addEventListener('click', () => {
-    contactModal?.classList.add('is-open');
-  });
-
-  closeContactBtn?.addEventListener('click', () => {
-    contactModal?.classList.remove('is-open');
-  });
-
-  contactModal?.addEventListener('click', (e) => {
-    if (e.target === contactModal) {
-      contactModal.classList.remove('is-open');
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      contactModal?.classList.remove('is-open');
-    }
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initModals);
+  } else {
+    initModals();
+  }
 </script>

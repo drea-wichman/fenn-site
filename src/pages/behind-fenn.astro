@@ -57,6 +57,10 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-dark);
     padding: 96px 0 120px;
   }
+  .behind-fenn .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   /* Team section */
   .team {
@@ -78,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: -1.5px;
     color: var(--text-on-dark);
     line-height: 1.1;
-    margin-bottom: 32px;
+    margin-bottom: 12px;
   }
   .team__body {
     font-size: 15px;
@@ -101,7 +105,7 @@ import Layout from '../layouts/Layout.astro';
     bottom: 0;
     left: 50%;
     width: 1px;
-    background: var(--color-emerald);
+    background: var(--color-steel-light);
     transform: translateX(-50%);
   }
 
@@ -117,15 +121,15 @@ import Layout from '../layouts/Layout.astro';
   }
   .founder__quote-mark {
     display: block;
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-size: 96px;
     font-weight: 400;
-    color: var(--color-clay);
+    color: var(--color-rust);
     line-height: 0.6;
     margin-bottom: -8px;
   }
   .founder__quote-text {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-size: 24px;
     font-style: italic;
     color: var(--text-on-dark);

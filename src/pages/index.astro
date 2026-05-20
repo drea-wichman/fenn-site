@@ -20,21 +20,31 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="hero__photo">
       <img src="/images/hero-dartmoor.jpg" alt="Rolling green farmland in Devon, England, divided by traditional hedgerows" />
-      <p class="hero__caption">Dartmoor &middot; Devon</p>
+      <div class="hero__grain" aria-hidden="true"></div>
     </div>
   </section>
 
   <!-- TRUST STRIP -->
   <section class="trust-strip">
-    <div class="trust-strip__inner">
+    <div class="trust-strip__inner" data-fade>
       <div class="trust-cert">
         <p class="trust-cert__label">Cyber Essentials Plus</p>
         <p class="trust-cert__status">Aligned to the framework.</p>
       </div>
       <div class="trust-cert__rule" aria-hidden="true"></div>
       <div class="trust-cert">
-        <p class="trust-cert__label">ISO 27001:2022</p>
-        <p class="trust-cert__status">Documentation aligned to the standard.</p>
+        <p class="trust-cert__label">ISO/IEC 27001:2022</p>
+        <p class="trust-cert__status">Aligned to the standard.</p>
+      </div>
+      <div class="trust-cert__rule" aria-hidden="true"></div>
+      <div class="trust-cert">
+        <p class="trust-cert__label">UK GDPR</p>
+        <p class="trust-cert__status">Aligned to data protection law.</p>
+      </div>
+      <div class="trust-cert__rule" aria-hidden="true"></div>
+      <div class="trust-cert">
+        <p class="trust-cert__label">NCSC CAF</p>
+        <p class="trust-cert__status">Mapped to security objectives.</p>
       </div>
     </div>
   </section>
@@ -42,101 +52,97 @@ import Layout from '../layouts/Layout.astro';
   <!-- HOW IT WORKS -->
   <section class="how-it-works">
     <div class="container">
-      <p class="section-label">How it works</p>
-      <h2 class="section-headline">The whole farm on one screen.</h2>
+      <div class="how-it-works__header" data-fade>
+        <p class="section-label">How it works</p>
+        <h2 class="section-headline">The whole farm on one screen.</h2>
+      </div>
 
-      <div class="step">
-        <div class="step__heading">
+      <div class="how-it-works__steps">
+        <article class="step">
           <span class="step__num">01</span>
-          <span class="step__name">Connect</span>
-        </div>
-        <div class="step__body">
-          <p>Link your existing equipment, sensors, and accounting (Xero, QuickBooks, Sage, and more) to Fenn.</p>
-          <p>Opt out of any features you don't want, for your privacy.</p>
-        </div>
-      </div>
+          <h3 class="step__name">Connect</h3>
+          <div class="step__body">
+            <p>Link your existing equipment, sensors, and accounting to Fenn.</p>
+            <p>Opt out of any features you don't want, for your privacy.</p>
+          </div>
+          <ul class="step__features">
+            <li>
+              <p class="feature__title">Equipment</p>
+              <p class="feature__items">John Deere &middot; Case IH &middot; New Holland</p>
+            </li>
+            <li>
+              <p class="feature__title">Sensors</p>
+              <p class="feature__items">Soil Scout &middot; Sentek &middot; Davis</p>
+            </li>
+            <li>
+              <p class="feature__title">Accounting</p>
+              <p class="feature__items">Xero &middot; QuickBooks &middot; Sage</p>
+            </li>
+          </ul>
+        </article>
 
-      <div class="step">
-        <div class="step__heading">
+        <article class="step">
           <span class="step__num">02</span>
-          <span class="step__name">Track</span>
-        </div>
-        <div class="step__body">
-          <p>Choose your sources and start capturing data.</p>
-          <p>Fenn keeps your data updated in real time, on every device.</p>
-        </div>
+          <h3 class="step__name">Track</h3>
+          <div class="step__body">
+            <p>Choose your sources and start capturing data.</p>
+            <p>Fenn keeps your data updated in real time, on every device.</p>
+          </div>
+          <ul class="step__features">
+            <li>
+              <p class="feature__title">Field Operations</p>
+              <p class="feature__items">ISOBUS Equipment &middot; GPS Field Mapping &middot; Drone Surveys &middot; Spray Records</p>
+            </li>
+            <li>
+              <p class="feature__title">Environment</p>
+              <p class="feature__items">Weather APIs &middot; Soil Sensors</p>
+            </li>
+            <li>
+              <p class="feature__title">Finances</p>
+              <p class="feature__items">Accounting Sync &middot; Receipt Capture</p>
+            </li>
+            <li>
+              <p class="feature__title">Inventory</p>
+              <p class="feature__items">Stock Auto-deduct &middot; Invoice Scan &middot; Batch Numbers</p>
+            </li>
+            <li>
+              <p class="feature__title">Team Accounts</p>
+              <p class="feature__items">Assign Jobs &middot; Share Photos &middot; Set Permissions</p>
+            </li>
+          </ul>
+          <p class="step__footnote">Manual entry available for each category.</p>
+        </article>
 
-        <div class="cluster-grid">
-          <div class="cluster">
-            <p class="cluster__title">Field Operations</p>
-            <p class="cluster__item">ISOBUS Equipment</p>
-            <p class="cluster__item">GPS Field Mapping</p>
-            <p class="cluster__item">Drone Surveys</p>
-            <p class="cluster__item">Spray Records</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Environment</p>
-            <p class="cluster__item">Weather APIs</p>
-            <p class="cluster__item">Soil Sensors</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Finances</p>
-            <p class="cluster__item">Accounting Sync</p>
-            <p class="cluster__item">Invoice Scan</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Inventory</p>
-            <p class="cluster__item">Auto On Apply</p>
-            <p class="cluster__item">Invoice Scan</p>
-            <p class="cluster__item">Batch Numbers</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Team Accounts</p>
-            <p class="cluster__item">Assign Jobs</p>
-            <p class="cluster__item">Share Photos</p>
-            <p class="cluster__item">Set Permissions</p>
-          </div>
-          <p class="cluster-grid__note">Manual entry available for each category.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step__heading">
+        <article class="step">
           <span class="step__num">03</span>
-          <span class="step__name">Report</span>
-        </div>
-        <div class="step__body">
-          <p>Fenn generates the records you need in minutes.</p>
-          <p>Download, export, or share your records in any format, anytime.</p>
-        </div>
-
-        <div class="cluster-grid">
-          <div class="cluster">
-            <p class="cluster__title">Defra Schemes</p>
-            <p class="cluster__item">SFI</p>
-            <p class="cluster__item">Countryside Stewardship</p>
+          <h3 class="step__name">Report</h3>
+          <div class="step__body">
+            <p>Fenn generates the records you need in minutes.</p>
+            <p>Download, export, or share your records in any format, anytime.</p>
           </div>
-          <div class="cluster">
-            <p class="cluster__title">Assurance Audits</p>
-            <p class="cluster__item">Red Tractor</p>
-            <p class="cluster__item">Soil Association Organic</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Tax Records</p>
-            <p class="cluster__item">Making Tax Digital</p>
-            <p class="cluster__item">Receipts And Margins</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Sustainability</p>
-            <p class="cluster__item">Emissions</p>
-            <p class="cluster__item">Biodiversity</p>
-          </div>
-          <div class="cluster">
-            <p class="cluster__title">Yield Forecasts</p>
-            <p class="cluster__item">Live Updates</p>
-            <p class="cluster__item">Per Field</p>
-          </div>
-        </div>
+          <ul class="step__features">
+            <li>
+              <p class="feature__title">Defra Schemes</p>
+              <p class="feature__items">SFI &middot; Countryside Stewardship</p>
+            </li>
+            <li>
+              <p class="feature__title">Assurance Audits</p>
+              <p class="feature__items">Red Tractor &middot; Soil Association Organic</p>
+            </li>
+            <li>
+              <p class="feature__title">Tax Records</p>
+              <p class="feature__items">Making Tax Digital &middot; Receipts and Margins</p>
+            </li>
+            <li>
+              <p class="feature__title">Sustainability</p>
+              <p class="feature__items">Emissions &middot; Biodiversity</p>
+            </li>
+            <li>
+              <p class="feature__title">Yield Forecasts</p>
+              <p class="feature__items">Live Updates &middot; Per Field</p>
+            </li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -144,8 +150,10 @@ import Layout from '../layouts/Layout.astro';
   <!-- PRIVACY, PROVEN -->
   <section class="privacy-proven">
     <div class="container">
-      <p class="section-label section-label--on-dark">Privacy, proven</p>
-      <h2 class="section-headline section-headline--light">Six commitments.</h2>
+      <div data-fade>
+        <p class="section-label section-label--on-dark">Privacy, proven</p>
+        <h2 class="section-headline section-headline--light">Six commitments.</h2>
+      </div>
 
       <div class="privacy-proven__grid">
         <div class="commitment">
@@ -169,7 +177,7 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           <h3 class="commitment__title">Built for banks. Now for your farm.</h3>
-          <p class="commitment__body">Bank-grade cryptographic key management, made for you by the engineer who built it for a UK challenger bank. Serious work, serious protection.</p>
+          <p class="commitment__body">Cryptographic key management, made for you by the engineer who built it for a UK challenger bank. Serious work, serious protection.</p>
         </div>
 
         <div class="commitment">
@@ -195,20 +203,18 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           <h3 class="commitment__title">AI without the audience.</h3>
-          <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time.</p>
+          <p class="commitment__body">Our forecasting models don't train on your data. Opt in or out of our AI analytics, any time. Your data stays yours, always.</p>
         </div>
 
         <div class="commitment">
           <div class="commitment__icon">
             <svg viewBox="-15 -15 30 30" xmlns="http://www.w3.org/2000/svg">
-              <rect x="-10" y="-12" width="20" height="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="-5" y1="-5" x2="5" y2="-5" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="-5" y1="0" x2="5" y2="0" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="-5" y1="5" x2="2" y2="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M -10 -10 L 10 -10 L 10 2 Q 10 8 0 12 Q -10 8 -10 2 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <polyline points="-4,0 -1,4 5,-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3 class="commitment__title">Less paperwork. More farming.</h3>
-          <p class="commitment__body">Field operations, compliance forms, and sustainability reporting all in one app, generated with one click.</p>
+          <h3 class="commitment__title">Your data isn't for sale.</h3>
+          <p class="commitment__body">We never sell, rent, or share your data for marketing or AI training. Sub-processors are listed in full and serve operational needs only.</p>
         </div>
 
         <div class="commitment">
@@ -220,22 +226,62 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           <h3 class="commitment__title">Leave with everything you brought.</h3>
-          <p class="commitment__body">Export or port any field record at any time. Close your account and we delete everything within 30 days.</p>
+          <p class="commitment__body">Export or port any field record at any time. Close your account and we'll delete everything within 30 days, no questions asked.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- IMAGE BREAK -->
-  <section class="image-break">
-    <img src="/images/cab.jpg" alt="Farmer in a tractor cab at sunset" />
+  <!-- STATS COUNT-UP -->
+  <section class="stats-count" data-stats data-fade aria-label="Fenn by the numbers">
+    <div class="container">
+      <div class="stats-count__grid">
+        <div class="stat">
+          <p class="stat__num" data-stat-target="1000+">0</p>
+          <p class="stat__label">farms served across the UK</p>
+        </div>
+        <div class="stat">
+          <p class="stat__num" data-stat-target="47">0</p>
+          <p class="stat__label">compliance schemes supported</p>
+        </div>
+        <div class="stat">
+          <p class="stat__num" data-stat-target="30">0</p>
+          <p class="stat__label">days to delete on cancel</p>
+        </div>
+        <div class="stat stat--zero">
+          <p class="stat__num" data-stat-target="0" data-stat-start="100000">100,000</p>
+          <p class="stat__label">records kept on our servers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE APP -->
+  <section class="app-section">
+    <img class="app-section__image" src="/images/cab.jpg" alt="Farmer in a tractor cab at sunset" />
+    <div class="app-section__panel" data-fade>
+      <p class="section-label app-section__eyebrow">The app</p>
+      <h2 class="app-section__headline">Wherever work takes you.</h2>
+      <p class="app-section__subtitle">From home to harvest.</p>
+      <div class="app-section__icon" aria-hidden="true">
+        <img src="/logo-final.png" alt="" />
+      </div>
+      <dl class="app-section__platforms">
+        <dt>Available on</dt>
+        <dd>iOS &middot; Android &middot; macOS &middot; Windows</dd>
+        <dt>In-cab</dt>
+        <dd>John Deere &middot; Case IH &middot; AGCO &middot; CLAAS</dd>
+      </dl>
+    </div>
   </section>
 
   <!-- OUR POLICIES -->
   <section class="policies">
     <div class="container">
-      <p class="section-label">Policies</p>
-      <h2 class="section-headline">Upfront. In writing.</h2>
+      <div data-fade>
+        <p class="section-label section-label--on-dark">Policies</p>
+        <h2 class="section-headline section-headline--light">Upfront. In writing.</h2>
+      </div>
 
       <div class="policies__grid">
         <div class="policy-card">
@@ -250,7 +296,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h3 class="policy-card__title">Information Security</h3>
           <p class="policy-card__desc">How we protect customer data, end to end.</p>
-          <a class="policy-card__link" href="/policies/trust-center">View document &rarr;</a>
+          <a class="policy-card__link" href="/policies/trust-center">View document</a>
         </div>
 
         <div class="policy-card">
@@ -264,8 +310,8 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           <h3 class="policy-card__title">Access Control</h3>
-          <p class="policy-card__desc">Who can access what, why, and how we audit it.</p>
-          <a class="policy-card__link" href="/policies/trust-center">View document &rarr;</a>
+          <p class="policy-card__desc">Who can access what, when, and how.</p>
+          <a class="policy-card__link" href="/policies/trust-center">View document</a>
         </div>
 
         <div class="policy-card">
@@ -279,22 +325,21 @@ import Layout from '../layouts/Layout.astro';
             </svg>
           </div>
           <h3 class="policy-card__title">Incident Response</h3>
-          <p class="policy-card__desc">How we respond when something goes wrong.</p>
-          <a class="policy-card__link" href="/policies/trust-center">View document &rarr;</a>
+          <p class="policy-card__desc">How we respond when things go wrong.</p>
+          <a class="policy-card__link" href="/policies/trust-center">View document</a>
         </div>
       </div>
 
-      <a href="/trust-center" class="btn-dark policies__cta">Visit Trust Center</a>
+      <a href="/trust-center" class="btn-outline-white policies__cta">Visit Trust Center</a>
     </div>
   </section>
 
   <!-- FINAL CTA -->
   <section class="cta">
-    <div class="container">
+    <div class="container" data-fade>
       <p class="section-label">Begin</p>
-      <h2 class="cta__headline">Let's work together.</h2>
-      <p class="cta__sub">Currently serving 1,000+ farms across England and Wales.<br />Tell us more about your operation.</p>
-      <button class="btn-dark cta__btn" id="open-contact-modal-cta">Get started</button>
+      <h2 class="cta__headline">Every farm is different.<br />Tell us about yours.</h2>
+      <button class="btn-dark cta__btn" id="open-contact-modal-cta">Try Fenn</button>
     </div>
   </section>
 </Layout>
@@ -315,8 +360,11 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-ink);
     min-height: 600px;
     align-items: stretch;
+    position: relative;
   }
   .hero__content {
+    position: relative;
+    z-index: 1;
     padding: 96px var(--gutter);
     max-width: 680px;
     justify-self: end;
@@ -335,7 +383,7 @@ import Layout from '../layouts/Layout.astro';
   .hero__headline-em {
     font-style: normal;
     font-weight: 800;
-    color: var(--color-clay);
+    color: var(--color-brass);
   }
   .hero__subhead {
     font-family: var(--font-body);
@@ -345,9 +393,11 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-stone);
     line-height: 1.5;
     letter-spacing: 0.01em;
+    margin-left: 3px;
   }
   .hero__photo {
     position: relative;
+    overflow: hidden;
     min-height: 600px;
     border-left: 1px solid var(--divider-dark);
   }
@@ -358,6 +408,43 @@ import Layout from '../layouts/Layout.astro';
     position: absolute;
     inset: 0;
     filter: saturate(0.85) brightness(0.95);
+    transform-origin: center;
+    will-change: transform;
+    animation: hero-kenburns 16s ease-in-out infinite alternate;
+  }
+  @keyframes hero-kenburns {
+    0%   { transform: scale(1.16) translate3d(-8%, -4%, 0); }
+    100% { transform: scale(1.20) translate3d( 8%,  4%, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__photo img { animation: none; }
+  }
+  /* 35mm-style film grain — stepped translate so it reads analog, not digital.
+     Sits inside the photo only; hero text is in a separate grid column. */
+  .hero__grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: url('/film-grain.png') repeat;
+    background-size: 240px 240px;
+    opacity: 0.12;
+    mix-blend-mode: overlay;
+    animation: hero-grain 0.48s steps(8, jump-none) infinite;
+    will-change: transform;
+    z-index: 1;
+  }
+  @keyframes hero-grain {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    12.5%    { transform: translate3d(-2%, -1%, 0); }
+    25%      { transform: translate3d(3%, -2%, 0); }
+    37.5%    { transform: translate3d(-1%, 2%, 0); }
+    50%      { transform: translate3d(2%, 1%, 0); }
+    62.5%    { transform: translate3d(-3%, -2%, 0); }
+    75%      { transform: translate3d(1%, 3%, 0); }
+    87.5%    { transform: translate3d(-2%, 1%, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__grain { animation: none; }
   }
   .hero__caption {
     position: absolute;
@@ -375,26 +462,24 @@ import Layout from '../layouts/Layout.astro';
      TRUST STRIP — vellum band with mono labels and italic statuses
      ======================================================================== */
   .trust-strip {
-    background: var(--color-vellum);
+    background: var(--color-ink);
     padding: 32px 0;
-    border-top: 1px solid var(--color-stone);
-    border-bottom: 1px solid var(--color-stone);
   }
   .trust-strip__inner {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--gutter);
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
     align-items: center;
-    gap: 48px;
+    gap: 32px;
   }
   .trust-cert {
     text-align: center;
   }
   .trust-cert__label {
     font-family: var(--font-mono);
-    color: var(--color-ink);
+    color: var(--color-steel-light);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.18em;
@@ -405,14 +490,14 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-body);
     font-style: normal;
     font-weight: 500;
-    color: var(--color-slate);
-    font-size: 15px;
+    color: var(--color-stone);
+    font-size: 12px;
     line-height: 1.4;
   }
   .trust-cert__rule {
     width: 1px;
     height: 48px;
-    background: var(--color-stone);
+    background: color-mix(in srgb, var(--color-stone) 35%, transparent);
   }
 
   /* ========================================================================
@@ -420,87 +505,88 @@ import Layout from '../layouts/Layout.astro';
      ======================================================================== */
   .how-it-works {
     background: var(--color-paper);
-    padding: 64px 0;
+    padding: 112px 0 128px;
   }
-  .step {
-    max-width: 1100px;
-    margin: 32px auto 0;
-    padding: 0 var(--gutter);
+  .how-it-works__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 16px;
+  }
+  .how-it-works__steps {
     display: grid;
-    grid-template-columns: 140px 1fr;
-    column-gap: 32px;
-    row-gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto auto auto;
+    column-gap: 48px;
+    row-gap: 0;
     align-items: start;
   }
-  .step__heading {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+  .step {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+    text-align: left;
   }
   .step__num {
+    display: block;
     font-family: var(--font-display);
-    font-size: 88px;
+    font-size: 72px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.04em;
-    color: var(--color-steel);
+    color: var(--color-slate);
+    margin-bottom: 8px;
   }
   .step__name {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 500;
     color: var(--color-ink);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin: 0 0 16px;
   }
-  .step__body {
-    grid-column: 2;
-    padding-top: 18px;
-  }
-  .step__body p {
-    font-family: var(--font-body);
+  .step__body > p {
+    font-family: var(--font-display);
     font-size: 16px;
     color: var(--color-slate);
-    line-height: 1.6;
-    margin-bottom: 4px;
-    max-width: 60ch;
+    line-height: 1.55;
+    margin: 0 0 8px;
   }
-  .cluster-grid {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 28px;
-    margin-top: 4px;
-    padding-top: 0;
+  .step__features {
+    list-style: none;
+    padding: 24px 0 0;
+    margin: 10px 0 0;
+    border-top: 1px solid var(--color-stone);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
-  .cluster {
-    text-align: center;
+  .step__features li {
+    text-align: left;
   }
-  .cluster__title {
+  .feature__title {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--color-ink);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin: 0 0 4px;
   }
-  .cluster__item {
-    font-family: var(--font-body);
+  .feature__items {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--color-ink);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .step__footnote {
+    font-family: var(--font-display);
+    font-style: italic;
     font-size: 13px;
     color: var(--color-slate);
     line-height: 1.5;
-  }
-  .cluster-grid__note {
-    grid-column: 1 / -1;
-    font-family: var(--font-body);
-    font-style: normal;
-    font-weight: 400;
-    text-align: center;
-    font-size: 13px;
-    color: var(--color-slate);
-    margin-top: 16px;
+    margin: 16px 0 0;
   }
 
   /* ========================================================================
@@ -528,8 +614,8 @@ import Layout from '../layouts/Layout.astro';
   }
   .commitment__icon {
     color: var(--color-rust);
-    width: 36px;
-    height: 36px;
+    width: 22px;
+    height: 22px;
     margin: 0 auto 24px;
     display: flex;
     align-items: center;
@@ -541,7 +627,7 @@ import Layout from '../layouts/Layout.astro';
   }
   .commitment__title {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
     color: var(--color-paper);
     margin-bottom: 14px;
@@ -557,37 +643,124 @@ import Layout from '../layouts/Layout.astro';
 
 
   /* ========================================================================
+     STATS COUNT-UP — paper background, four-up
+     ======================================================================== */
+  .stats-count {
+    background: #000000;
+    padding: 72px 0;
+    position: relative;
+  }
+  .stats-count__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .stat__num {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--color-paper);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 12px;
+  }
+  .stat__label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-stone);
+    line-height: 1.5;
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+  .stat--zero .stat__num {
+    color: var(--color-paper);
+    transform-origin: center;
+    will-change: transform;
+  }
+  /* Vertical dividers between stats — cream at 20% opacity, centered in the gap */
+  .stat {
+    position: relative;
+  }
+  .stat + .stat::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: color-mix(in srgb, var(--color-paper) 20%, transparent);
+  }
+  @media (max-width: 768px) {
+    .stat + .stat::before { display: none; }
+  }
+
+  /* === Paper-grain overlay for cream sections === */
+  .trust-strip,
+  .stats-count,
+  .policies {
+    position: relative;
+  }
+  .trust-strip::after,
+  .stats-count::after,
+  .policies::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/paper-noise.png');
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    mix-blend-mode: multiply;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .trust-strip > *,
+  .stats-count > .container,
+  .policies > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========================================================================
      POLICIES — paper background, magazine-style TOC cards
      ======================================================================== */
   .policies {
-    background: var(--color-paper);
+    background: var(--color-ink);
     padding: 104px 0 112px;
     text-align: center;
   }
   .policies__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 32px;
     max-width: 1100px;
     margin: 0 auto 56px;
-    border-top: 1px solid var(--color-stone);
-    border-bottom: 1px solid var(--color-stone);
   }
   .policy-card {
-    padding: 36px 32px 32px;
+    padding: 36px 24px;
     text-align: left;
-    border-left: 1px solid var(--color-stone);
+    background: color-mix(in srgb, var(--color-ink) 95%, var(--color-paper));
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    cursor: pointer;
+    transition: filter 200ms ease;
   }
-  .policy-card:last-child {
-    border-right: 1px solid var(--color-stone);
+  .policy-card:hover {
+    filter: brightness(1.1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .policy-card { transition: none; }
   }
   .policy-card__icon {
-    color: var(--color-ink);
-    width: 28px;
-    height: 28px;
+    color: var(--color-paper);
+    width: 22px;
+    height: 22px;
     margin: 4px 0 4px;
   }
   .policy-card__icon svg {
@@ -599,14 +772,14 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-display);
     font-size: 26px;
     font-weight: 500;
-    color: var(--color-ink);
+    color: var(--color-paper);
     letter-spacing: -0.01em;
     line-height: 1.15;
   }
   .policy-card__desc {
     font-family: var(--font-body);
     font-size: 14px;
-    color: var(--color-slate);
+    color: var(--color-stone);
     line-height: 1.55;
     margin-bottom: 12px;
   }
@@ -616,30 +789,51 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 400;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-ink);
+    color: var(--color-steel-light);
     margin-top: auto;
     align-self: flex-start;
-    text-decoration: underline;
-    text-decoration-color: rgba(26, 34, 24, 0.35);
+    text-decoration: none;
     text-underline-offset: 3px;
-    transition: color var(--transition), text-decoration-color var(--transition);
+    transition: text-decoration-color var(--transition);
+  }
+  .policy-card__link::after {
+    content: ' \2192';
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 200ms ease;
+  }
+  .policy-card:hover .policy-card__link::after {
+    transform: translateX(4px);
   }
   .policy-card__link:hover {
-    color: var(--color-slate);
-    text-decoration-color: var(--color-slate);
+    text-decoration: underline;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .policy-card__link::after { transition: none; }
+    .policy-card:hover .policy-card__link::after { transform: none; }
   }
   .policies__cta {
     padding: 14px 32px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+  }
+  .policies__cta:hover {
+    background: transparent;
+    color: var(--color-brass);
+    border-color: var(--color-brass);
   }
 
   /* ========================================================================
      FINAL CTA — vellum, quiet, centered
      ======================================================================== */
   .cta {
-    background: var(--color-vellum);
+    background: var(--color-paper);
     padding: 120px 0 128px;
     text-align: center;
-    border-top: 1px solid var(--color-stone);
   }
   .cta__headline {
     font-family: var(--font-display);
@@ -665,6 +859,133 @@ import Layout from '../layouts/Layout.astro';
   }
   .cta__btn {
     padding: 16px 36px;
+    background: var(--color-rust);
+    color: var(--color-paper);
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    transition: background 200ms ease;
+  }
+  .cta__btn:hover {
+    background: rgb(175, 125, 60);
+  }
+
+  /* ========================================================================
+     THE APP — full-bleed cab image with content panel overlaid on the right
+     (sky/sunset side of the photo has bright negative space for legibility)
+     ======================================================================== */
+  .app-section {
+    position: relative;
+    background: var(--color-paper);
+    height: 600px;
+  }
+  .app-section__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.85);
+  }
+  .app-section__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    /* top/right/bottom/left — asymmetric padding shifts the centered stack
+       ~+50px right and ~-34px up from panel-center. Horizontal+vertical
+       padding sums stay constant so inner content area is unchanged. */
+    padding: 46px 14px 114px 114px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .app-section__icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    background: var(--color-slate);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-section__icon img {
+    width: 70%;
+    height: auto;
+    display: block;
+  }
+  .app-section__eyebrow {
+    margin-bottom: 16px;
+    color: var(--color-steel);
+  }
+  .app-section__headline {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    line-height: 1.1;
+    margin: 0 0 6px;
+    white-space: nowrap;
+  }
+  .app-section__subtitle {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin: 0 0 32px;
+    text-align: center;
+  }
+  .app-section__platforms {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 24px;
+    row-gap: 12px;
+    align-items: baseline;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  .app-section__platforms dt {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-steel);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .app-section__platforms dd {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  @media (max-width: 900px) {
+    .app-section {
+      height: auto;
+    }
+    .app-section__image {
+      height: auto;
+      object-fit: contain;
+    }
+    .app-section__panel {
+      position: static;
+      width: 100%;
+      height: auto;
+      padding: 56px var(--gutter);
+      background: var(--color-paper);
+    }
   }
 
   /* ========================================================================
@@ -687,26 +1008,29 @@ import Layout from '../layouts/Layout.astro';
      RESPONSIVE
      ======================================================================== */
   @media (max-width: 900px) {
-    .cluster-grid {
+    .how-it-works {
+      padding: 88px 0 96px;
+    }
+    .how-it-works__steps {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: none;
+      column-gap: 40px;
+      row-gap: 56px;
     }
     .step {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .step__heading {
-      flex-direction: row;
-      align-items: baseline;
-      gap: 18px;
+      display: block;
     }
     .step__num {
       font-size: 56px;
     }
-    .step__body {
-      padding-top: 0;
+  }
+  @media (max-width: 600px) {
+    .how-it-works {
+      padding: 72px 0 80px;
     }
-    .cluster-grid {
-      grid-column: 1;
+    .how-it-works__steps {
+      grid-template-columns: 1fr;
+      row-gap: 64px;
     }
   }
   @media (max-width: 768px) {
@@ -739,16 +1063,18 @@ import Layout from '../layouts/Layout.astro';
       grid-template-columns: 1fr;
       gap: 48px;
     }
+    .stats-count {
+      padding: 48px 0;
+    }
+    .stats-count__grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .stat__num {
+      font-size: 48px;
+    }
     .policies__grid {
       grid-template-columns: 1fr;
-    }
-    .policy-card {
-      border-left: none;
-      border-bottom: 1px solid var(--color-stone);
-    }
-    .policy-card:last-child {
-      border-right: none;
-      border-bottom: none;
     }
     .cta__headline {
       font-size: 40px;

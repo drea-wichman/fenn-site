@@ -82,14 +82,14 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 700;
   }
   .essay__link {
-    color: var(--color-emerald);
-    font-weight: 600;
-    text-decoration: underline;
+    color: var(--color-steel-light);
+    font-weight: 400;
+    text-decoration: none;
     text-underline-offset: 3px;
-    transition: opacity var(--transition);
+    transition: text-decoration-color var(--transition);
   }
   .essay__link:hover {
-    opacity: 0.7;
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {

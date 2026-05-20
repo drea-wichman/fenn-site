@@ -53,7 +53,7 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
         </p>
 
         <p class="doc-body__intro">
-          Fenn engages the following sub-processors to process customer personal data. Before engaging any sub-processor, Fenn performs a vendor security assessment and enters into a written agreement that imposes data protection obligations no less protective than those in the Fenn Data Processing Agreement.
+          Fenn engages the following sub-processors to process customer personal data. Before engaging any sub-processor, Fenn performs a vendor security assessment and enters a written agreement that imposes data protection obligations no less protective than those in the Fenn Data Processing Agreement.
         </p>
 
         <p class="doc-body__intro">
@@ -99,15 +99,14 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
 
         <h2 class="doc-body__h2">Notification of changes</h2>
         <p class="doc-body__p">
-          Fenn provides 30 days' advance notice before engaging a new sub-processor. Notifications are sent to the data protection contact designated in each customer's account.
+          Fenn provides 30 days' advance notice before engaging a new sub-processor. Notifications go to the data protection contact in each customer's account.
         </p>
         <p class="doc-body__p">
-          Customers may object in writing to a new sub-processor within 30 days of notification. If no objection is received during this period, the new sub-processor is deemed accepted. If Fenn cannot accommodate a reasonable objection, the customer may terminate the affected service and receive a pro-rata refund of prepaid fees.
+          Customers may object in writing within 30 days of notification. If no objection is received, the new sub-processor is deemed accepted. If Fenn cannot accommodate a reasonable objection, the customer may terminate the affected service and receive a pro-rata refund of prepaid fees.
         </p>
 
-        <h2 class="doc-body__h2">Contact</h2>
         <p class="doc-body__p">
-          <a href="mailto:privacy@wichman.io" class="doc-body__link">privacy@wichman.io</a>
+          For questions or to request additions, contact <a href="mailto:privacy@wichman.io" class="doc-body__link">privacy@wichman.io</a>.
         </p>
       </article>
     </div>
@@ -156,16 +155,18 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
   }
   .doc-sidebar__link {
     font-size: 14px;
-    color: var(--text-on-light);
-    transition: color var(--transition);
+    font-weight: 400;
+    color: var(--color-ink);
+    text-decoration: none;
     display: block;
+    transition: opacity var(--transition);
   }
   .doc-sidebar__link:hover {
-    color: var(--color-emerald);
+    opacity: 0.65;
   }
   .doc-sidebar__link--active {
-    color: var(--color-emerald);
-    font-weight: 700;
+    color: var(--color-ink);
+    font-weight: 500;
   }
   .doc-sidebar__link--disabled {
     color: rgba(13, 32, 24, 0.35);
@@ -180,7 +181,7 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
     min-width: 0;
   }
   .doc-body__title {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 700;
     letter-spacing: -1px;
     color: var(--text-on-light);
@@ -196,8 +197,13 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
     margin-bottom: 32px;
   }
   .doc-body__github {
-    color: var(--color-emerald);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-steel);
     text-decoration: none;
+    transition: text-decoration-color var(--transition);
   }
   .doc-body__github:hover {
     text-decoration: underline;
@@ -223,7 +229,8 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
     margin-bottom: 12px;
   }
   .doc-body__link {
-    color: var(--color-emerald);
+    color: var(--color-steel);
+    text-decoration: none;
   }
   .doc-body__link:hover {
     text-decoration: underline;
