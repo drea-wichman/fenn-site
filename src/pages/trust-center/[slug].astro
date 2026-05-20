@@ -1,0 +1,296 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const policies = await getCollection('policies');
+  return policies.map(policy => ({
+    params: { slug: policy.id },
+    props: { policy },
+  }));
+}
+
+const { policy } = Astro.props;
+const { Content } = await render(policy);
+
+const allPolicies = await getCollection('policies');
+const sortedPolicies = allPolicies.sort((a, b) =>
+  a.data.document_id.localeCompare(b.data.document_id)
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const frameworkSummary = (mappings: string[]) => {
+  const isoCount = mappings.filter(m => m.startsWith('ISO 27001')).length;
+  const others = mappings.filter(m => !m.startsWith('ISO 27001'));
+  const parts: string[] = [];
+  if (isoCount > 0) parts.push(`ISO 27001:2022 (${isoCount} controls)`);
+  others.forEach(o => parts.push(o));
+  return parts.join(', ');
+};
+---
+
+<Layout
+  title={`${policy.data.title} — Fenn Agritech`}
+  description={policy.data.scope}
+  currentPage="trust-center"
+>
+  <section class="doc-page">
+    <div class="doc-page__inner">
+      <aside class="doc-sidebar">
+        <p class="doc-sidebar__label">Policies</p>
+        <ul class="doc-sidebar__list">
+          {sortedPolicies.map(p => (
+            <li>
+              <a
+                href={`/trust-center/${p.id}`}
+                class={p.id === policy.id ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}
+              >
+                {p.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <article class="doc-body">
+        <h1 class="doc-body__title">{policy.data.title}</h1>
+        <p class="doc-body__meta">Version {policy.data.version} · Updated {formatDate(policy.data.last_reviewed)}</p>
+        <p class="doc-body__meta doc-body__meta--github">
+          <a
+            href={`https://github.com/drea-wichman/fenn/blob/main/${policy.id}.md`}
+            target="_blank"
+            rel="noopener"
+            class="doc-body__github"
+          >
+            View on GitHub →
+          </a>
+        </p>
+
+        <dl class="doc-metadata">
+          <div class="doc-metadata__row">
+            <dt>Document ID</dt>
+            <dd>{policy.data.document_id}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Owner</dt>
+            <dd>{policy.data.owner}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Approver</dt>
+            <dd>{policy.data.approver}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Effective</dt>
+            <dd>{formatDate(policy.data.effective_date)}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Next review</dt>
+            <dd>{formatDate(policy.data.next_review)}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Scope</dt>
+            <dd>{policy.data.scope}</dd>
+          </div>
+          <div class="doc-metadata__row">
+            <dt>Framework mapping</dt>
+            <dd>{frameworkSummary(policy.data.framework_mapping)}</dd>
+          </div>
+        </dl>
+
+        <div class="doc-body__content">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .doc-page {
+    background: var(--color-light);
+    padding: 64px 0 120px;
+  }
+  .doc-page__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+  }
+
+  .doc-sidebar {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+  }
+  .doc-sidebar__label {
+    color: var(--color-steel);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .doc-sidebar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .doc-sidebar__list li {
+    margin-bottom: 10px;
+  }
+  .doc-sidebar__link {
+    font-size: 14px;
+    color: var(--color-ink);
+    text-decoration: none;
+    display: block;
+    transition: opacity var(--transition);
+  }
+  .doc-sidebar__link:hover {
+    opacity: 0.65;
+  }
+  .doc-sidebar__link--active {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .doc-body {
+    min-width: 0;
+  }
+  .doc-body__title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-on-light);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .doc-body__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 4px;
+  }
+  .doc-body__meta--github {
+    margin-bottom: 32px;
+  }
+  .doc-body__github {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-steel);
+    text-decoration: none;
+  }
+  .doc-body__github:hover {
+    text-decoration: underline;
+  }
+
+  .doc-metadata {
+    margin: 0 0 40px;
+    padding: 20px 24px;
+    background: rgba(13, 32, 24, 0.04);
+    border-left: 3px solid var(--color-steel);
+    font-size: 13px;
+  }
+  .doc-metadata__row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 4px 0;
+  }
+  .doc-metadata__row dt {
+    color: var(--text-muted-on-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+    padding-top: 2px;
+  }
+  .doc-metadata__row dd {
+    color: var(--text-on-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .doc-body__content :global(h2) {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .doc-body__content :global(h3) {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  .doc-body__content :global(p) {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .doc-body__content :global(ul) {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+  .doc-body__content :global(li) {
+    margin-bottom: 4px;
+  }
+  .doc-body__content :global(a) {
+    color: var(--color-steel);
+    text-decoration: none;
+  }
+  .doc-body__content :global(a:hover) {
+    text-decoration: underline;
+  }
+  .doc-body__content :global(strong) {
+    font-weight: 700;
+  }
+  .doc-body__content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14px;
+  }
+  .doc-body__content :global(th) {
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(13, 32, 24, 0.05);
+    color: var(--text-on-light);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(13, 32, 24, 0.12);
+  }
+  .doc-body__content :global(td) {
+    padding: 14px 16px;
+    color: var(--text-on-light);
+    border-bottom: 1px solid rgba(13, 32, 24, 0.08);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .doc-page__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .doc-sidebar {
+      position: static;
+    }
+    .doc-body__title {
+      font-size: 28px;
+    }
+    .doc-metadata__row {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+  }
+</style>

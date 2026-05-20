@@ -1,17 +1,37 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const policies = [
-  { name: 'Information Security Policy', version: '', status: 'In development' },
-  { name: 'Access Control Policy', version: '', status: 'In development' },
-  { name: 'Incident Response Plan', version: '', status: 'In development' },
-  { name: 'Vendor Risk Management Policy', version: '', status: 'In development' },
-  { name: 'Data Retention Policy', version: '', status: 'In development' },
-  { name: 'Business Continuity Plan', version: '', status: 'In development' }
+const knownPolicies = [
+  'Information Security Policy',
+  'Access Control Policy',
+  'Incident Response Plan',
+  'Vendor Risk Management Policy',
+  'Data Retention Policy',
+  'Business Continuity Plan'
 ];
 
+const publishedPolicies = await getCollection('policies');
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+
+const policies = knownPolicies.map(name => {
+  const published = publishedPolicies.find(p => p.data.title === name);
+  if (published) {
+    return {
+      name: published.data.title,
+      href: `/trust-center/${published.id}`,
+      version: `v${published.data.version} · ${formatDate(published.data.last_reviewed)}`,
+      status: 'View document →'
+    };
+  }
+  return { name, href: null, version: '', status: 'In development' };
+});
+
 const subprocessors = [
-{ name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →' },  { name: 'Data Processing Agreement', version: '', status: 'In development' }
+  { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →' },
+  { name: 'Data Processing Agreement', href: null, version: '', status: 'In development' }
 ];
 ---
 
@@ -27,13 +47,21 @@ const subprocessors = [
         {policies.map(doc => (
           <div class="doc-row">
             <div class="doc-row__left">
-              <p class="doc-row__name">{doc.name}</p>
+              {doc.href ? (
+                <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
+              ) : (
+                <p class="doc-row__name">{doc.name}</p>
+              )}
             </div>
             <div class="doc-row__middle">
               {doc.version && <p class="doc-row__version">{doc.version}</p>}
             </div>
             <div class="doc-row__right">
-              <p class="doc-row__status">{doc.status}</p>
+              {doc.href ? (
+                <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
+              ) : (
+                <p class="doc-row__status">{doc.status}</p>
+              )}
             </div>
           </div>
         ))}
@@ -41,7 +69,7 @@ const subprocessors = [
 
       <p class="section-label section-label--second">Sub-processors</p>
       <div class="doc-list">
-         {subprocessors.map(doc => (
+        {subprocessors.map(doc => (
           <div class="doc-row">
             <div class="doc-row__left">
               {doc.href ? (
