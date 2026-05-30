@@ -48,6 +48,16 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+      <div class="leadership">
+        <div class="leadership__divider"></div>
+        <div class="leadership__member">
+          <p class="founder__label">Leadership</p>
+          <h2 class="founder__name">Jack Lowe</h2>
+          <p class="founder__role">Head of Security</p>
+          <p class="founder__body">Jack joined Fenn in January 2026 to lead ISO 27001 certification and build the security program following the Series B. He came from a UK security consultancy, where he led ISO 27001 certifications for growing tech companies.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 </Layout>
@@ -162,6 +172,24 @@ import Layout from '../layouts/Layout.astro';
     font-size: 14px;
     color: var(--text-muted-on-dark);
     line-height: 1.7;
+  }
+
+  /* Leadership */
+  .leadership {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-top: 56px;
+  }
+  .leadership__divider {
+    width: 100%;
+    height: 1px;
+    background: var(--color-steel-light);
+    margin-bottom: 56px;
+  }
+  .leadership__member {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   /* Mobile */
