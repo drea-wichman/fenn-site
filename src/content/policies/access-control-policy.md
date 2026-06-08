@@ -1,7 +1,7 @@
 ---
 title: Access Control Policy
 document_id: FENN-POL-001
-version: "1.0"
+version: 1.0
 effective_date: 2026-05-20
 last_reviewed: 2026-05-20
 next_review: 2027-05-20
@@ -24,6 +24,8 @@ framework_mapping:
   - ISO 27001:2022 A.8.16
   - UK GDPR Art. 32
 ---
+
+# Access Control Policy
 
 ## 1. Purpose
 
@@ -128,4 +130,4 @@ Exceptions to this policy may be granted in writing by the Head of Security. Eac
 
 | Version | Date | Author | Description |
 |---|---|---|---|
-| 1.0 | 2026-05-20 | Jack Lowe, Head of Security | Initial formal policy. Codifies existing practices for ISO 27001:2022 certification. |
+| 1.0 | 2026-05-20 | Jack Lowe, Head of Security | Initial formal policy. Codifies existing practices aligned with ISO 27001:2022. |
