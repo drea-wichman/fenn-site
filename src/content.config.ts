@@ -17,6 +17,11 @@ const policies = defineCollection({
   }),
 });
 
+const legal = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),
+});
+
 export const collections = {
   policies,
+  legal,
 };

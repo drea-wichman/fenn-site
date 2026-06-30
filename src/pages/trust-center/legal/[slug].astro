@@ -1,0 +1,208 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('legal');
+  return docs.map(doc => ({
+    params: { slug: doc.id },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+---
+
+<Layout
+  title={`Data Processing Agreement — Fenn Agritech`}
+  description="The terms under which Fenn processes personal data on behalf of its customers."
+  currentPage="trust-center"
+>
+  <section class="doc-page">
+    <div class="doc-page__inner">
+      <aside class="doc-sidebar">
+        <p class="doc-sidebar__label">Sub-processors</p>
+        <ul class="doc-sidebar__list">
+          <li>
+            <a href="/trust-center/sub-processor-list" class="doc-sidebar__link">Sub-processor List</a>
+          </li>
+          <li>
+            <a href={`/trust-center/legal/${doc.id}`} class="doc-sidebar__link doc-sidebar__link--active">Data Processing Agreement</a>
+          </li>
+        </ul>
+      </aside>
+
+      <article class="doc-body">
+        <p class="doc-body__meta doc-body__meta--github">
+          
+            href={`https://github.com/drea-wichman/fenn/blob/main/${doc.id}.md`}
+            target="_blank"
+            rel="noopener"
+            class="doc-body__github"
+          >
+            View on GitHub →
+          </a>
+        </p>
+
+        <div class="doc-body__content">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .doc-page {
+    background: var(--color-light);
+    padding: 64px 0 120px;
+  }
+  .doc-page__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+  }
+
+  .doc-sidebar {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+  }
+  .doc-sidebar__label {
+    color: var(--color-steel);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .doc-sidebar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .doc-sidebar__list li {
+    margin-bottom: 10px;
+  }
+  .doc-sidebar__link {
+    font-size: 14px;
+    color: var(--color-ink);
+    text-decoration: none;
+    display: block;
+    transition: opacity var(--transition);
+  }
+  .doc-sidebar__link:hover {
+    opacity: 0.65;
+  }
+  .doc-sidebar__link--active {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .doc-body {
+    min-width: 0;
+  }
+  .doc-body__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 4px;
+  }
+  .doc-body__meta--github {
+    margin-bottom: 32px;
+  }
+  .doc-body__github {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-steel);
+    text-decoration: none;
+  }
+  .doc-body__github:hover {
+    text-decoration: underline;
+  }
+
+  .doc-body__content :global(h1) {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-on-light);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .doc-body__content :global(h2) {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .doc-body__content :global(h3) {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  .doc-body__content :global(p) {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .doc-body__content :global(ul) {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+  .doc-body__content :global(li) {
+    margin-bottom: 4px;
+  }
+  .doc-body__content :global(a) {
+    color: var(--color-steel);
+    text-decoration: none;
+  }
+  .doc-body__content :global(a:hover) {
+    text-decoration: underline;
+  }
+  .doc-body__content :global(strong) {
+    font-weight: 700;
+  }
+  .doc-body__content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14px;
+  }
+  .doc-body__content :global(th) {
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(13, 32, 24, 0.05);
+    color: var(--text-on-light);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(13, 32, 24, 0.12);
+  }
+  .doc-body__content :global(td) {
+    padding: 14px 16px;
+    color: var(--text-on-light);
+    border-bottom: 1px solid rgba(13, 32, 24, 0.08);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .doc-page__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .doc-sidebar {
+      position: static;
+    }
+  }
+</style>
