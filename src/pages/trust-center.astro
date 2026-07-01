@@ -2,101 +2,103 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const knownPolicies = [
-  'Information Security Policy',
-  'Access Control Policy',
-  'Incident Response Plan',
-  'Vendor Risk Management Policy',
-  'Data Retention Policy',
-  'Business Continuity Plan'
-];
-
-const publishedPolicies = await getCollection('policies');
+const securityDocs = await getCollection('security');
+const privacyDocs = await getCollection('privacy');
+const complianceDocs = await getCollection('compliance');
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 
-const policies = knownPolicies
-  .map(name => {
-    const published = publishedPolicies.find(p => p.data.title === name);
-    if (published) {
-      return {
-        name: published.data.title,
-        href: `/trust-center/${published.id}`,
-        version: `v${published.data.version} · ${formatDate(published.data.last_reviewed)}`,
-        status: 'View document →'
-      };
-    }
-    return { name, href: null, version: '', status: 'In development' };
-  })
-  .sort((a, b) => Number(Boolean(b.href)) - Number(Boolean(a.href)));
+const toRow = (collection: string, note?: string) => (p: any) => ({
+  name: p.data.title,
+  href: `/trust-center/${collection}/${p.id}`,
+  version: p.data.version && p.data.last_reviewed
+    ? `v${p.data.version} · ${formatDate(p.data.last_reviewed)}`
+    : '',
+  status: 'View document →',
+  note: note || null
+});
 
-const subprocessors = [
-  { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →' },
-  { name: 'Data Processing Agreement', href: '/trust-center/legal/data-processing-agreement', version: 'v1.0 · June 2026', status: 'View document →' }
+const security = securityDocs.map(toRow('security'))
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const privacy = [
+  { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →', note: null },
+  { name: 'Data Processing Agreement', href: '/trust-center/privacy/data-processing-agreement', version: 'v1.0 · June 2026', status: 'View document →', note: null },
+  ...privacyDocs
+    .filter(p => p.id !== 'data-processing-agreement')
+    .map(toRow('privacy'))
+    .sort((a, b) => a.name.localeCompare(b.name))
 ];
+
+const compliance = complianceDocs.map(toRow('compliance', 'ISMS documentation - published for transparency'))
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
-<Layout 
+<Layout
   title="Trust Center — Fenn Agritech"
   description="Fenn's policies, sub-processors, and supporting documents."
   currentPage="trust-center"
 >
   <section class="trust-center">
     <div class="container">
-      <p class="section-label">Policies</p>
+
+      <p class="section-label">Security</p>
       <div class="doc-list">
-        {policies.map(doc => (
+        {security.map(doc => (
           <div class="doc-row">
             <div class="doc-row__left">
-              {doc.href ? (
-                <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
-              ) : (
-                <p class="doc-row__name">{doc.name}</p>
-              )}
+              <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
             </div>
             <div class="doc-row__middle">
-              {doc.href ? (
-                doc.version && <p class="doc-row__version">{doc.version}</p>
-              ) : (
-                <p class="doc-row__version">{doc.status}</p>
-              )}
+              {doc.version && <p class="doc-row__version">{doc.version}</p>}
             </div>
             <div class="doc-row__right">
-              {doc.href && (
-                <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
-              )}
+              <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
             </div>
           </div>
         ))}
       </div>
 
-      <p class="section-label section-label--second">Sub-processors</p>
+      <p class="section-label section-label--second">Privacy</p>
       <div class="doc-list">
-        {subprocessors.map(doc => (
+        {privacy.map(doc => (
           <div class="doc-row">
             <div class="doc-row__left">
-              {doc.href ? (
-                <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
-              ) : (
-                <p class="doc-row__name">{doc.name}</p>
-              )}
+              <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
             </div>
             <div class="doc-row__middle">
-              {doc.href ? (
-                doc.version && <p class="doc-row__version">{doc.version}</p>
-              ) : (
-                <p class="doc-row__version">{doc.status}</p>
-              )}
+              {doc.version && <p class="doc-row__version">{doc.version}</p>}
             </div>
             <div class="doc-row__right">
-              {doc.href && (
-                <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
-              )}
+              <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
             </div>
           </div>
         ))}
       </div>
+
+      {compliance.length > 0 && (
+        <>
+          <p class="section-label section-label--second">Compliance</p>
+          <div class="doc-list">
+            {compliance.map(doc => (
+              <div class="doc-row">
+                <div class="doc-row__left">
+                  <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
+                  {doc.note && <span class="doc-row__note">{doc.note}</span>}
+                </div>
+                <div class="doc-row__middle">
+                  {doc.version && <p class="doc-row__version">{doc.version}</p>}
+                </div>
+                <div class="doc-row__right">
+                  <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
     </div>
   </section>
 </Layout>
@@ -134,9 +136,16 @@ const subprocessors = [
     border-bottom: 1px solid rgba(13, 32, 24, 0.12);
   }
 
-  .doc-row__left {
-    min-width: 0;
-  }
+ .doc-row__left {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.doc-row__name--link {
+  min-width: 420px;
+}
 
   .doc-row__name {
     font-size: 18px;
@@ -145,6 +154,14 @@ const subprocessors = [
     letter-spacing: -0.3px;
     line-height: 1.3;
   }
+
+.doc-row__note {
+  font-size: 11px;
+  color: var(--color-steel);
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: 0;
+}
 
   .doc-row__middle {
     text-align: left;
@@ -166,31 +183,38 @@ const subprocessors = [
     text-transform: uppercase;
     color: var(--text-muted-on-light);
   }
+
   .doc-row__name--link {
     color: var(--text-on-light);
     transition: color var(--transition);
   }
+
   .doc-row__name--link:hover {
     color: var(--color-slate);
   }
+
   .doc-row__status--link {
     color: var(--color-steel);
     text-transform: uppercase;
     text-decoration: none;
     transition: text-decoration-color var(--transition);
   }
+
   .doc-row__status--link:hover {
     text-decoration: underline;
   }
+
   @media (max-width: 768px) {
     .doc-row {
       grid-template-columns: 1fr auto;
       gap: 8px;
       padding: 20px 0;
     }
+
     .doc-row__middle {
       display: none;
     }
+
     .doc-row__right {
       text-align: right;
     }
