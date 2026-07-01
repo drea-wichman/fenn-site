@@ -59,7 +59,7 @@ const frameworkSummary = (mappings: string[]) => {
         <ul class="doc-sidebar__list">
           {allDocs.map(d => (
             <li>
-              
+              <a
                 href={`/trust-center/${d.id}`}
                 class={d.id === doc.id ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}
               >
@@ -74,7 +74,7 @@ const frameworkSummary = (mappings: string[]) => {
         <h1 class="doc-body__title">{doc.data.title}</h1>
         <p class="doc-body__meta">Version {doc.data.version} · Updated {formatDate(doc.data.last_reviewed)}</p>
         <p class="doc-body__meta doc-body__meta--github">
-          
+          <a
             href={`https://github.com/drea-wichman/fenn/blob/main/${doc.id}.md`}
             target="_blank"
             rel="noopener"
