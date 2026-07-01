@@ -3,20 +3,36 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const policies = await getCollection('policies');
-  return policies.map(policy => ({
-    params: { slug: policy.id },
-    props: { policy },
-  }));
+  const security = await getCollection('security');
+  const compliance = await getCollection('compliance');
+  const privacy = await getCollection('privacy');
+
+  return [
+    ...security.map(doc => ({
+      params: { slug: doc.id },
+      props: { doc, collection: 'security' },
+    })),
+    ...compliance.map(doc => ({
+      params: { slug: doc.id },
+      props: { doc, collection: 'compliance' },
+    })),
+    ...privacy.map(doc => ({
+      params: { slug: doc.id },
+      props: { doc, collection: 'privacy' },
+    })),
+  ];
 }
 
-const { policy } = Astro.props;
-const { Content } = await render(policy);
+const { doc, collection } = Astro.props;
+const { Content } = await render(doc);
 
-const allPolicies = await getCollection('policies');
-const sortedPolicies = allPolicies.sort((a, b) =>
-  a.data.document_id.localeCompare(b.data.document_id)
-);
+const security = await getCollection('security');
+const compliance = await getCollection('compliance');
+
+const allDocs = [
+  ...security.map(d => ({ ...d, section: 'Security' })),
+  ...compliance.map(d => ({ ...d, section: 'Compliance' })),
+].sort((a, b) => a.data.document_id.localeCompare(b.data.document_id));
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -32,22 +48,22 @@ const frameworkSummary = (mappings: string[]) => {
 ---
 
 <Layout
-  title={`${policy.data.title} — Fenn Agritech`}
-  description={policy.data.scope}
+  title={`${doc.data.title} — Fenn Agritech`}
+  description={doc.data.scope}
   currentPage="trust-center"
 >
   <section class="doc-page">
     <div class="doc-page__inner">
       <aside class="doc-sidebar">
-        <p class="doc-sidebar__label">Policies</p>
+        <p class="doc-sidebar__label">Documents</p>
         <ul class="doc-sidebar__list">
-          {sortedPolicies.map(p => (
+          {allDocs.map(d => (
             <li>
-              <a
-                href={`/trust-center/${p.id}`}
-                class={p.id === policy.id ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}
+              
+                href={`/trust-center/${d.id}`}
+                class={d.id === doc.id ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}
               >
-                {p.data.title}
+                {d.data.title}
               </a>
             </li>
           ))}
@@ -55,11 +71,11 @@ const frameworkSummary = (mappings: string[]) => {
       </aside>
 
       <article class="doc-body">
-        <h1 class="doc-body__title">{policy.data.title}</h1>
-        <p class="doc-body__meta">Version {policy.data.version} · Updated {formatDate(policy.data.last_reviewed)}</p>
+        <h1 class="doc-body__title">{doc.data.title}</h1>
+        <p class="doc-body__meta">Version {doc.data.version} · Updated {formatDate(doc.data.last_reviewed)}</p>
         <p class="doc-body__meta doc-body__meta--github">
-          <a
-            href={`https://github.com/drea-wichman/fenn/blob/main/${policy.id}.md`}
+          
+            href={`https://github.com/drea-wichman/fenn/blob/main/${doc.id}.md`}
             target="_blank"
             rel="noopener"
             class="doc-body__github"
@@ -71,31 +87,31 @@ const frameworkSummary = (mappings: string[]) => {
         <dl class="doc-metadata">
           <div class="doc-metadata__row">
             <dt>Document ID</dt>
-            <dd>{policy.data.document_id}</dd>
+            <dd>{doc.data.document_id}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Owner</dt>
-            <dd>{policy.data.owner}</dd>
+            <dd>{doc.data.owner}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Approver</dt>
-            <dd>{policy.data.approver}</dd>
+            <dd>{doc.data.approver}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Effective</dt>
-            <dd>{formatDate(policy.data.effective_date)}</dd>
+            <dd>{formatDate(doc.data.effective_date)}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Next review</dt>
-            <dd>{formatDate(policy.data.next_review)}</dd>
+            <dd>{formatDate(doc.data.next_review)}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Scope</dt>
-            <dd>{policy.data.scope}</dd>
+            <dd>{doc.data.scope}</dd>
           </div>
           <div class="doc-metadata__row">
             <dt>Framework mapping</dt>
-            <dd>{frameworkSummary(policy.data.framework_mapping)}</dd>
+            <dd>{frameworkSummary(doc.data.framework_mapping)}</dd>
           </div>
         </dl>
 

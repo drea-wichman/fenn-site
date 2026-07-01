@@ -11,7 +11,7 @@ const formatDate = (date: Date) =>
 
 const toRow = (collection: string, note?: string) => (p: any) => ({
   name: p.data.title,
-  href: `/trust-center/${collection}/${p.id}`,
+href: `/trust-center/${p.id}`,
   version: p.data.version && p.data.last_reviewed
     ? `v${p.data.version} · ${formatDate(p.data.last_reviewed)}`
     : '',
@@ -24,8 +24,7 @@ const security = securityDocs.map(toRow('security'))
 
 const privacy = [
   { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.0 · May 2026', status: 'View document →', note: null },
-  { name: 'Data Processing Agreement', href: '/trust-center/privacy/data-processing-agreement', version: 'v1.0 · June 2026', status: 'View document →', note: null },
-  ...privacyDocs
+{ name: 'Data Processing Agreement', href: '/trust-center/legal/data-processing-agreement', version: 'v1.0 · June 2026', status: 'View document →', note: null },  ...privacyDocs
     .filter(p => p.id !== 'data-processing-agreement')
     .map(toRow('privacy'))
     .sort((a, b) => a.name.localeCompare(b.name))

@@ -26,7 +26,9 @@ const schemaOptional = z.object({
   scope: z.string().optional(),
   framework_mapping: z.array(z.string()).optional(),
 });
-
+const legal = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),
+});
 const security = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/security' }),
   schema,
@@ -46,4 +48,5 @@ export const collections = {
   security,
   privacy,
   compliance,
+  legal,
 };
