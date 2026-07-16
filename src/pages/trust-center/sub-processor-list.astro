@@ -1,13 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getDocNav } from '../../lib/docNav.js';
 
-const docs = [
-  { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', section: 'Sub-processors' }
-];
-
-const currentDoc = 'Sub-processor List';
-const policyDocs = docs.filter(d => d.section === 'Policies');
-const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
+const allDocs = await getDocNav();
+const currentHref = '/trust-center/sub-processor-list';
 ---
 
 <Layout
@@ -17,33 +13,24 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
 >
   <section class="doc-page">
     <div class="doc-page__inner">
-     <aside class="doc-sidebar">
-        {policyDocs.length > 0 && (
-          <>
-            <p class="doc-sidebar__label">Policies</p>
-            <ul class="doc-sidebar__list">
-              {policyDocs.map(doc => (
-                <li>
-                  <a href={doc.href} class={doc.name === currentDoc ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}>{doc.name}</a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-
-        {subprocessorDocs.length > 0 && (
-          <>
-            <p class={policyDocs.length > 0 ? 'doc-sidebar__label doc-sidebar__label--second' : 'doc-sidebar__label'}>Sub-processors</p>
-            <ul class="doc-sidebar__list">
-              {subprocessorDocs.map(doc => (
-                <li>
-                  <a href={doc.href} class={doc.name === currentDoc ? 'doc-sidebar__link doc-sidebar__link--active' : 'doc-sidebar__link'}>{doc.name}</a>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-      </aside>
+      <div class="doc-nav">
+        <button class="doc-nav__toggle" id="docNavToggle" aria-expanded="false">
+          All documents
+          <span class="doc-nav__chevron">&#9662;</span>
+        </button>
+        <ul class="doc-nav__list" id="docNavList">
+          {allDocs.map(d => (
+            <li>
+              <a
+                href={d.href}
+                class={d.href === currentHref ? 'doc-nav__link doc-nav__link--active' : 'doc-nav__link'}
+              >
+                {d.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <article class="doc-body">
         <h1 class="doc-body__title">Sub-processor List</h1>
@@ -113,6 +100,23 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
   </section>
 </Layout>
 
+<script>
+  const toggle = document.getElementById('docNavToggle');
+  const list = document.getElementById('docNavList');
+  if (toggle && list) {
+    toggle.addEventListener('click', () => {
+      const open = list.classList.toggle('doc-nav__list--open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('doc-nav__list--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
 <style>
   .doc-page {
     background: var(--color-light);
@@ -122,58 +126,70 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--gutter);
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 64px;
   }
 
-  /* Sidebar */
-  .doc-sidebar {
-    position: sticky;
-    top: 32px;
-    align-self: start;
+  /* Document nav dropdown */
+  .doc-nav {
+    position: relative;
+    margin-bottom: 40px;
+    text-align: right;
   }
-  .doc-sidebar__label {
-    color: var(--color-steel);
-    font-size: 11px;
+  .doc-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-steel);
+    border: 1px solid var(--color-steel);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    text-align: left;
-  }
-  .doc-sidebar__label--second {
-    margin-top: 32px;
-  }
-  .doc-sidebar__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .doc-sidebar__list li {
-    margin-bottom: 10px;
-  }
-  .doc-sidebar__link {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--color-ink);
-    text-decoration: none;
-    display: block;
+    color: #fafaf7;
+    cursor: pointer;
     transition: opacity var(--transition);
   }
-  .doc-sidebar__link:hover {
-    opacity: 0.65;
+  .doc-nav__toggle:hover {
+    opacity: 0.7;
   }
-  .doc-sidebar__link--active {
+  .doc-nav__chevron {
+    font-size: 10px;
+  }
+  .doc-nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--color-light);
+    border: 1px solid rgba(13, 32, 24, 0.15);
+    border-radius: 8px;
+    padding: 12px 0;
+    list-style: none;
+    min-width: 280px;
+    box-shadow: 0 8px 24px rgba(13, 32, 24, 0.12);
+    z-index: 10;
+  }
+  .doc-nav__list--open {
+    display: block;
+  }
+  .doc-nav__list li {
+    margin: 0;
+  }
+  .doc-nav__link {
+    display: block;
+    padding: 8px 20px;
+    font-size: 14px;
     color: var(--color-ink);
-    font-weight: 500;
+    text-decoration: none;
+    transition: background var(--transition);
   }
-  .doc-sidebar__link--disabled {
-    color: rgba(13, 32, 24, 0.35);
-    cursor: default;
+  .doc-nav__link:hover {
+    background: rgba(13, 32, 24, 0.04);
   }
-  .doc-sidebar__link--disabled:hover {
-    color: rgba(13, 32, 24, 0.35);
+  .doc-nav__link--active {
+    font-weight: 600;
   }
 
   /* Document body */
@@ -260,13 +276,6 @@ const subprocessorDocs = docs.filter(d => d.section === 'Sub-processors');
 
   /* Mobile */
   @media (max-width: 768px) {
-    .doc-page__inner {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .doc-sidebar {
-      position: static;
-    }
     .doc-body__title {
       font-size: 28px;
     }

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { getDocNav } from '../../lib/docNav.js';
 
 export async function getStaticPaths() {
   const security = await getCollection('security');
@@ -26,13 +27,8 @@ export async function getStaticPaths() {
 const { doc, collection } = Astro.props;
 const { Content } = await render(doc);
 
-const security = await getCollection('security');
-const compliance = await getCollection('compliance');
-
-const allDocs = [
-  ...security.map(d => ({ ...d, section: 'Security' })),
-  ...compliance.map(d => ({ ...d, section: 'Compliance' })),
-].sort((a, b) => a.data.document_id.localeCompare(b.data.document_id));
+const allDocs = await getDocNav();
+const currentHref = `/trust-center/${doc.id}`;
 
 const formatDate = (date) =>
   date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -61,12 +57,12 @@ const frameworkSummary = (mappings) => {
         </button>
         <ul class="doc-nav__list" id="docNavList">
           {allDocs.map(d => (
-   <li>
+            <li>
               <a
-                href={`/trust-center/${d.id}`}
-                class={d.id === doc.id ? 'doc-nav__link doc-nav__link--active' : 'doc-nav__link'}
+                href={d.href}
+                class={d.href === currentHref ? 'doc-nav__link doc-nav__link--active' : 'doc-nav__link'}
               >
-                {d.data.title}
+                {d.title}
               </a>
             </li>
           ))}
