@@ -46,6 +46,11 @@
   padding: 0;
 }
 
+::selection {
+  background: var(--color-steel);
+  color: var(--color-paper);
+}
+
 html {
   scroll-behavior: smooth;
 }
