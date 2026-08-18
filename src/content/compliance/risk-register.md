@@ -6,7 +6,7 @@ effective_date: 2026-07-01
 last_reviewed: 2026-07-01
 next_review: 2027-07-01
 owner: Head of Security
-owner: CEO
+approver: CEO
 scope: All Fenn information assets, including systems, data, people, and third-party vendors
 framework_mapping:
   - ISO 27001:2022 Clause 6.1.2

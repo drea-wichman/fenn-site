@@ -6,7 +6,7 @@ effective_date: 2026-05-30
 last_reviewed: 2026-05-30
 next_review: 2027-05-30
 owner: Head of Security
-owner: CTO
+approver: CTO
 scope: All third-party vendors that access, process, or store Fenn or customer data
 framework_mapping:
   - ISO 27001:2022 A.5.19

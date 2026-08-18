@@ -6,7 +6,7 @@ effective_date: 2026-05-20
 last_reviewed: 2026-05-20
 next_review: 2027-05-20
 owner: Head of Security
-owner: CTO
+approver: CTO
 scope: All Fenn employees, contractors, and third parties accessing Fenn systems
 framework_mapping:
   - ISO 27001:2022 A.5.11
