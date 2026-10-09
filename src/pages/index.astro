@@ -266,12 +266,15 @@ import Layout from '../layouts/Layout.astro';
       <div class="app-section__icon" aria-hidden="true">
         <img src="/logo-final.png" alt="" />
       </div>
-      <dl class="app-section__platforms">
-        <dt>Available on</dt>
-        <dd>iOS &middot; Android &middot; macOS &middot; Windows</dd>
-        <dt>In-cab</dt>
-        <dd>John Deere &middot; Case IH &middot; AGCO &middot; CLAAS</dd>
-      </dl>
+      <div class="app-section__details">
+        <dl class="app-section__platforms">
+          <dt>Available on</dt>
+          <dd>iOS &middot; Android &middot; macOS &middot; Windows</dd>
+          <dt>In-cab</dt>
+          <dd>John Deere &middot; Case IH &middot; AGCO &middot; CLAAS</dd>
+        </dl>
+        <p class="app-section__note">Fenn works without signal, so you can log what you find in the field and sync when you're back in range. Automatic sync, AI forecasting, and location are optional. Each can be disabled without affecting the rest of the app. Location, when enabled, is read at the moment you log an activity and does not run in the background.</p>
+      </div>
     </div>
   </section>
 
@@ -909,6 +912,7 @@ import Layout from '../layouts/Layout.astro';
   .app-section__icon {
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
     margin: 0 auto 32px;
     background: var(--color-slate);
     border-radius: 18px;
@@ -971,6 +975,41 @@ import Layout from '../layouts/Layout.astro';
     text-transform: uppercase;
     margin: 0;
   }
+  /* Platforms list and note share one grid so the note runs the
+     full width of the list above. */
+  .app-section__details {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 24px;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  .app-section__details .app-section__platforms {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    margin: 0;
+    width: auto;
+  }
+  .app-section__note {
+    grid-column: 1 / -1;
+    /* Wraps to the list's width instead of widening it */
+    contain: inline-size;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    line-height: 1.5;
+    text-align: center;
+    text-wrap: pretty;
+    margin: 28px 0 0;
+  }
+  .app-section__note::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-stone);
+    margin: 0 auto 24px;
+  }
   @media (max-width: 900px) {
     .app-section {
       height: auto;
@@ -985,6 +1024,21 @@ import Layout from '../layouts/Layout.astro';
       height: auto;
       padding: 56px var(--gutter);
       background: var(--color-paper);
+    }
+    .app-section__details {
+      display: block;
+      width: auto;
+    }
+    .app-section__details .app-section__platforms {
+      grid-template-columns: auto auto;
+      margin: 0 auto;
+      width: fit-content;
+    }
+    .app-section__note {
+      contain: none;
+      text-align: center;
+      max-width: 512px;
+      margin: 24px auto 0;
     }
   }
 
