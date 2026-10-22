@@ -13,5 +13,6 @@ export async function getDocNav() {
     ...collectionDocs,
     { href: '/trust-center/legal/data-processing-agreement', title: 'Data Processing Agreement', sort: 'ZZ-1' },
     { href: '/trust-center/sub-processor-list', title: 'Sub-processor List', sort: 'ZZ-2' },
+    { href: '/trust-center/data-flow-and-architecture', title: 'Data Flow and Architecture', sort: 'ZZ-3' },
   ];
 }

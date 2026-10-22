@@ -1,0 +1,402 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getDocNav } from '../../lib/docNav.js';
+
+const allDocs = await getDocNav();
+const currentHref = '/trust-center/data-flow-and-architecture';
+---
+
+<Layout
+  title="Data Flow and Architecture — Fenn Agritech"
+  description="Where Fenn customer data goes and who can read it at each step."
+  currentPage="trust-center"
+>
+  <section class="doc-page">
+    <div class="doc-page__inner">
+      <div class="doc-nav">
+        <button class="doc-nav__toggle" id="docNavToggle" aria-expanded="false">
+          All documents
+          <span class="doc-nav__chevron">&#9662;</span>
+        </button>
+        <ul class="doc-nav__list" id="docNavList">
+          {allDocs.map(d => (
+            <li>
+              <a
+                href={d.href}
+                class={d.href === currentHref ? 'doc-nav__link doc-nav__link--active' : 'doc-nav__link'}
+              >
+                {d.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <article class="doc-body">
+        <h1 class="doc-body__title">Data Flow and Architecture</h1>
+        <p class="doc-body__meta">Version 1.0 · Updated 22 October 2026</p>
+        <p class="doc-body__meta doc-body__meta--github">
+          <a href="https://github.com/drea-wichman/fenn/blob/main/data-flow-and-architecture.md" target="_blank" rel="noopener" class="doc-body__github">View on GitHub →</a>
+        </p>
+
+        <h2 class="doc-body__h2">1. Overview</h2>
+        <p class="doc-body__p">This document shows where your data goes when you use Fenn and who can read it at each step. By default, Fenn encrypts your farm data on your device with keys that only you control. Fenn stores the encrypted data and cannot read it. Fenn's servers are computers Fenn rents in Amazon Web Services' London data centers. A few features work differently because they need Fenn's servers to handle the data. This document identifies each one.</p>
+        <p class="doc-body__p">Every flow that involves Fenn carries one of four labels:</p>
+        <ul class="doc-body__list">
+          <li><strong>Encrypted on your device.</strong> Your device encrypts the data with your key before it leaves. Fenn stores it and cannot read it.</li>
+          <li><strong>Encrypted on Fenn's servers.</strong> A service you connect sends data to Fenn's servers, not to your device. The servers lock it on arrival so only your keys can open it. Fenn cannot read it after that.</li>
+          <li><strong>Readable on Fenn's servers while in use.</strong> You turned on a feature that needs Fenn's servers to read your data while it runs. The servers delete it when the feature finishes. Fenn's staff are not permitted to access it, and Fenn does not use it to train its models.</li>
+          <li><strong>Readable by Fenn's staff.</strong> The details Fenn needs to run your account and support you. Fenn's staff can read them, as the Data Processing Agreement describes.</li>
+        </ul>
+        <h2 class="doc-body__h2">2. Diagram</h2>
+        <img class="doc-body__figure" src="/images/data-flow.svg" alt="Data flow diagram. Your devices on the left, Fenn&#x27;s servers in the middle, outside services on the right. Arrows that involve Fenn are labeled Encrypted on your device, Encrypted on Fenn&#x27;s servers, Readable on Fenn&#x27;s servers while in use, or Readable by Fenn&#x27;s staff." width="1150" height="706" />
+        <p class="doc-body__p">Fenn does not send reports to Defra, HMRC, or anyone else.</p>
+        <h2 class="doc-body__h2">3. Data inventory</h2>
+        <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Where it comes from</th>
+              <th>Label</th>
+              <th>Who can read it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Farm records and their edit history</td>
+              <td>You enter them</td>
+              <td>Encrypted on your device</td>
+              <td>Only you and the team members you choose</td>
+            </tr>
+            <tr>
+              <td>Reports</td>
+              <td>Built on your device</td>
+              <td>None. Fenn does not store them</td>
+              <td>Only you, until you export, share, or print them</td>
+            </tr>
+            <tr>
+              <td>Location (when enabled)</td>
+              <td>Your phone's GPS, read when you log an activity</td>
+              <td>Encrypted on your device</td>
+              <td>Only you and the team members you choose. Weather requests share it with the Met Office</td>
+            </tr>
+            <tr>
+              <td>Data from connected services</td>
+              <td>Equipment (John Deere, Case IH, New Holland, AGCO, CLAAS), sensors (Soil Scout, Sentek, Davis), accounting (Xero, QuickBooks, Sage), drone services</td>
+              <td>Encrypted on Fenn's servers</td>
+              <td>Fenn's servers, only until it is encrypted. Then only you and the team members you choose</td>
+            </tr>
+            <tr>
+              <td>Weather (default)</td>
+              <td>Your device asks the Met Office</td>
+              <td>None. Fenn is not involved</td>
+              <td>The Met Office sees the location</td>
+            </tr>
+            <tr>
+              <td>Weather (forecasting on)</td>
+              <td>Fenn's servers ask the Met Office</td>
+              <td>Readable on Fenn's servers while in use</td>
+              <td>Fenn's servers and the Met Office</td>
+            </tr>
+            <tr>
+              <td>Forecast inputs</td>
+              <td>Your data, sent when forecasting is on</td>
+              <td>Readable on Fenn's servers while in use</td>
+              <td>Fenn's servers, only while the forecast runs. Deleted when it finishes</td>
+            </tr>
+            <tr>
+              <td>Forecast results</td>
+              <td>Fenn's forecast</td>
+              <td>Readable on Fenn's servers while in use, then encrypted on your device</td>
+              <td>Fenn's servers, only while the forecast runs. Then only you and the team members you choose</td>
+            </tr>
+            <tr>
+              <td>Backups</td>
+              <td>Copies of Fenn's storage</td>
+              <td>Same labels as the original data</td>
+              <td>Same as the original data. Kept in AWS London and with a second UK provider</td>
+            </tr>
+            <tr>
+              <td>Team member list (names and emails)</td>
+              <td>You add them</td>
+              <td>Readable by Fenn's staff</td>
+              <td>Fenn's staff</td>
+            </tr>
+            <tr>
+              <td>Roles and key access</td>
+              <td>You set them</td>
+              <td>Encrypted on your device</td>
+              <td>Only you and the team members you choose</td>
+            </tr>
+            <tr>
+              <td>Login, billing, and support details</td>
+              <td>You enter them</td>
+              <td>Readable by Fenn's staff</td>
+              <td>Fenn's staff. Stripe sees billing details. Plain sees support messages</td>
+            </tr>
+            <tr>
+              <td>Account emails (invitations, password resets)</td>
+              <td>Fenn sends them</td>
+              <td>Readable by Fenn's staff</td>
+              <td>Fenn's staff and Amazon's email service (SES)</td>
+            </tr>
+            <tr>
+              <td>Error reports</td>
+              <td>Fenn's apps and servers, when something goes wrong</td>
+              <td>Readable by Fenn's staff</td>
+              <td>Fenn's staff and Sentry (EU). Never includes farm data</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <h2 class="doc-body__h2">4. Team accounts and keys</h2>
+        <p class="doc-body__p">You decide who on your team can read each type of data. Fenn's app handles the keys, and Fenn never holds them.</p>
+        <p class="doc-body__p">Your data is sorted into categories, and each category has its own key. When you give a team member access to a category, your app hands them that key, locked so only their device can open it. Fenn passes the locked key along and cannot open it.</p>
+        <p class="doc-body__p">When you remove someone, or take away a category, your app makes a new key for that category. Everything saved from then on uses the new key. Data saved before the change is not re-encrypted. The person loses access to future data. Fenn also removes their access to your account, so they can't download anything more. They keep anything they already opened or downloaded.</p>
+        <p class="doc-body__p">Your app creates a recovery key when you open your account. Fenn never sees it. You can also name a co-owner, who holds every key, so the account never depends on one person.</p>
+        <h2 class="doc-body__h2">5. Limits and what you rely on</h2>
+        <ul class="doc-body__list">
+          <li><strong>Lost keys.</strong> If you lose your keys and have no recovery key or co-owner, no one can read your data, including Fenn. Resetting your password does not recover your keys.</li>
+          <li><strong>What Fenn can always see.</strong> Who is on your team, who you share keys with, how many records you have and their size, when they change, and the IP addresses and devices you connect from.</li>
+          <li><strong>Exports.</strong> A report you export, share, or print is no longer encrypted. Protecting it is up to you.</li>
+          <li><strong>Fenn's apps.</strong> You rely on Fenn's apps to encrypt as described here.</li>
+          <li><strong>Key delivery.</strong> When you add a team member, Fenn delivers their public key to your app. You rely on Fenn to deliver the right one.</li>
+          <li><strong>Connected services.</strong> Fenn keeps access to the services you connect so it can collect your data. Disconnecting a service ends that access.</li>
+          <li><strong>Outside services.</strong> The Met Office and the services you connect hold their own copies under their own terms.</li>
+        </ul>
+        <h2 class="doc-body__h2">Revision History</h2>
+        <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Date</th>
+              <th>Author</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.0</td>
+              <td>2026-10-22</td>
+              <td>Jack Lowe, Head of Security</td>
+              <td>Initial document. Shows where customer data goes, who can read it at each step, and where Fenn's default encryption has exceptions.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const toggle = document.getElementById('docNavToggle');
+  const list = document.getElementById('docNavList');
+  if (toggle && list) {
+    toggle.addEventListener('click', () => {
+      const open = list.classList.toggle('doc-nav__list--open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target) && !list.contains(e.target)) {
+        list.classList.remove('doc-nav__list--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<style>
+  .doc-page {
+    background: var(--color-light);
+    padding: 64px 0 120px;
+  }
+  .doc-page__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* Document nav dropdown */
+  .doc-nav {
+    position: relative;
+    margin-bottom: 40px;
+    text-align: right;
+  }
+  .doc-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-steel);
+    border: 1px solid var(--color-steel);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fafaf7;
+    cursor: pointer;
+    transition: opacity var(--transition);
+  }
+  .doc-nav__toggle:hover {
+    opacity: 0.7;
+  }
+  .doc-nav__chevron {
+    font-size: 10px;
+  }
+  .doc-nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--color-light);
+    border: 1px solid rgba(13, 32, 24, 0.15);
+    border-radius: 8px;
+    padding: 12px 0;
+    list-style: none;
+    min-width: 280px;
+    box-shadow: 0 8px 24px rgba(13, 32, 24, 0.12);
+    z-index: 10;
+  }
+  .doc-nav__list--open {
+    display: block;
+  }
+  .doc-nav__list li {
+    margin: 0;
+  }
+  .doc-nav__link {
+    display: block;
+    padding: 8px 20px;
+    font-size: 14px;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .doc-nav__link:hover {
+    background: rgba(13, 32, 24, 0.04);
+  }
+  .doc-nav__link--active {
+    font-weight: 600;
+  }
+
+  /* Document body */
+  .doc-body {
+    min-width: 0;
+  }
+  .doc-body__title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-on-light);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+.doc-body__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 4px;
+  }
+  .doc-body__meta--github {
+    margin-bottom: 32px;
+  }
+  .doc-body__github {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-steel);
+    text-decoration: none;
+    transition: text-decoration-color var(--transition);
+  }
+  .doc-body__github:hover {
+    text-decoration: underline;
+  }
+  .doc-body__intro {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .doc-body__h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .doc-body__p {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .doc-body__link {
+    color: var(--color-steel);
+    text-decoration: none;
+  }
+  .doc-body__link:hover {
+    text-decoration: underline;
+  }
+
+  /* Table */
+  .doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14px;
+  }
+  .doc-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(13, 32, 24, 0.05);
+    color: var(--text-on-light);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(13, 32, 24, 0.12);
+  }
+  .doc-table td {
+    padding: 14px 16px;
+    color: var(--text-on-light);
+    border-bottom: 1px solid rgba(13, 32, 24, 0.08);
+    line-height: 1.5;
+  }
+
+
+  /* Lists, diagram, wide table */
+  .doc-body__list {
+    margin: 0 0 16px;
+    padding-left: 20px;
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+  }
+  .doc-body__list li {
+    margin-bottom: 8px;
+  }
+  .doc-body__figure {
+    width: 100%;
+    height: auto;
+    margin: 16px 0 24px;
+  }
+  .doc-table-wrap {
+    overflow-x: auto;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .doc-body__title {
+      font-size: 28px;
+    }
+    .doc-table {
+      font-size: 13px;
+    }
+    .doc-table th,
+    .doc-table td {
+      padding: 10px 12px;
+    }
+  }
+</style>
