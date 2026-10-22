@@ -105,6 +105,31 @@ const currentHref = '/trust-center/sub-processor-list';
         <p class="doc-body__p">
           For questions or to request additions, contact <a href="mailto:privacy@fennagritech.io" class="doc-body__link">privacy@fennagritech.io</a>.
         </p>
+        <h2 class="doc-body__h2">Revision History</h2>
+        <table class="doc-table doc-table--revisions">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Date</th>
+              <th>Author</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.0</td>
+              <td>2026-05-14</td>
+              <td>Jack Lowe, Head of Security</td>
+              <td>Initial list.</td>
+            </tr>
+            <tr>
+              <td>1.1</td>
+              <td>2026-10-22</td>
+              <td>Jack Lowe, Head of Security</td>
+              <td>Added the Met Office and Wasabi. Includes earlier corrections to Plain's legal entity and location, and the contact address.</td>
+            </tr>
+          </tbody>
+        </table>
       </article>
     </div>
   </section>
@@ -276,6 +301,9 @@ const currentHref = '/trust-center/sub-processor-list';
     color: var(--text-on-light);
     font-weight: 700;
     border-bottom: 1px solid rgba(13, 32, 24, 0.12);
+  }
+  .doc-table--revisions td:nth-child(-n+2) {
+    white-space: nowrap;
   }
   .doc-table td {
     padding: 14px 16px;
