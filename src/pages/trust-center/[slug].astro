@@ -337,6 +337,18 @@ const frameworkSummary = (mappings) => {
     line-height: 1.5;
   }
 
+  /* Wide tables (10+ columns, such as the risk register) */
+  .doc-body__content :global(table:has(th:nth-child(10)) th),
+  .doc-body__content :global(table:has(th:nth-child(10)) td) {
+    padding: 12px 8px;
+  }
+  .doc-body__content :global(table:has(th:nth-child(10)) td:nth-child(2)) {
+    min-width: 180px;
+  }
+  .doc-body__content :global(table:has(th:nth-child(10)) td:nth-child(9)) {
+    min-width: 240px;
+  }
+
   @media (max-width: 768px) {
     .doc-body__title {
       font-size: 28px;
