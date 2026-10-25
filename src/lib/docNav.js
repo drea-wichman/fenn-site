@@ -3,10 +3,12 @@ import { getCollection } from 'astro:content';
 export async function getDocNav() {
   const security = await getCollection('security');
   const compliance = await getCollection('compliance');
+  const privacy = await getCollection('privacy');
 
   const collectionDocs = [
     ...security.map(d => ({ href: `/trust-center/${d.id}`, title: d.data.title, sort: d.data.document_id })),
     ...compliance.map(d => ({ href: `/trust-center/${d.id}`, title: d.data.title, sort: d.data.document_id })),
+    ...privacy.map(d => ({ href: `/trust-center/${d.id}`, title: d.data.title, sort: d.data.document_id || d.data.title || d.id })),
   ].sort((a, b) => a.sort.localeCompare(b.sort));
 
   return [
