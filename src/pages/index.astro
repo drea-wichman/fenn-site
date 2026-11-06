@@ -504,7 +504,7 @@ import Layout from '../layouts/Layout.astro';
      HOW IT WORKS — paper background, large step numerals
      ======================================================================== */
   .how-it-works {
-    background: var(--color-paper);
+    background: var(--color-vellum);
     padding: 112px 0 128px;
   }
   .how-it-works__header {
@@ -527,7 +527,8 @@ import Layout from '../layouts/Layout.astro';
     grid-row: span 5;
     text-align: left;
     padding: 40px 36px 44px;
-    background: #FAF7EC;
+    background: var(--color-paper);
+    border-radius: 6px;
     box-shadow: 0 1px 0 var(--color-vellum), 0 12px 32px -18px rgba(26, 34, 24, 0.35);
   }
   .step__num {
@@ -582,12 +583,13 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.55;
     margin: 0 0 8px;
   }
-  /* Feature lists sit in a soft vellum-tinted block (replaces the divider line) */
+  /* Feature lists sit in a dark green block with light text (replaces the divider line) */
   .step__features {
     list-style: none;
     padding: 22px 22px 24px;
     margin: 18px 0 0;
-    background: color-mix(in srgb, var(--color-vellum) 30%, var(--color-paper));
+    background: var(--color-ink);
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -599,7 +601,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 500;
-    color: var(--color-steel);
+    color: var(--color-steel-light);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin: 0 0 4px;
@@ -607,7 +609,7 @@ import Layout from '../layouts/Layout.astro';
   .feature__items {
     font-family: var(--font-display);
     font-size: 14px;
-    color: var(--color-ink);
+    color: var(--color-stone);
     line-height: 1.5;
     margin: 0;
   }
@@ -1052,6 +1054,9 @@ import Layout from '../layouts/Layout.astro';
       height: auto;
       padding: 56px var(--gutter);
       background: var(--color-paper);
+    }
+    .app-section__headline {
+      white-space: normal; /* nowrap pushed the page wider than phone screens */
     }
     .app-section__details {
       display: block;
