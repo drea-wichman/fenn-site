@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
         Your data.<br />
         <em class="hero__headline-em">Your decision.</em>
       </h1>
-      <p class="hero__subhead">Built for the people who feed Britain.</p>
+      <p class="hero__subhead">Software built for the people who feed Britain.</p>
     </div>
     <div class="hero__photo">
       <img src="/images/hero-dartmoor.jpg" alt="Rolling green farmland in Devon, England, divided by traditional hedgerows" />
@@ -54,7 +54,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="how-it-works__steps">
         <article class="step">
-          <span class="step__num">01</span>
+          <span class="step__num"><span>01</span><span class="step__conn" aria-hidden="true"></span></span>
           <h3 class="step__name">Connect</h3>
           <div class="step__body">
             <p>Link your existing equipment, sensors, and accounting to Fenn.</p>
@@ -77,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
         </article>
 
         <article class="step">
-          <span class="step__num">02</span>
+          <span class="step__num"><span>02</span><span class="step__conn" aria-hidden="true"></span></span>
           <h3 class="step__name">Track</h3>
           <div class="step__body">
             <p>Choose your sources and start capturing data.</p>
@@ -109,7 +109,7 @@ import Layout from '../layouts/Layout.astro';
         </article>
 
         <article class="step">
-          <span class="step__num">03</span>
+          <span class="step__num"><span>03</span><span class="step__conn" aria-hidden="true"></span></span>
           <h3 class="step__name">Report</h3>
           <div class="step__body">
             <p>Fenn generates the records you need in minutes.</p>
@@ -516,25 +516,55 @@ import Layout from '../layouts/Layout.astro';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto auto auto auto;
-    column-gap: 48px;
+    column-gap: 24px;
     row-gap: 0;
     align-items: start;
   }
+  /* Each step is a light lifted card */
   .step {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 5;
     text-align: left;
+    padding: 40px 36px 44px;
+    background: #FAF7EC;
+    box-shadow: 0 1px 0 var(--color-vellum), 0 12px 32px -18px rgba(26, 34, 24, 0.35);
   }
   .step__num {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 18px;
     font-family: var(--font-display);
-    font-size: 72px;
+    font-size: 64px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.04em;
-    color: var(--color-slate);
-    margin-bottom: 8px;
+    color: var(--color-steel);
+    margin-bottom: 20px;
+  }
+  /* Brass connector after each numeral: arrow on steps 1–2, end dot on step 3 */
+  .step__conn {
+    flex: 1;
+    height: 2px;
+    background: var(--color-brass);
+    position: relative;
+  }
+  .step__conn::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 10px solid var(--color-brass);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+  .step:last-child .step__conn::after {
+    border: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-brass);
   }
   .step__name {
     font-family: var(--font-display);
@@ -552,11 +582,12 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.55;
     margin: 0 0 8px;
   }
+  /* Feature lists sit in a soft vellum-tinted block (replaces the divider line) */
   .step__features {
     list-style: none;
-    padding: 24px 0 0;
-    margin: 10px 0 0;
-    border-top: 1px solid var(--color-stone);
+    padding: 22px 22px 24px;
+    margin: 18px 0 0;
+    background: color-mix(in srgb, var(--color-vellum) 30%, var(--color-paper));
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -568,7 +599,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 500;
-    color: var(--color-ink);
+    color: var(--color-steel);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin: 0 0 4px;
@@ -1073,6 +1104,9 @@ import Layout from '../layouts/Layout.astro';
     }
     .step__num {
       font-size: 56px;
+    }
+    .step__conn {
+      display: none;
     }
   }
   @media (max-width: 600px) {
