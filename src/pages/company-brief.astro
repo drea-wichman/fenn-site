@@ -8,73 +8,79 @@ import { Content } from './_company-brief.md';
   description="The fictional company profile behind Fenn's portfolio documents."
   currentPage="building-fenn"
 >
-  <section class="essay">
-    <div class="essay__inner">
+  <section class="legal">
+    <div class="legal__inner">
+      <p class="legal__label">Company</p>
+      <h1 class="legal__title">Company Brief</h1>
+
       <div class="brief">
         <Content />
       </div>
 
-      <p class="essay__body essay__body--links">For the story and reasoning behind Fenn, see <a href="/building-fenn" class="essay__link">Building Fenn →</a>. For the full decision trail, see the <a href="https://github.com/drea-wichman/fenn/blob/main/build-log.md" target="_blank" rel="noopener" class="essay__link">build log →</a>.</p>
+      <p class="legal__p legal__p--links">For the story behind Fenn, see <a href="/building-fenn" class="legal__link">Building Fenn →</a>. For the full decision trail, see the <a href="https://github.com/drea-wichman/fenn/blob/main/build-log.md" target="_blank" rel="noopener" class="legal__link">Build Log →</a>.</p>
     </div>
   </section>
 </Layout>
 
 <style>
-  .essay {
-    background: var(--color-dark);
-    padding: 96px 0 140px;
+  .legal {
+    background: var(--color-light);
+    padding: 80px 0 120px;
   }
-  .essay__inner {
-    max-width: 950px;
+  .legal__inner {
+    max-width: 760px;
     margin: 0 auto;
     padding: 0 var(--gutter);
   }
-  .brief :global(h1) {
-    color: var(--color-steel-light);
+  .legal__label {
+    color: var(--color-steel);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 48px;
+    margin-bottom: 16px;
+  }
+  .legal__title {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-on-light);
+    line-height: 1.1;
+    margin-bottom: 40px;
   }
   .brief :global(h2) {
-    color: var(--color-steel-light);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 56px;
-    margin-bottom: 28px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
   }
   .brief :global(p),
-  .essay__body {
-    font-size: 17px;
-    color: var(--text-on-dark);
-    line-height: 1.75;
-    margin-bottom: 24px;
+  .legal__p {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
   }
   .brief :global(strong) {
-    color: var(--text-on-dark);
+    color: var(--text-on-light);
     font-weight: 700;
   }
-  .essay__body--links {
-    margin-top: 56px;
-  }
   .brief :global(a),
-  .essay__link {
-    color: var(--color-steel-light);
-    font-weight: 400;
-    text-decoration: none;
-    text-underline-offset: 3px;
-    transition: text-decoration-color var(--transition);
+  .legal__link {
+    color: var(--color-steel);
   }
   .brief :global(a:hover),
-  .essay__link:hover {
+  .legal__link:hover {
     text-decoration: underline;
+  }
+  .legal__p--links {
+    margin-top: 40px;
   }
 
   @media (max-width: 768px) {
-    .essay { padding: 64px 0 100px; }
-    .brief :global(p), .essay__body { font-size: 16px; }
+    .legal__title { font-size: 32px; }
+    .legal { padding: 48px 0 80px; }
   }
 </style>

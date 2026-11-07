@@ -1,9 +1,3 @@
-# Fenn Agritech Company Brief
-
-*Fenn is a fictional company created for educational portfolio purposes. This brief and its associated deliverables are independent work and are not based on any real organization. All third-party vendor names referenced are real companies but no affiliations, partnerships, or endorsements exist or are implied.*
-
-**Type:** Fictional Company Profile | GRC Portfolio Reference Document
-
 ## Overview
 
 Fenn Agritech is a UK-based B2B agritech SaaS company headquartered in Bristol. The platform provides crop and field management software to independent commercial farms across England and Wales with a customer base of approximately 1,000 farms. Fenn is Series B funded and employs around 100 people.
