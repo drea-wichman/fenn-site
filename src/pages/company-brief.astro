@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Content } from './_company-brief.md';
+---
+
+<Layout
+  title="Company Brief — Fenn Agritech"
+  description="The fictional company profile behind Fenn's portfolio documents."
+  currentPage="building-fenn"
+>
+  <section class="essay">
+    <div class="essay__inner">
+      <div class="brief">
+        <Content />
+      </div>
+
+      <p class="essay__body essay__body--links">For the story and reasoning behind Fenn, see <a href="/building-fenn" class="essay__link">Building Fenn →</a>. For the full decision trail, see the <a href="https://github.com/drea-wichman/fenn/blob/main/build-log.md" target="_blank" rel="noopener" class="essay__link">build log →</a>.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .essay {
+    background: var(--color-dark);
+    padding: 96px 0 140px;
+  }
+  .essay__inner {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .brief :global(h1) {
+    color: var(--color-steel-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .brief :global(h2) {
+    color: var(--color-steel-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 56px;
+    margin-bottom: 28px;
+  }
+  .brief :global(p),
+  .essay__body {
+    font-size: 17px;
+    color: var(--text-on-dark);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+  .brief :global(strong) {
+    color: var(--text-on-dark);
+    font-weight: 700;
+  }
+  .essay__body--links {
+    margin-top: 56px;
+  }
+  .brief :global(a),
+  .essay__link {
+    color: var(--color-steel-light);
+    font-weight: 400;
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: text-decoration-color var(--transition);
+  }
+  .brief :global(a:hover),
+  .essay__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .essay { padding: 64px 0 100px; }
+    .brief :global(p), .essay__body { font-size: 16px; }
+  }
+</style>
