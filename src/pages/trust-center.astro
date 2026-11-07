@@ -25,7 +25,7 @@ const security = securityDocs.map(toRow('security'))
 const privacy = [
   { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.1 · October 2026', status: 'View document →', note: null },
 { name: 'Data Processing Agreement', href: '/trust-center/legal/data-processing-agreement', version: 'v1.3 · November 2026', status: 'View document →', note: null },
-{ name: 'Data Flow and Architecture', href: '/trust-center/data-flow-and-architecture', version: 'v1.0 · October 2026', status: 'View document →', note: null },  ...privacyDocs
+{ name: 'Data Flow and Architecture', href: '/trust-center/data-flow-and-architecture', version: 'v1.1 · November 2026', status: 'View document →', note: null },  ...privacyDocs
     .filter(p => p.id !== 'data-processing-agreement')
     .map(toRow('privacy'))
     .sort((a, b) => a.name.localeCompare(b.name))

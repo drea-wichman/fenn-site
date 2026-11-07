@@ -34,7 +34,7 @@ const currentHref = '/trust-center/data-flow-and-architecture';
 
       <article class="doc-body">
         <h1 class="doc-body__title">Data Flow and Architecture</h1>
-        <p class="doc-body__meta">Version 1.0 · Updated 22 October 2026</p>
+        <p class="doc-body__meta">Version 1.1 · Updated 7 November 2026</p>
         <p class="doc-body__meta doc-body__meta--github">
           <a href="https://github.com/drea-wichman/fenn/blob/main/data-flow-and-architecture.md" target="_blank" rel="noopener" class="doc-body__github">View on GitHub →</a>
         </p>
@@ -49,7 +49,7 @@ const currentHref = '/trust-center/data-flow-and-architecture';
           <li><strong>Readable by Fenn's staff.</strong> The details Fenn needs to run your account and support you. Fenn's staff can read them, as the Data Processing Agreement describes.</li>
         </ul>
         <h2 class="doc-body__h2">2. Diagram</h2>
-        <img class="doc-body__figure" src="/images/data-flow.svg" alt="Data flow diagram. Your devices on the left, Fenn in the middle, outside services on the right. Each arrow is labeled Encrypted on your device, Encrypted on Fenn&#x27;s servers, Readable on Fenn&#x27;s servers while in use, or Readable by Fenn&#x27;s staff." width="1150" height="706" />
+        <img class="doc-body__figure" src="/images/data-flow.svg" alt="Data flow diagram. Your devices on the left, Fenn in the middle, outside services on the right. Each arrow is labeled Encrypted on your device, Encrypted on Fenn&#x27;s servers, Readable on Fenn&#x27;s servers while in use, or Readable by Fenn&#x27;s staff." width="1150" height="898" />
         <p class="doc-body__p">Fenn does not send reports to Defra, HMRC, or anyone else.</p>
         <h2 class="doc-body__h2">3. Data inventory</h2>
         <div class="doc-table-wrap">
@@ -148,6 +148,12 @@ const currentHref = '/trust-center/data-flow-and-architecture';
               <td>Readable by Fenn's staff</td>
               <td>Fenn's staff and Sentry (EU). Never includes farm data</td>
             </tr>
+            <tr>
+              <td>Backups</td>
+              <td>Copies of Fenn's servers, kept 30 days in AWS London, with a locked daily copy at Wasabi (UK)</td>
+              <td>Same as the original data</td>
+              <td>The same people as the original. Wasabi stores the copy but cannot read your farm data</td>
+            </tr>
           </tbody>
         </table>
         </div>
@@ -182,6 +188,12 @@ const currentHref = '/trust-center/data-flow-and-architecture';
               <td>2026-10-22</td>
               <td>Jack Lowe, Head of Security</td>
               <td>Initial document. Shows where customer data goes, who can read it at each step, and where Fenn's default encryption has exceptions.</td>
+            </tr>
+            <tr>
+              <td>1.1</td>
+              <td>2026-11-07</td>
+              <td>Jack Lowe, Head of Security</td>
+              <td>Added backups and Wasabi. Redrew the diagram.</td>
             </tr>
           </tbody>
         </table>
