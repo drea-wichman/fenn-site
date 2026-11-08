@@ -12,6 +12,7 @@ const schema = z.object({
   approver: z.string(),
   scope: z.string(),
   framework_mapping: z.array(z.string()),
+  product: z.literal('tally').optional(),
 });
 
 const schemaOptional = z.object({
@@ -25,6 +26,7 @@ const schemaOptional = z.object({
   approver: z.string().optional(),
   scope: z.string().optional(),
   framework_mapping: z.array(z.string()).optional(),
+  product: z.literal('tally').optional(),
 });
 const legal = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),

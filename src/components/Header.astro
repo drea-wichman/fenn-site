@@ -4,13 +4,22 @@ const { currentPage = '' } = Astro.props;
 
 <header class="header">
   <div class="header__inner">
-    <a href="/" class="header__logo">
-      <img src="/logo-final.png" alt="Fenn" width="1009" height="292" />
-    </a>
+    {currentPage === 'tally' ? (
+      <span class="header__logo-spacer" aria-hidden="true"></span>
+    ) : (
+      <a href="/" class="header__logo">
+        <img src="/logo-final.png" alt="Fenn" width="1009" height="292" />
+      </a>
+    )}
 
     <nav class="header__nav">
       <a href="/trust-center" class={currentPage === 'trust-center' ? 'header__link header__link--active' : 'header__link'}>Trust Center</a>
       <a href="/behind-fenn" class={currentPage === 'behind-fenn' ? 'header__link header__link--active' : 'header__link'}>Behind Fenn</a>
+      {currentPage === 'tally' ? (
+        <a href="/" class="header__link">Home</a>
+      ) : (
+        <a href="/tally" class="header__link">Tally</a>
+      )}
       <button class="btn-outline-white header__cta" id="open-contact-modal">Contact Us</button>
     </nav>
   </div>
@@ -92,8 +101,9 @@ const { currentPage = '' } = Astro.props;
     color: var(--color-ink);
   }
 
-  /* Homepage: nav sits on the hero photo. */
-  :global(.page-landing) .header {
+  /* Homepage and Tally: nav sits on the page background. */
+  :global(.page-landing) .header,
+  :global(.page-tally) .header {
     position: absolute;
     top: var(--banner-h, 34px);
     left: 0;
@@ -102,11 +112,20 @@ const { currentPage = '' } = Astro.props;
     background: transparent;
   }
 
-  :global(.page-landing) .header__logo {
+  :global(.page-landing) .header__logo,
+  :global(.page-tally) .header__logo {
     margin-left: 0;
   }
 
-  :global(.page-landing) .header__logo img {
+  :global(.page-landing) .header__logo img,
+  :global(.page-tally) .header__logo img {
+    height: 50px;
+  }
+
+  /* Tally page: no logo in the header (the Tally lockup carries the brand),
+     and the Tally slot in the nav becomes Home. */
+  .header__logo-spacer {
+    display: block;
     height: 50px;
   }
 
@@ -115,7 +134,8 @@ const { currentPage = '' } = Astro.props;
       height: 48px;
     }
 
-    :global(.page-landing) .header__logo img {
+    :global(.page-landing) .header__logo img,
+    :global(.page-tally) .header__logo img {
       height: 40px;
     }
 
