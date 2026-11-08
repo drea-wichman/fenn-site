@@ -57,7 +57,6 @@
     background: rgba(26, 34, 24, 0.88);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(240, 235, 216, 0.14);
     border-radius: 6px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   }
@@ -137,9 +136,22 @@
     white-space: nowrap;
   }
 
-  /* Contact: title fits on one line on desktop. */
+  /* Contact: centered, title on one line on desktop. The links stay
+     left-aligned as a group so the icons line up. */
   #contact-modal .modal {
     max-width: 540px;
+    text-align: center;
+    align-items: center;
+  }
+
+  #contact-modal .modal__title {
+    padding: 0 24px;
+  }
+
+  #contact-modal .modal__buttons {
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0 auto;
   }
 
   #contact-modal .modal__title {
