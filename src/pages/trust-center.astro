@@ -19,27 +19,19 @@ href: `/trust-center/${p.id}`,
   note: note || null
 });
 
-// Documents marked `product: tally` go in the Tally list, not their usual one.
-const isTally = (p: any) => p.data?.product === 'tally';
-
-const tally = [...securityDocs, ...privacyDocs, ...complianceDocs]
-  .filter(isTally)
-  .map(toRow('tally'))
-  .sort((a, b) => a.name.localeCompare(b.name));
-
-const security = securityDocs.filter(p => !isTally(p)).map(toRow('security'))
+const security = securityDocs.map(toRow('security'))
   .sort((a, b) => a.name.localeCompare(b.name));
 
 const privacy = [
   { name: 'Sub-processor List', href: '/trust-center/sub-processor-list', version: 'v1.2 · November 2026', status: 'View document →', note: null },
 { name: 'Data Processing Agreement', href: '/trust-center/legal/data-processing-agreement', version: 'v1.3 · November 2026', status: 'View document →', note: null },
 { name: 'Data Flow and Architecture', href: '/trust-center/data-flow-and-architecture', version: 'v1.1 · November 2026', status: 'View document →', note: null },  ...privacyDocs
-    .filter(p => p.id !== 'data-processing-agreement' && !isTally(p))
+    .filter(p => p.id !== 'data-processing-agreement')
     .map(toRow('privacy'))
     .sort((a, b) => a.name.localeCompare(b.name))
 ];
 
-const compliance = complianceDocs.filter(p => !isTally(p)).map(toRow('compliance', 'ISMS documentation - published for transparency'))
+const compliance = complianceDocs.map(toRow('compliance', 'ISMS documentation - published for transparency'))
   .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
@@ -85,27 +77,6 @@ const compliance = complianceDocs.filter(p => !isTally(p)).map(toRow('compliance
         ))}
       </div>
 
-      {tally.length > 0 && (
-        <>
-          <p class="section-label section-label--second">Tally</p>
-          <p class="doc-list__intro">Tally also follows Fenn's security and privacy policies above.</p>
-          <div class="doc-list">
-            {tally.map(doc => (
-              <div class="doc-row">
-                <div class="doc-row__left">
-                  <a href={doc.href} class="doc-row__name doc-row__name--link">{doc.name}</a>
-                </div>
-                <div class="doc-row__middle">
-                  {doc.version && <p class="doc-row__version">{doc.version}</p>}
-                </div>
-                <div class="doc-row__right">
-                  <a href={doc.href} class="doc-row__status doc-row__status--link">{doc.status}</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
       {compliance.length > 0 && (
         <>
           <p class="section-label section-label--second">Compliance</p>
@@ -150,13 +121,6 @@ const compliance = complianceDocs.filter(p => !isTally(p)).map(toRow('compliance
 
   .section-label--second {
     margin-top: 72px;
-  }
-
-  .doc-list__intro {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--color-slate);
-    margin: -12px 0 20px;
   }
 
   .doc-list {

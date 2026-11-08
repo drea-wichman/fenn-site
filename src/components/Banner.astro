@@ -41,9 +41,8 @@
     text-decoration: underline;
   }
 
-  /* Homepage and Tally: the banner is dark glass over the page. */
-  :global(.page-landing) .banner,
-  :global(.page-tally) .banner {
+  /* Homepage: the banner is dark glass over the hero photo. */
+  :global(.page-landing) .banner {
     position: absolute;
     top: 0;
     left: 0;
@@ -54,25 +53,13 @@
     -webkit-backdrop-filter: blur(10px);
   }
 
-  /* Tally: lighter frosted glass. The flat ombre has nothing to show
-     through dark glass, so this lets the blue and the line come through. */
-  :global(.page-tally) .banner {
-    background: linear-gradient(180deg, rgba(240, 235, 216, 0.16), rgba(240, 235, 216, 0.06));
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    border-bottom: 1px solid rgba(240, 235, 216, 0.22);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 24px rgba(10, 25, 32, 0.18);
-  }
-
-  :global(.page-landing) .banner__link,
-  :global(.page-tally) .banner__link {
+  :global(.page-landing) .banner__link {
     color: var(--color-paper);
     text-decoration: underline;
     transition: color var(--transition);
   }
 
-  :global(.page-landing) .banner__link:hover,
-  :global(.page-tally) .banner__link:hover {
+  :global(.page-landing) .banner__link:hover {
     color: var(--color-steel-light);
   }
 </style>
