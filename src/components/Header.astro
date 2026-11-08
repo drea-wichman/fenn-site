@@ -75,25 +75,47 @@ const { currentPage = '' } = Astro.props;
 
   .header__cta {
     cursor: pointer;
-    background: var(--color-rust);
+    background: transparent;
     color: var(--color-paper);
-    border: none;
+    border: 1px solid var(--color-paper);
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.005em;
     text-transform: none;
-    padding: 8px 18px;
-    transition: background 200ms ease;
+    padding: 7px 17px;
+    transition: background 200ms ease, color 200ms ease;
   }
 
   .header__cta:hover {
-    background: rgb(175, 125, 60);
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  /* Homepage: nav sits on the hero photo. */
+  :global(.page-landing) .header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background: transparent;
+  }
+
+  :global(.page-landing) .header__logo {
+    margin-left: 0;
+  }
+
+  :global(.page-landing) .header__logo img {
+    height: 50px;
   }
 
   @media (max-width: 768px) {
     .header__logo img {
       height: 48px;
+    }
+
+    :global(.page-landing) .header__logo img {
+      height: 40px;
     }
 
     .header__nav {
