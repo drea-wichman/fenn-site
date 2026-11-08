@@ -41,19 +41,26 @@
     text-decoration: underline;
   }
 
-  /* Homepage: the banner sits on the hero photo instead of a black bar. */
+  /* Homepage: the banner is dark glass over the hero photo. */
   :global(.page-landing) .banner {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 6;
-    background: transparent;
+    background: rgba(26, 34, 24, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   :global(.page-landing) .banner__link {
     color: var(--color-paper);
     text-decoration: underline;
+    transition: color var(--transition);
+  }
+
+  :global(.page-landing) .banner__link:hover {
+    color: var(--color-steel-light);
   }
 </style>
 
