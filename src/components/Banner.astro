@@ -40,4 +40,30 @@
   .banner__link:hover {
     text-decoration: underline;
   }
+
+  /* Homepage: the banner sits on the hero photo instead of a black bar. */
+  :global(.page-landing) .banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+    background: rgba(10, 10, 10, 0.35);
+  }
+
+  :global(.page-landing) .banner__link {
+    color: var(--color-paper);
+    text-decoration: underline;
+  }
 </style>
+
+<script>
+  // Lets the homepage header sit just below the banner, whatever its height.
+  const banner = document.querySelector('.banner');
+  if (banner) {
+    const setHeight = () =>
+      document.documentElement.style.setProperty('--banner-h', `${banner.offsetHeight}px`);
+    setHeight();
+    new ResizeObserver(setHeight).observe(banner);
+  }
+</script>

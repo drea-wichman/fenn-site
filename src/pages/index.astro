@@ -357,7 +357,8 @@ import Layout from '../layouts/Layout.astro';
   .hero {
     position: relative;
     background: var(--color-ink);
-    min-height: max(600px, 85vh);
+    /* Fills the screen, leaving the trust strip in view. */
+    min-height: max(600px, calc(100vh - 46px));
     overflow: hidden;
   }
   .hero__content {
@@ -392,7 +393,6 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-paper);
     line-height: 1.5;
     letter-spacing: 0.01em;
-    margin-left: 3px;
   }
   .hero__photo {
     position: absolute;
@@ -468,11 +468,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   /* ========================================================================
-     TRUST STRIP — vellum band with mono labels and italic statuses
+     TRUST STRIP — thin ink band under the hero, label and status on one line
      ======================================================================== */
   .trust-strip {
     background: var(--color-ink);
-    padding: 32px 0;
+    padding: 12px 0;
   }
   .trust-strip__inner {
     max-width: var(--max-width);
@@ -484,7 +484,11 @@ import Layout from '../layouts/Layout.astro';
     gap: 32px;
   }
   .trust-cert {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 4px 12px;
   }
   .trust-cert__label {
     font-family: var(--font-mono);
@@ -493,7 +497,6 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 8px;
   }
   .trust-cert__status {
     font-family: var(--font-body);
@@ -505,7 +508,7 @@ import Layout from '../layouts/Layout.astro';
   }
   .trust-cert__rule {
     width: 1px;
-    height: 48px;
+    height: 20px;
     background: color-mix(in srgb, var(--color-stone) 35%, transparent);
   }
 

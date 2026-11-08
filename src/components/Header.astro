@@ -95,6 +95,7 @@ const { currentPage = '' } = Astro.props;
   /* Homepage: nav sits on the hero photo. */
   :global(.page-landing) .header {
     position: absolute;
+    top: var(--banner-h, 34px);
     left: 0;
     right: 0;
     z-index: 5;
