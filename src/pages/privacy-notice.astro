@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Notice — Fenn Agritech"
+  description="How Fenn Agritech handles the personal data it controls."
+  currentPage="privacy-notice"
+>
+  <section class="legal">
+    <div class="legal__inner">
+      <p class="legal__label">Legal</p>
+      <h1 class="legal__title">Privacy Notice</h1>
+      <p class="legal__meta">Last updated: 10 November 2026</p>
+
+      <p class="legal__intro">This notice explains how Fenn Agritech uses the personal data it controls. Data your farm keeps in Fenn is covered by the <a href="/trust-center/legal/data-processing-agreement" class="legal__link">Data Processing Agreement</a> instead. Your farm decides how that data is used.</p>
+
+      <h2 class="legal__h2">Personal data Fenn keeps</h2>
+      <ul class="legal__list">
+        <li><strong>Billing records.</strong> The name and email of your farm's billing contact, and your invoices.</li>
+        <li><strong>Support records.</strong> Messages you send Fenn's support team and Fenn's replies.</li>
+        <li><strong>Security logs.</strong> Sign-ins to your Fenn account, including the device and IP address used.</li>
+        <li><strong>Email records.</strong> When Fenn sent an account email, such as an invitation or password reset, who it went to, and whether it arrived.</li>
+        <li><strong>Contact details for notices.</strong> Your contact details, for service and security notices.</li>
+        <li><strong>Incident and complaint records.</strong> Details recorded when Fenn investigates a security incident or handles a data protection complaint.</li>
+        <li><strong>Inquiries.</strong> Your name, contact details, and messages when you contact Fenn to ask about the service or to try it.</li>
+      </ul>
+      <p class="legal__p">Some of this data comes from your farm, such as when someone at your farm adds you as the billing contact.</p>
+
+      <h2 class="legal__h2">Purpose and legal basis</h2>
+      <p class="legal__p">Fenn relies on three legal bases under UK GDPR Article 6(1): contract (b), legal obligation (c), and legitimate interests (f).</p>
+      <ul class="legal__list">
+        <li><strong>Billing records:</strong> to charge your farm and keep tax records. Contract, or legitimate interest in billing customers where Fenn's contract is with your business. Keeping invoices: legal obligation (HMRC).</li>
+        <li><strong>Support records:</strong> to answer and follow up on requests. Legitimate interest in supporting customers.</li>
+        <li><strong>Security logs:</strong> to protect Fenn and your account. Legitimate interest in keeping Fenn secure.</li>
+        <li><strong>Email records:</strong> to check account emails arrived. Legitimate interest in running a reliable service.</li>
+        <li><strong>Contact details for notices:</strong> to tell you about the service and incidents. Legitimate interest, or legal obligation where Fenn must notify you.</li>
+        <li><strong>Incident and complaint records:</strong> to investigate incidents and handle complaints. Legal obligation, or legitimate interest in defending legal claims.</li>
+        <li><strong>Inquiries:</strong> to reply. Legitimate interest in responding to inquiries.</li>
+      </ul>
+      <p class="legal__p">Fenn needs your farm's billing details to provide the service. Fenn does not make decisions about people by automated means.</p>
+
+      <h2 class="legal__h2">Who this data is shared with</h2>
+      <ul class="legal__list">
+        <li><strong>Stripe Payments Europe, Limited (Ireland, United States):</strong> processes payments and holds card details.</li>
+        <li><strong>Cloud hosting and email providers (United Kingdom):</strong> store Fenn's records and send account emails.</li>
+        <li><strong>Proton AG (Switzerland):</strong> provides Fenn's email and file storage.</li>
+        <li><strong>Customer support software provider (United Kingdom):</strong> stores support conversations.</li>
+        <li><strong>Providers that send service and security emails:</strong> send notices to customers, including during incidents.</li>
+        <li><strong>Advisers and authorities:</strong> lawyers, forensic investigators, and regulators such as the Information Commission, when Fenn investigates an incident, handles a claim, or the law requires it.</li>
+      </ul>
+
+      <h2 class="legal__h2">International data transfers</h2>
+      <ul class="legal__list">
+        <li><strong>Stripe (Ireland, United States):</strong> the UK recognizes the European Economic Area as providing adequate protection. Stripe, LLC in the US is certified under the UK Extension to the EU-US Data Privacy Framework, which the UK also recognizes.</li>
+        <li><strong>Proton (Switzerland):</strong> the UK recognizes Switzerland as providing adequate protection.</li>
+      </ul>
+
+      <h2 class="legal__h2">How long data is retained</h2>
+      <ul class="legal__list">
+        <li><strong>Billing records:</strong> 6 years from the end of the financial year they relate to.</li>
+        <li><strong>Support records:</strong> 24 months after the request is closed.</li>
+        <li><strong>Security logs:</strong> 13 months.</li>
+        <li><strong>Email records:</strong> 90 days.</li>
+        <li><strong>Contact details for notices:</strong> until your farm's account is deleted.</li>
+        <li><strong>Incident and complaint records:</strong> 6 years after the incident or complaint is closed.</li>
+        <li><strong>Inquiries:</strong> 24 months after your last contact.</li>
+      </ul>
+
+      <h2 class="legal__h2">Your rights</h2>
+      <p class="legal__p">You have the right to:</p>
+      <ul class="legal__list">
+        <li>Request access to your data</li>
+        <li>Have it corrected or deleted</li>
+        <li>Object to or restrict its processing</li>
+        <li>Receive it in a portable format (where applicable)</li>
+      </ul>
+      <p class="legal__p">You can object at any time to Fenn using your data for its legitimate interests.</p>
+      <p class="legal__p">To exercise any of these rights, or to make a complaint, email <a href="mailto:privacy@fennagritech.io" class="legal__link">privacy@fennagritech.io</a>. Fenn acknowledges complaints within 30 days.</p>
+      <p class="legal__p">You may also complain to the Information Commission (<a href="https://ico.org.uk" target="_blank" rel="noopener" class="legal__link">ico.org.uk</a>), the UK supervisory authority.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal {
+    background: var(--color-light);
+    padding: 80px 0 120px;
+  }
+  .legal__inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .legal__label {
+    color: var(--color-steel);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .legal__title {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-on-light);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .legal__meta {
+    font-size: 13px;
+    color: var(--text-muted-on-light);
+    margin-bottom: 40px;
+  }
+  .legal__intro {
+    font-size: 16px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .legal__h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-on-light);
+    letter-spacing: -0.3px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .legal__p {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .legal__p strong {
+    color: var(--text-on-light);
+    font-weight: 700;
+  }
+  .legal__list {
+    list-style: disc;
+    padding-left: 22px;
+    margin: 0 0 12px;
+  }
+  .legal__list li {
+    font-size: 15px;
+    color: var(--text-on-light);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .legal__list li strong {
+    font-weight: 700;
+  }
+  .legal__link {
+    color: var(--color-steel);
+  }
+  .legal__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal__title { font-size: 32px; }
+    .legal { padding: 48px 0 80px; }
+  }
+</style>
